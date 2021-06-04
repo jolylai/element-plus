@@ -25,8 +25,6 @@ export default defineComponent({
 
     const clickThumbHandler = (e: MouseEvent) => {
       e.stopPropagation()
-      console.log('ctrlkey', e.ctrlKey)
-      console.log('ctrlbuttonkey', e.button)
       if (e.ctrlKey || [1, 2].includes(e.button)) {
         return
       }
