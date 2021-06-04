@@ -1,15 +1,12 @@
 <template>
-  <div
-    ref="instance"
-    :class="['el-scrollbar-bar', 'el-scrollbar-bar-vertical']"
-    @mousedown="clickTrackHandler"
-  >
-    <div :class="['el-scrollbar-thumb']" :style="thumbStyle"></div>
+  <div ref="instance" :class="['el-scrollbar-bar', 'el-scrollbar-bar-vertical']" @mousedown="clickTrackHandler">
+    <div ref="thumb" :class="['el-scrollbar-thumb']" :style="thumbStyle" @mousedown="clickThumbHandler"></div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, inject, ref } from 'vue'
+import type { Ref } from 'vue'
 import { BAR_MAP, renderThumbStyle } from './util'
 
 export default defineComponent({
@@ -19,16 +16,28 @@ export default defineComponent({
     size: String,
   },
   setup(props) {
-    const bar = computed(
-      () => BAR_MAP[props.vertical ? 'vertical' : 'horizontal'],
-    )
+    const instance = ref(null)
+    const thumb = ref(null)
+
+    const wrap = inject('scrollbar-wrap', {} as Ref<NonNullable<HTMLElement>>)
+
+    const bar = computed(() => BAR_MAP[props.vertical ? 'vertical' : 'horizontal'])
+
+    const clickThumbHandler = (e: MouseEvent) => {
+      e.stopPropagation()
+      console.log('ctrlkey', e.ctrlKey)
+      console.log('ctrlbuttonkey', e.button)
+      if (e.ctrlKey || [1, 2].includes(e.button)) {
+        return
+      }
+    }
+
     const clickTrackHandler = (e) => {
-      console.log('e: ', e)
-      const offset = Math.abs(
-        e.target.getBoundingClientRect()[bar.value.direction] -
-          e[bar.value.client],
-      )
-      console.log('offset: ', offset)
+      const offset = Math.abs(e.target.getBoundingClientRect()[bar.value.direction] - e[bar.value.client])
+      const thubmHalf = thumb.value[bar.value.offset] / 2
+      const thumbPositionPercentage = ((offset - thubmHalf) * 100) / instance.value[bar.value.offset]
+
+      wrap.value[bar.value.scroll] = (thumbPositionPercentage * wrap.value[bar.value.scrollSize]) / 100
     }
 
     const thumbStyle = computed(() => {
@@ -42,8 +51,11 @@ export default defineComponent({
     })
 
     return {
+      instance,
+      thumb,
       thumbStyle,
       clickTrackHandler,
+      clickThumbHandler,
     }
   },
 })
