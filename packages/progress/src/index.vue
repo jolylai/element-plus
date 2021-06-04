@@ -52,32 +52,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-.el-progress {
-  width: 350px;
-  display: flex;
-  line-height: 1;
-}
-
-.el-progress-bar {
-  flex-grow: 1;
-}
-
-.el-progress-bar-outer {
-  height: 6px;
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.el-progress-bar-inner {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background-color: #409eff;
-  border-radius: 100px;
-  width: 50%;
-}
-</style>

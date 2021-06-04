@@ -1,7 +1,3 @@
+import ElProgress from './progress'
 
-
-
-export const add = (a: number, b: number) => {
-  return a + b
-}
-
+export { ElProgress }
