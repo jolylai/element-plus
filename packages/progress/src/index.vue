@@ -29,6 +29,7 @@ interface IProgressProps {
 }
 
 export default defineComponent({
+  name: 'ElProgress',
   props: {
     percentage: { type: Number, required: true },
     type: {
