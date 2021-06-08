@@ -1,26 +1,68 @@
-.el-progress {
-  width: 350px;
-  display: flex;
-  line-height: 1;
-}
+@import 'mixins/mixins';
+@import 'common/var.scss';
 
-.el-progress-bar {
-  flex-grow: 1;
-}
-
-.el-progress-bar-outer {
-  height: 6px;
+@include b(progress) {
   position: relative;
-  overflow: hidden;
-  border-radius: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+
+  @include e(text) {
+    font-size: 14px;
+    color: $--color-text-regular;
+    margin-left: 5px;
+    min-width: 50px;
+    line-height: 1;
+
+    i {
+      vertical-align: middle;
+      display: block;
+    }
+  }
+
+  @include m((circle, dashboard)) {
+    display: inline-block;
+
+    .#{$namespace}-progress__text {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      transform: translate(0, -50%);
+
+      i {
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+  }
 }
 
-.el-progress-bar-inner {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background-color: #409eff;
-  border-radius: 100px;
-  width: 50%;
-}
+// .el-progress {
+//   width: 350px;
+//   display: flex;
+//   line-height: 1;
+// }
+
+// .el-progress-bar {
+//   flex-grow: 1;
+// }
+
+// .el-progress-bar-outer {
+//   height: 6px;
+//   position: relative;
+//   overflow: hidden;
+//   border-radius: 20px;
+// }
+
+// .el-progress-bar-inner {
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   height: 100%;
+//   background-color: #409eff;
+//   border-radius: 100px;
+//   width: 50%;
+// }
