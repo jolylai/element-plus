@@ -1,27 +1,9 @@
 <template>
-  <!-- <el-progress :percentage="percentage" /> -->
-  <Readme />
-  <br />
-  <Demo />
+  <router-view></router-view>
 </template>
 
 <script>
-import { defineComponent, ref } from '@vue/runtime-core'
+import { defineComponent } from '@vue/runtime-core'
 
-import Readme from '@/progress/README.md'
-import Demo from './demo.vue'
-
-export default defineComponent({
-  components: {
-    Readme,
-    Demo,
-  },
-  setup() {
-    const percentage = ref(50)
-
-    return {
-      percentage,
-    }
-  },
-})
+export default defineComponent({})
 </script>

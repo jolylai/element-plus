@@ -3361,6 +3361,11 @@ header-case@^2.0.4:
     capital-case "^1.0.4"
     tslib "^2.0.3"
 
+highlight.js@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.nlark.com/highlight.js/download/highlight.js-11.0.1.tgz#a78bafccd9aa297978799fe5eed9beb7ee1ef887"
+  integrity sha1-p4uvzNmqKXl4eZ/l7tm+t+4e+Ic=
+
 homedir-polyfill@^1.0.1:
   version "1.0.3"
   resolved "https://registry.nlark.com/homedir-polyfill/download/homedir-polyfill-1.0.3.tgz#743298cef4e5af3e194161fbadcc2151d3a058e8"

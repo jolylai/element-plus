@@ -2,9 +2,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import DemoBlock from './components/demo-block.vue'
 import { ElProgress } from 'element-plus'
-console.log('ElProgress: ', ElProgress)
+import router from './router'
+import 'highlight.js/styles/color-brewer.css'
 
-createApp(App)
-  .component(ElProgress.name, ElProgress)
-  .component('DemoBlock', DemoBlock)
-  .mount('#app')
+const app = createApp(App)
+
+app.use(router)
+
+app.component(ElProgress.name, ElProgress).component('DemoBlock', DemoBlock)
+
+app.mount('#app')
