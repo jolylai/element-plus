@@ -5,7 +5,7 @@ import styleImport from 'vite-plugin-style-import'
 
 import markdown from 'vite-plugin-md'
 
-import elementMarkdown from './website/plugin/vite-plugin-element-md'
+// import elementMarkdown from './website/plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    elementMarkdown({}),
+    markdown({}),
     styleImport({
       libs: [
         {

@@ -9,8 +9,6 @@ function VitePluginElement(userOptions) {
       if (id.endsWith('.md')) {
         try {
           const content = md.render(src)
-          // console.log('content: 666', content)
-
           const startTag = '<!--element-demo:'
           const startTagLen = startTag.length
           const endTag = ':element-demo-->'

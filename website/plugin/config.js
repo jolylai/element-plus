@@ -1,4 +1,3 @@
-import MarkdownIt from 'markdown-it'
 import Config from 'markdown-it-chain'
 import hljs from 'highlight.js'
 import overWriteFenceRule from './fence'

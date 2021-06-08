@@ -20,8 +20,18 @@
 }
 
 .demo-preview,
-.demo-description,
+/* .demo-description, */
 .demo-source {
   padding: 16px;
+}
+
+.demo-description {
+  color: #454d64;
+  font-size: 15px;
+  line-height: 1.60625;
+}
+
+p {
+  margin: 0 !important;
 }
 </style>
