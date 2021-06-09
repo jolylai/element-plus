@@ -1,4 +1,4 @@
-import { isArray, extend, isString } from '@vue/shared'
+import { isArray, extend, isString, camelize } from '@vue/shared'
 
 export function isNumber(value: unknown) {
   return typeof value === 'number'
@@ -26,4 +26,4 @@ export function addUnit(value: string | number) {
   return ''
 }
 
-export { isArray, isString }
+export { isArray, isString, camelize }

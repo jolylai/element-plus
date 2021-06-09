@@ -2,6 +2,10 @@
   "name": "组件",
   "children": [
     {
+      "path": "/affix",
+      "title": "Affix "
+    },
+    {
       "path": "/progress",
       "title": "Progress 滚动条"
     }

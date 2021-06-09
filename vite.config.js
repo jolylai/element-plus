@@ -2,10 +2,19 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import styleImport from 'vite-plugin-style-import'
+import hljs from 'highlight.js'
 
 import markdown from 'vite-plugin-md'
 
 // import elementMarkdown from './website/plugin'
+
+const highlight = (str, lang) => {
+  if (!lang || !hljs.getLanguage(lang)) {
+    return '<pre><code class="hljs">' + str + '</code></pre>'
+  }
+  const html = hljs.highlight(lang, str, true, undefined).value
+  return `<pre><code class="hljs language-${lang}">${html}</code></pre>`
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,7 +29,11 @@ export default defineConfig({
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    markdown({}),
+    markdown({
+      markdownItOptions: {
+        highlight,
+      },
+    }),
     styleImport({
       libs: [
         {
