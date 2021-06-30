@@ -4,11 +4,9 @@ const path = require('path')
 const createRenderer = require('./md-renderer')
 const mdRenderer = createRenderer()
 
-const demoBlock = fs
-  .readFileSync(path.resolve(__dirname, 'ComponentDemoTemplate.vue'))
-  .toString()
+const demoBlock = fs.readFileSync(path.resolve(__dirname, 'ComponentDemoTemplate.vue')).toString()
 
-function getPartsOfDemo (tokens) {
+function getPartsOfDemo(tokens) {
   let template = null
   let script = null
   let style = null
@@ -18,20 +16,11 @@ function getPartsOfDemo (tokens) {
   for (const token of tokens) {
     if (token.type === 'heading' && token.depth === 1) {
       title = token.text
-    } else if (
-      token.type === 'code' &&
-      (token.lang === 'template' || token.lang === 'html')
-    ) {
+    } else if (token.type === 'code' && (token.lang === 'template' || token.lang === 'html')) {
       template = token.text
-    } else if (
-      token.type === 'code' &&
-      (token.lang === 'script' || token.lang === 'js')
-    ) {
+    } else if (token.type === 'code' && (token.lang === 'script' || token.lang === 'js')) {
       script = token.text
-    } else if (
-      token.type === 'code' &&
-      (token.lang === 'style' || token.lang === 'css')
-    ) {
+    } else if (token.type === 'code' && (token.lang === 'style' || token.lang === 'css')) {
       style = token.text
     } else {
       contentTokens.push(token)
@@ -43,14 +32,14 @@ function getPartsOfDemo (tokens) {
     style: style,
     title: title,
     content: marked.parser(contentTokens, {
-      renderer: mdRenderer
-    })
+      renderer: mdRenderer,
+    }),
   }
 }
 
-function mergeParts (parts) {
+function mergeParts(parts) {
   const mergedParts = {
-    ...parts
+    ...parts,
   }
   mergedParts.title = parts.title
   mergedParts.content = parts.content
@@ -58,7 +47,7 @@ function mergeParts (parts) {
   if (parts.template) {
     mergedParts.code += `<template>\n${parts.template
       .split('\n')
-      .map((line) => (line.length ? '  ' + line : line))
+      .map(line => (line.length ? '  ' + line : line))
       .join('\n')}\n</template>`
   }
   if (parts.script) {
@@ -84,7 +73,7 @@ const cssRuleRegex = /([^{}]*)(\{[^}]*\})/g
 // xxx {
 //   mystyle
 // }
-function genStyle (sourceStyle) {
+function genStyle(sourceStyle) {
   let match
   let matched = false
   const rules = []
@@ -96,15 +85,15 @@ function genStyle (sourceStyle) {
     rules.push(
       selector
         .split(',')
-        .map((part) => `.demo-card__view ${part}, .naive-ui-doc ${part}`)
-        .join(',') + body
+        .map(part => `.demo-card__view ${part}, .naive-ui-doc ${part}`)
+        .join(',') + body,
     )
   }
   if (!matched) return null
   return '<style scoped>\n' + rules.join('\n') + '</style>'
 }
 
-function genVueComponent (parts, fileName, relativeUrl, noRunning = false) {
+function genVueComponent(parts, fileName, relativeUrl, noRunning = false) {
   const demoFileNameReg = /<!--DEMO_FILE_NAME-->/g
   const relativeUrlReg = /<!--URL-->/g
   const titleReg = /<!--TITLE_SLOT-->/g
@@ -140,24 +129,19 @@ function genVueComponent (parts, fileName, relativeUrl, noRunning = false) {
   return src.trim()
 }
 
-function getFileName (resourcePath) {
+function getFileName(resourcePath) {
   const dirs = resourcePath.split('/')
   const fileNameWithExtension = dirs[dirs.length - 1]
   return [fileNameWithExtension.split('.')[0], fileNameWithExtension]
 }
 
-function convertMd2Demo (text, { resourcePath, relativeUrl }) {
+function convertMd2Demo(text, { resourcePath, relativeUrl }) {
   const noRunning = /<!--no-running-->/.test(text)
   const tokens = marked.lexer(text)
   const parts = getPartsOfDemo(tokens)
   const mergedParts = mergeParts(parts)
   const [fileName] = getFileName(resourcePath)
-  const vueComponent = genVueComponent(
-    mergedParts,
-    fileName,
-    relativeUrl,
-    noRunning
-  )
+  const vueComponent = genVueComponent(mergedParts, fileName, relativeUrl, noRunning)
   return vueComponent
 }
 

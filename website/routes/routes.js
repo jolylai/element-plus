@@ -84,38 +84,38 @@ export const zhDocRoutes = [
     path: 'customize-theme',
     component: () => import('../pages/docs/customize-theme/zhCN/index.md'),
   },
-  // // {
-  // //   path: 'experimental-features',
-  // //   component: () => import('../pages/docs/experimental-features/zhCN/index.md')
-  // // },
-  // {
-  //   path: 'changelog',
-  //   component: () => import('../pages/docs/changelog/zhCN/index.vue'),
-  // },
-  // {
-  //   path: 'theme',
-  //   component: () => import('../pages/docs/theme/zhCN/index.demo-entry.md'),
-  // },
-  // {
-  //   path: 'jsx',
-  //   component: () => import('../pages/docs/jsx/zhCN/index.md'),
-  // },
-  // {
-  //   path: 'ssr',
-  //   component: () => import('../pages/docs/ssr/zhCN/index.md'),
-  // },
-  // {
-  //   path: 'common-issues',
-  //   component: () => import('../pages/docs/common-issues/zhCN/index.md'),
-  // },
-  // {
-  //   path: 'fonts',
-  //   component: () => import('../pages/docs/fonts/zhCN/index.md'),
-  // },
-  // {
-  //   path: 'import-on-demand',
-  //   component: () => import('../pages/docs/import-on-demand/zhCN/index.md'),
-  // },
+  {
+    path: 'experimental-features',
+    component: () => import('../pages/docs/experimental-features/zhCN/index.md'),
+  },
+  {
+    path: 'changelog',
+    component: () => import('../pages/docs/changelog/zhCN/index.vue'),
+  },
+  {
+    path: 'theme',
+    component: () => import('../pages/docs/theme/zhCN/index.demo-entry.md'),
+  },
+  {
+    path: 'jsx',
+    component: () => import('../pages/docs/jsx/zhCN/index.md'),
+  },
+  {
+    path: 'ssr',
+    component: () => import('../pages/docs/ssr/zhCN/index.md'),
+  },
+  {
+    path: 'common-issues',
+    component: () => import('../pages/docs/common-issues/zhCN/index.md'),
+  },
+  {
+    path: 'fonts',
+    component: () => import('../pages/docs/fonts/zhCN/index.md'),
+  },
+  {
+    path: 'import-on-demand',
+    component: () => import('../pages/docs/import-on-demand/zhCN/index.md'),
+  },
 ]
 
 export const enComponentRoutes = [

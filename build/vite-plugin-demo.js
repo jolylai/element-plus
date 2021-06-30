@@ -6,27 +6,27 @@ const siteIndexTransFormPlugin = require('./vite-plugin-index-tranform')
 const fileRegex = /\.(md|entry)$/
 
 const vuePlugin = createVuePlugin({
-  include: [/\.vue$/, /\.md$/, /\.entry$/]
+  include: [/\.vue$/, /\.md$/, /\.entry$/],
 })
 
 const createDemoPlugin = () => {
   const naiveDemoVitePlugin = {
     name: 'demo-vite',
-    transform (_, id) {
+    transform(_, id) {
       if (fileRegex.test(id)) {
         return getTransformedVueSrc(id)
       }
     },
-    async handleHotUpdate (ctx) {
+    async handleHotUpdate(ctx) {
       const { file } = ctx
       if (fileRegex.test(file)) {
         const code = await getTransformedVueSrc(file)
         return vuePlugin.handleHotUpdate({
           ...ctx,
-          read: () => code
+          read: () => code,
         })
       }
-    }
+    },
   }
 
   const cssrPlugin = createCssrPlugin()
