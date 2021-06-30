@@ -1,13 +1,10 @@
 {
-  "name": "element-plus",
+  "name": "pomelo-ui",
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:jolylai/element-plus.git",
   "author": "jolylai <jolylai163@163.com>",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "start": "rollup -wc",
     "build": "rollup -c",
