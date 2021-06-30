@@ -12,13 +12,15 @@ module.exports = {
       },
     ],
     '@babel/typescript',
+    [
+      '@vue/babel-preset-jsx',
+      {
+        vModel: false,
+        compositionAPI: true,
+      },
+    ],
   ],
-  plugins: [
-    '@vue/babel-plugin-jsx',
-    '@babel/proposal-class-properties',
-    '@babel/transform-runtime',
-    'lodash',
-  ],
+  plugins: ['@babel/proposal-class-properties', '@babel/transform-runtime', 'lodash'],
   overrides: [
     {
       test: /\.vue$/,

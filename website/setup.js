@@ -1,5 +1,5 @@
 import ComponentDemo from './utils/ComponentDemo.vue'
-import ComponentDemos from './utils/ComponentDemos'
+import ComponentDemos from './utils/ComponentDemos.jsx'
 import EditOnGithubHeader from './utils/EditOnGithubHeader.vue'
 import './styles/demo.css'
 import 'vfonts/Inter.css'

@@ -1,10 +1,13 @@
 {
-  "name": "pomelo-ui",
+  "name": "element-plus",
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:jolylai/element-plus.git",
   "author": "jolylai <jolylai163@163.com>",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "rollup -wc",
     "build": "rollup -c",
@@ -29,7 +32,9 @@
     "@vicons/fluent": "^0.10.0",
     "@vicons/ionicons5": "^0.10.0",
     "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-plugin-jsx": "^1.0.6",
+    "@vue/babel-preset-jsx": "^1.2.4",
     "@vue/compiler-sfc": "^3.0.11",
     "babel-jest": "^27.0.2",
     "babel-plugin-lodash": "^3.3.4",
