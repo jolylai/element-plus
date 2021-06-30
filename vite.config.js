@@ -1,52 +1,61 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
-import styleImport from 'vite-plugin-style-import'
-import hljs from 'highlight.js'
+const path = require('path')
+const { babel } = require('@rollup/plugin-babel')
+const createDemoPlugin = require('./build/vite-plugin-demo')
 
-import markdown from 'vite-plugin-md'
-
-// import elementMarkdown from './website/plugin'
-
-const highlight = (str, lang) => {
-  if (!lang || !hljs.getLanguage(lang)) {
-    return '<pre><code class="hljs">' + str + '</code></pre>'
-  }
-  const html = hljs.highlight(lang, str, true, undefined).value
-  return `<pre><code class="hljs language-${lang}">${html}</code></pre>`
-}
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  root: './website',
+/**
+ * @type {import('vite').UserConfig}
+ */
+module.exports = {
+  root: 'demo',
+  plugins: createDemoPlugin(),
   resolve: {
-    alias: {
-      'element-plus': path.resolve(__dirname, 'packages'),
-      '@': path.resolve(__dirname, 'packages'),
+    // In production site build, we want to import naive-ui from node_modules
+    // alias:
+    // process.env.NODE_ENV !== 'production'
+    //   ? [
+    //       {
+    //         find: 'naive-ui',
+    //         replacement: path.resolve(__dirname, './src'),
+    //       },
+    //     ]
+    //   : undefined,
+  },
+  define: {
+    'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
+    'process.env.TUSIMPLE': !!process.env.TUSIMPLE,
+    __DEV__: process.env.NODE_ENV !== 'production',
+  },
+  // optimizeDeps: {
+  //   include: [
+  //     '@css-render/plugin-bem',
+  //     'async-validator',
+  //     'css-render',
+  //     'date-fns',
+  //     'evtd',
+  //     'highlight.js',
+  //     'lodash-es',
+  //     'seemly',
+  //     'treemate',
+  //     'vdirs',
+  //     'vooks',
+  //     'vue',
+  //     'vue-router',
+  //     'vueuc',
+  //   ],
+  //   exclude: ['__INDEX__'],
+  // },
+  build: {
+    outDir: 'site',
+    rollupOptions: {
+      plugins: [
+        babel({
+          babelHelpers: 'bundled',
+        }),
+      ],
     },
   },
-  plugins: [
-    vue({
-      include: [/\.vue$/, /\.md$/],
-    }),
-    markdown({
-      markdownItOptions: {
-        highlight,
-      },
-    }),
-    styleImport({
-      libs: [
-        {
-          libraryName: 'element-plus',
-          resolveStyle: name => {
-            name = name.slice(3)
-            return `element-plus/theme-chalk/src/${name}.scss`
-          },
-          resolveComponent: name => {
-            return `element-plus/packages/${name}`
-          },
-        },
-      ],
-    }),
-  ],
-})
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+  },
+}
