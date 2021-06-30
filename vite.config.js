@@ -6,7 +6,7 @@ const createDemoPlugin = require('./build/vite-plugin-demo')
  * @type {import('vite').UserConfig}
  */
 module.exports = {
-  root: 'demo',
+  root: __dirname,
   plugins: createDemoPlugin(),
   resolve: {
     // In production site build, we want to import naive-ui from node_modules

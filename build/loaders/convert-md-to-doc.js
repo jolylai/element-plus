@@ -87,8 +87,8 @@ function genScript(demoInfos, components = [], url, forceShowAnchor) {
 ${importStmts}
 import { computed } from 'vue'
 import { useMemo } from 'vooks'
-import { useDisplayMode } from '/store'
-import { useIsMobile } from '/utils/composables'
+import { useDisplayMode } from '/website/store'
+import { useIsMobile } from '/website/utils/composables'
 
 export default {
   components: {
