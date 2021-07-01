@@ -1,9 +1,10 @@
 const { babel } = require('@rollup/plugin-babel')
 const createDemoPlugin = require('./build/vite-plugin-demo')
+const styleImport = require('vite-plugin-style-import').default
 
 module.exports = {
   root: __dirname,
-  plugins: createDemoPlugin(),
+  plugins: [...createDemoPlugin()],
   define: {
     'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
     'process.env.TUSIMPLE': !!process.env.TUSIMPLE,

@@ -5,6 +5,8 @@ import './styles/demo.css'
 import 'vfonts/Inter.css'
 import 'vfonts/FiraCode.css'
 
+import '../theme/index.scss'
+
 export function installDemoComponents(app) {
   app.component('ComponentDemo', ComponentDemo)
   app.component('ComponentDemos', ComponentDemos)

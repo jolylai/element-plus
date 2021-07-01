@@ -39,17 +39,17 @@ module.exports = {
           },
         ],
       ],
-      plugins: [
-        [
-          'babel-plugin-module-resolver',
-          {
-            root: ['element-plus'],
-            alias: {
-              '@element-plus': 'element-plus/lib',
-            },
-          },
-        ],
-      ],
+      // plugins: [
+      //   [
+      //     'babel-plugin-module-resolver',
+      //     {
+      //       root: ['element-plus'],
+      //       alias: {
+      //         '@element-plus': 'element-plus/lib',
+      //       },
+      //     },
+      //   ],
+      // ],
     },
   },
 }
