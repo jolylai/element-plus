@@ -10,6 +10,8 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'ElEllipsis',
   props: { lineClamp: { type: Number } },
-  setup() {},
+  setup() {
+    
+  },
 })
 </script>
