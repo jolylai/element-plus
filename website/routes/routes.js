@@ -11,7 +11,7 @@ const routes = [
   {
     name: 'home',
     path: '/',
-    redirect: '/zh-CN/components',
+    redirect: '/components',
   },
   // {
   //   name: 'home',
@@ -27,7 +27,7 @@ const routes = [
 
   {
     name: 'zhComponents',
-    path: '/zh-CN/components',
+    path: '/components',
     component: () => import('../layout/index.vue'),
     children: zhComponentRoutes,
   },

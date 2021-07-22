@@ -47,10 +47,13 @@ const genDemosTemplate = (code, id) => {
 }
 
 export const extractDemo = (raw, id) => {
-  raw = raw.replace(/(<code ([\s\S]*?) \/>)/, code => {
-    console.log('code: ', code)
-    return genDemosTemplate(code, id)
+  const scripts = []
+
+  const content = raw.replace(/(<code ([\s\S]*?) \/>)/, code => {
+    const { name, tag, absolutePath } = resolveDemoInfo(code, id)
+    scripts.push(`import ${name} from '${absolutePath}'`)
+    return tag
   })
 
-  return raw
+  return { content, scripts }
 }

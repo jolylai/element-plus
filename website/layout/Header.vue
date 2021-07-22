@@ -1,7 +1,7 @@
 <template>
   <n-layout-header bordered class="nav" :style="style">
     <n-text tag="div" class="ui-logo" :depth="1">
-      <img src="../assets/images/naivelogo.svg" />
+      <!-- <img src="../assets/images/naivelogo.svg" /> -->
       <span>Pomelo UI</span>
     </n-text>
 
@@ -15,36 +15,48 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { renderMenuLabel } from '../utils/menu'
 
 export default defineComponent({
   setup() {
+    const route = useRoute()
     // menu
     const menuOptions = computed(() => {
       return [
         {
           key: 'home',
-          label: 'home',
+          label: '首页',
           // path: themeAndLocaleReg.exec(route.path)[0]
         },
         {
           key: 'doc',
-          label: 'doc',
+          label: '文档',
           // path: themeAndLocaleReg.exec(route.path)[0] + '/docs/introduction'
         },
         {
           key: 'component',
-          label: 'component',
-          // path: themeAndLocaleReg.exec(route.path)[0] + '/components/button'
+          label: '组件',
+          path: '/components/button',
         },
       ]
     })
 
+    const menuValue = computed(() => {
+      if (/\/docs\//.test(route.path)) return 'doc'
+      if (/\/components\//.test(route.path)) return 'component'
+      else if (route.name === 'home') return 'home'
+      return null
+    })
+
     return {
       menuOptions,
+      menuValue,
       style: {
         '--side-padding': '32px',
         'grid-template-columns': 'calc(272px - var(--side-padding)) 1fr auto',
       },
+      renderMenuLabel,
     }
   },
 })
@@ -87,10 +99,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
 }
-</style>
-
-<style>
 .nav-menu .n-menu-item {
-  height: calc(var(--header-height) - 1px) !important;
+  height: 63px !important;
 }
 </style>
