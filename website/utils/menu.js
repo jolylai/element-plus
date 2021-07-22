@@ -18,7 +18,7 @@ export function createItems(prefix = '', items) {
   return items.map(rawItem => {
     const item = {
       ...rawItem,
-      key: rawItem.label,
+      key: rawItem.en,
       label: rawItem.zh,
       extra: rawItem.enSuffix ? rawItem.en : undefined,
       path: rawItem.path ? prefix + rawItem.path : undefined,
@@ -43,4 +43,17 @@ export const appendCounts = item => {
     }
     return item
   }
+}
+
+export function findMenuValue(options, path) {
+  for (const option of options) {
+    if (option.children) {
+      const value = findMenuValue(option.children, path)
+      if (value) return value
+    }
+    if (option.path === path) {
+      return option.key
+    }
+  }
+  return undefined
 }
