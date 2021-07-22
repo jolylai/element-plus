@@ -20,12 +20,10 @@ function genAnchorLinks(headingTokens) {
 
 export const createAnchor = md => {
   const tokens = marked.lexer(md)
-  console.log('tokens: ', tokens)
 
   const headingTokens = tokens.filter(token => token.type === 'heading' && token.depth !== 1)
 
   const anchorLinks = genAnchorLinks(headingTokens)
-  console.log('anchorLinks: ', anchorLinks)
 
   const anchorTemplate = genAnchorTemplate(anchorLinks, { ignoreGap: false })
 

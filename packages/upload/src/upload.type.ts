@@ -1,4 +1,4 @@
-export type UploadStatus = 'ready' | 'success'
+export type UploadStatus = 'ready' | 'success' | 'uploading' | 'fail'
 
 export type UploadFile = {
   name: string

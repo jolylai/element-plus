@@ -37,15 +37,6 @@ const resolveDemoInfo = (code, id) => {
   }
 }
 
-const genDemosTemplate = (code, id) => {
-  const demoInfo = resolveDemoInfo(code, id)
-  console.log('demoInfo: ', demoInfo)
-  const demoContent = fs.readFileSync(demoInfo.absolutePath).toString()
-  console.log('demoContent: ', demoContent)
-
-  return '<div>Demo</div>'
-}
-
 export const extractDemo = (raw, id) => {
   const scripts = []
 

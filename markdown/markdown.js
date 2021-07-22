@@ -7,7 +7,6 @@ import { create } from 'naive-ui'
 export function createMarkdown(options) {
   return function(raw, id) {
     const anchor = createAnchor(raw)
-    console.log('anchor: ', anchor)
 
     const { content, scripts } = extractDemo(raw, id)
 

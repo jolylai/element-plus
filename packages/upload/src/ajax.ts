@@ -83,7 +83,7 @@ const ajax = (option: UploadRequestOptions) => {
     }
   }
   xhr.send(formData)
-  console.log('xhr: ', xhr)
+
   return xhr
 }
 

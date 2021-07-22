@@ -1,23 +1,12 @@
 <template>
-  <po-upload
-    class="upload-demo"
-    action="https://jsonplaceholder.typicode.com/posts/"
-    :on-preview="handlePreview"
-    :on-remove="handleRemove"
-    :before-remove="beforeRemove"
-    multiple
-    :limit="3"
-    :on-exceed="handleExceed"
-    :file-list="fileList"
-  >
+  <po-upload action="https://jsonplaceholder.typicode.com/posts/" :file-list="fileList">
     <po-button size="small" type="primary">点击上传</po-button>
-    <template v-slot:tip>
-      <div class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-    </template>
   </po-upload>
 </template>
+
 <script>
-import { reactive, toRefs, getCurrentInstance } from 'vue'
+import { reactive, toRefs, watch } from 'vue'
+
 export default {
   setup() {
     let state = reactive({
@@ -34,28 +23,16 @@ export default {
         },
       ],
     })
-    const self = getCurrentInstance().ctx
-    const handleRemove = (file, fileList) => {
-      console.log(file, fileList)
-    }
-    const handlePreview = file => {
-      console.log(file)
-    }
-    const handleExceed = (files, fileList) => {
-      self.$message.warning(
-        `当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`,
-      )
-    }
-    const beforeRemove = (file, fileList) => {
-      // return self.$confirm(`确定移除 ${ file.name }？`);
-    }
+
+    watch(
+      () => state.fileList,
+      fileList => {
+        console.log('fileList: ', fileList)
+      },
+    )
 
     return {
       ...toRefs(state),
-      handleRemove,
-      handlePreview,
-      handleExceed,
-      beforeRemove,
     }
   },
 }

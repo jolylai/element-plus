@@ -6,8 +6,8 @@
     :with-credentials="withCredentials"
     :http-request="httpRequest"
     @success="handleSuccess"
-    @error="onError"
-    @progress="onProgerss"
+    @error="handleError"
+    @progress="handleProgress"
   >
     <slot />
   </upload>
@@ -22,7 +22,7 @@ import Upload from './upload.vue'
 import UploadList from './upload-list.vue'
 
 import { NOOP } from '@vue/shared'
-import { AjaxEventListener, FileHandler, FileResultHandler, UploadFile } from './upload.type'
+import { FileHandler, FileResultHandler, UploadFile } from './upload.type'
 import ajax from './ajax'
 
 type PFileHandler<T> = PropType<FileHandler<T>>
@@ -48,17 +48,17 @@ export default defineComponent({
     },
     headers: { type: Object as PropType<Nullable<Partial<Headers>>>, default: null },
     withCredentials: { type: Boolean, default: false },
-    onProgress: {
-      type: Function as PropType<AjaxEventListener>,
-      default: NOOP as AjaxEventListener,
-    },
     onSuccess: {
       type: Function as PFileResultHandler,
       default: NOOP,
     },
+    onProgress: {
+      type: Function as PFileResultHandler<ProgressEvent>,
+      default: NOOP,
+    },
     onError: {
-      type: Function as PropType<AjaxEventListener>,
-      default: NOOP as AjaxEventListener,
+      type: Function as PFileResultHandler<Error>,
+      default: NOOP,
     },
     onChange: {
       type: Function as PropType<FileHandler>,
@@ -83,9 +83,15 @@ export default defineComponent({
       return fileList.find(file => file.uid === rawFile.uid)
     }
 
+    const handleProgress = (ev, rawFile) => {
+      const file = getFile(rawFile)
+      props.onProgress(ev, file, uploadFiles)
+      file.status = 'uploading'
+      file.percentage = ev.percent || 0
+    }
+
     const handleSuccess = (res, rawFile) => {
       const file = getFile(rawFile)
-
       if (file) {
         file.status = 'success'
         file.response = res
@@ -94,9 +100,20 @@ export default defineComponent({
       }
     }
 
+    const handleError = (err, rawFile) => {
+      const file = getFile(rawFile)
+      const fileList = uploadFiles
+      file.status = 'fail'
+      fileList.splice(fileList.indexOf(file), 1)
+      props.onError(err, file, uploadFiles)
+      props.onChange(file, uploadFiles)
+    }
+
     return {
       uploadFiles,
       handleSuccess,
+      handleProgress,
+      handleError,
     }
   },
 })
