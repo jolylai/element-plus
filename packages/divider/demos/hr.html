@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hr-solid-content {
+        color: #a2a9b6;
+        border: 0;
+        font-size: 12px;
+        padding: 1em 0;
+        position: relative;
+      }
+      .hr-solid-content::before {
+        content: attr(data-content);
+        position: absolute;
+        padding: 0 1ch;
+        line-height: 1px;
+        border: solid #d0d0d5;
+        border-width: 0 99vw;
+        width: fit-content;
+        white-space: nowrap;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <hr class="hr-solid-content" data-content="分割线" />
+    <hr class="hr-solid-content" data-content="文字自适应，背景透明" />
+  </body>
+</html>

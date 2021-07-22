@@ -4,7 +4,11 @@ import ElProgress from './progress'
 import ELAffix from './affix'
 import ElEllipsis from './ellipsis'
 
-const components =  [ ElProgress, ELAffix ,ElEllipsis]
+import Button from './button'
+import Image from './image'
+import Upload from './upload'
+
+const components =  [Button, ElProgress, ELAffix ,ElEllipsis, Image, Upload]
 
 const install = (app: App) => {
   components.forEach(component =>{

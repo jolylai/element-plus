@@ -1,0 +1,10 @@
+@import './mixins/mixins.scss';
+
+@include b(image) {
+  display: inline-block;
+
+  @include e(inner) {
+    width: 100%;
+    height: 100%;
+  }
+}
