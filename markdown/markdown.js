@@ -1,5 +1,5 @@
 import marked from 'marked'
-import mdRenderer from './renderer'
+import renderer from './renderer'
 import { extractDemo } from './demo'
 
 export function createMarkdown(options) {
@@ -7,6 +7,8 @@ export function createMarkdown(options) {
     const { content, scripts } = extractDemo(raw, id)
 
     raw = content
+
+    marked.use({ renderer })
 
     const html = marked(raw)
 

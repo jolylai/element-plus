@@ -5,6 +5,10 @@ export const zhComponentRoutes = [
     path: 'button',
     component: () => import('../../packages/button/README.md'),
   },
+  {
+    path: 'upload',
+    component: () => import('../../packages/upload/README.md'),
+  },
 ]
 
 const routes = [
