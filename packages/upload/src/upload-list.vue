@@ -1,7 +1,7 @@
 <template>
-  <ul class="po-upload__list">
-    <li v-for="file in files">
-      {{ file }}
+  <ul class="po-upload-list">
+    <li class="po-upload-list-item" v-for="file in files">
+      {{ file.name }}
     </li>
   </ul>
 </template>
@@ -12,7 +12,7 @@ import { defineComponent, PropType, watch } from 'vue'
 export default defineComponent({
   name: 'UploadList',
   props: {
-    files: { type: Array as PropType<File[]> },
+    files: { type: Array as PropType<File[]>, default: () => [] },
   },
   setup(props) {
     watch(
@@ -20,6 +20,7 @@ export default defineComponent({
       () => {
         console.log(props.files)
       },
+      { immediate: true },
     )
   },
 })

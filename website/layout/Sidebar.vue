@@ -16,9 +16,6 @@ export default defineComponent({
     const route = useRoute()
 
     const menuValue = computed(() => {
-      console.log('findMenuValue(sidebarOptions, route.path): ', findMenuValue(sidebarOptions, route.path))
-      console.log('route.path: ', route.path)
-      console.log('sidebarOptions: ', sidebarOptions)
       return findMenuValue(sidebarOptions, route.path)
     })
 
