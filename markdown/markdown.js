@@ -2,7 +2,6 @@ import marked from 'marked'
 import renderer from './renderer'
 import { extractDemo } from './demo'
 import { createAnchor } from './anchor'
-import { templateCompiler } from './template'
 
 export function createMarkdown(options) {
   return function(raw, id) {
@@ -16,10 +15,18 @@ export function createMarkdown(options) {
     const { content, scripts } = extractDemo(html, id)
     html = content
 
-    return templateCompiler('sfcTemplate.vue', {
-      html,
-      anchor,
-      script: `<script setup>${scripts.join('\n')}</script>`,
-    })
+    return `<template>
+      <div style="display: flex; flex-wrap: nowrap;">
+        <div :style="'width: calc(100% - 180px); margin-right: 36px;'">
+          ${html}
+        </div>
+        <div style="width: 144px;">
+          ${anchor}
+        </div>
+      </div>
+    </template>
+    <script setup>
+      ${scripts.join('\n')}
+    </script>`
   }
 }
