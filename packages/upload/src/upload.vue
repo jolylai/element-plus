@@ -29,6 +29,10 @@ export default defineComponent({
     },
     headers: { type: Object as PropType<Nullable<Partial<Headers>>>, default: null },
     withCredentials: { type: Boolean, default: false },
+    onStart: {
+      type: Function as PropType<(file: File) => void>,
+      default: NOOP as (file: File) => void,
+    },
     onProgress: {
       type: Function as PropType<AjaxEventListener>,
       default: NOOP as AjaxEventListener,
@@ -54,9 +58,7 @@ export default defineComponent({
 
     const onFileChange = e => {
       const files = e.target.files
-      if (!files) {
-        return
-      }
+      if (!files) return
 
       uploadFiles(files)
     }
@@ -65,7 +67,10 @@ export default defineComponent({
     const uploadFiles = (files: FileList) => {
       let postFiles = Array.from(files)
 
-      postFiles.forEach(rawFile => upload(rawFile as PoFile))
+      postFiles.forEach(rawFile => {
+        props.onStart(rawFile)
+        upload(rawFile as PoFile)
+      })
     }
 
     const upload = (rawFile: PoFile) => {

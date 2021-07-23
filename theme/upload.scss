@@ -13,8 +13,19 @@
   padding-left: 0;
 
   @include e(item) {
+    display: flex;
+  }
+
+  @include e(name) {
+    flex: auto;
+    margin: 0 8px;
     :hover {
       background: #eee;
     }
+  }
+
+  @include e(actions) {
+    display: flex;
+    align-items: center;
   }
 }

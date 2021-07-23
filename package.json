@@ -9,10 +9,9 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "rollup -wc",
-    "build": "rollup -c",
-    "website:start": "vite ",
+    "start": "vite ",
     "website:build": "vite build",
+    "build": "rollup -c",
     "serve": "vite preview",
     "test": "jest"
   },

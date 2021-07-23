@@ -2,7 +2,6 @@ import marked from 'marked'
 import renderer from './renderer'
 import { extractDemo } from './demo'
 import { createAnchor } from './anchor'
-import { create } from 'naive-ui'
 
 export function createMarkdown(options) {
   return function(raw, id) {

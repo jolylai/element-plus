@@ -5,6 +5,7 @@
     :data="data"
     :with-credentials="withCredentials"
     :http-request="httpRequest"
+    @start="handleStart"
     @success="handleSuccess"
     @error="handleError"
     @progress="handleProgress"
@@ -22,7 +23,7 @@ import Upload from './upload.vue'
 import UploadList from './upload-list.vue'
 
 import { NOOP } from '@vue/shared'
-import { FileHandler, FileResultHandler, UploadFile } from './upload.type'
+import { FileHandler, FileResultHandler, PoFile, UploadFile } from './upload.type'
 import ajax from './ajax'
 
 type PFileHandler<T> = PropType<FileHandler<T>>
@@ -83,6 +84,24 @@ export default defineComponent({
       return fileList.find(file => file.uid === rawFile.uid)
     }
 
+    const handleStart = (rawFile: PoFile) => {
+      rawFile.uid = Date.now() + tempIndex++
+
+      const file: UploadFile = {
+        status: 'ready',
+        name: rawFile.name,
+        size: rawFile.size,
+        percentage: 0,
+        uid: rawFile.uid,
+        raw: rawFile,
+      }
+
+      uploadFiles.push(file)
+      console.log('file: handleStart', file)
+
+      props.onChange(file, uploadFiles)
+    }
+
     const handleProgress = (ev, rawFile) => {
       const file = getFile(rawFile)
       props.onProgress(ev, file, uploadFiles)
@@ -111,6 +130,7 @@ export default defineComponent({
 
     return {
       uploadFiles,
+      handleStart,
       handleSuccess,
       handleProgress,
       handleError,

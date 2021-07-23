@@ -2,6 +2,8 @@
   <po-upload action="https://jsonplaceholder.typicode.com/posts/" :file-list="fileList">
     <po-button size="small" type="primary">点击上传</po-button>
   </po-upload>
+
+  <po-button @click="onLogFileList">fileList</po-button>
 </template>
 
 <script>
@@ -31,8 +33,13 @@ export default {
       },
     )
 
+    const onLogFileList = () => {
+      console.log(state.fileList)
+    }
+
     return {
       ...toRefs(state),
+      onLogFileList,
     }
   },
 }
