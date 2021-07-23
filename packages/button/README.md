@@ -8,6 +8,37 @@
 
 <code src='./demos/basic.vue' />
 
+## 类型
+
+<code src='./demos/type.vue' />
+
+按钮样式的变化： 默认显示 -> 鼠标移入 -> 鼠标点击 -> 按钮聚焦
+
+```scss
+button {
+  &:hover,
+  &:focus {
+    color: $--color-primary;
+    border-color: $--color-primary-light-7;
+    background-color: $--color-primary-light-9;
+  }
+
+  &:active {
+    color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    border-color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    outline: none;
+  }
+}
+```
+
 ## 大小
 
 有 tiny、small、medium 和 large 尺寸。

@@ -36,6 +36,44 @@
     outline: none;
   }
 
+  // type
+  @include e(primary) {
+    @include button-variant(
+      $--button-primary-font-color,
+      $--button-primary-background-color,
+      $--button-primary-border-color
+    );
+  }
+  @include e(success) {
+    @include button-variant(
+      $--button-success-font-color,
+      $--button-success-background-color,
+      $--button-success-border-color
+    );
+  }
+  @include e(warning) {
+    @include button-variant(
+      $--button-warning-font-color,
+      $--button-warning-background-color,
+      $--button-warning-border-color
+    );
+  }
+  @include e(danger) {
+    @include button-variant(
+      $--button-danger-font-color,
+      $--button-danger-background-color,
+      $--button-danger-border-color
+    );
+  }
+  @include e(info) {
+    @include button-variant(
+      $--button-info-font-color,
+      $--button-info-background-color,
+      $--button-info-border-color
+    );
+  }
+
+  // size
   @include e(small) {
     @include button-size(
       $--padding-xss,

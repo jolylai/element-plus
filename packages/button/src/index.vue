@@ -6,17 +6,21 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import type { PButtonSize} from './button.type'
+import type { PButtonSize, PButtonType} from './button.type'
 
 export default defineComponent({
   name: 'PoButton',
   props: {
-    size: { type: String as PropType<PButtonSize>, default: 'default'}
+    size: { type: String as PropType<PButtonSize>, },
+    type: { type: String as PropType<PButtonType>, }
   },
   setup(props) {
     const classNames = [
       'po-button',
-      `po-button-${props.size}`
+      {
+        [`po-button-${props.size}`]: !!props.size,
+        [`po-button-${props.type}`]: !!props.type,
+        },
     ]
 
     return {
