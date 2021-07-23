@@ -28,11 +28,8 @@ const resolveDemoInfo = (codeElement, id) => {
   const absolutePath = path.resolve(path.dirname(id), codeAttrs.src)
 
   const content = fs.readFileSync(absolutePath).toString()
-
   marked.use({ renderer })
-  const code = marked(
-    fs.readFileSync(path.resolve(__dirname, './test.md')).toString(),
-  )
+  const code = marked(`\`\`\`vue\n${content}\n\`\`\``)
   const name = `${capitalize(fileName)}Demo`
   const tag = `<${capitalize(fileName)}Demo />`
 
@@ -51,15 +48,9 @@ export const extractDemo = (raw, id) => {
 
   const content = raw.replace(/(<code ([\s\S]*?) \/>)/g, codeElement => {
     const { name, tag, absolutePath, code } = resolveDemoInfo(codeElement, id)
-    console.log('code: ', code)
 
     scripts.push(`import ${name} from '${absolutePath}'`)
-    return `<demo-block title='title'>
-    <template #description>description</template>
-    <template #code>
- ${code}
-    </template>
-    ${tag}</demo-block>`
+    return `<demo-block>\n<template #code>\n${code}\n</template>\n${tag}\n</demo-block>`
   })
 
   return { content, scripts }

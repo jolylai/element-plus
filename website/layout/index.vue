@@ -1,9 +1,13 @@
 <template>
   <n-layout style="height: 100vh;">
     <Header />
-    <n-layout has-sider position="absolute" style="top: 64px; bottom: 64px;">
+    <n-layout has-sider position="absolute" style="top: 64px;">
       <sidebar />
-      <n-layout-content ref="content" content-style="padding: 24px;" :native-scrollbar="false">
+      <n-layout-content
+        ref="content"
+        content-style="padding: 24px;"
+        :native-scrollbar="false"
+      >
         <router-view></router-view>
       </n-layout-content>
     </n-layout>

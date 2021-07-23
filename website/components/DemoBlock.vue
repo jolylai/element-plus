@@ -34,8 +34,7 @@
       </n-space>
     </div>
 
-    <!-- <n-divider style="margin: 0" dashed /> -->
-    <n-divider style="margin: 0" />
+    <n-divider v-if="fold" style="margin: 0" />
     <div :class="['demo-code', { 'demo-code-unfold': fold }]">
       <slot name="code" />
     </div>
@@ -46,7 +45,7 @@
 import { CodeOutline, CopyOutline } from '@vicons/ionicons5'
 import { ref } from '@vue/reactivity'
 
-const fold = ref(true)
+const fold = ref(false)
 
 const toggleCodeFold = () => {
   console.log('toggleCodeFold')
@@ -56,7 +55,6 @@ const toggleCodeFold = () => {
 
 <style scoped>
 .demo-block {
-  margin: 16px;
   border: 1px solid #eee;
 }
 .demo-actions {
@@ -72,7 +70,6 @@ const toggleCodeFold = () => {
 .demo-code {
   max-height: 0;
   overflow: hidden;
-  margin: 0 16px;
 }
 
 .demo-code-unfold {

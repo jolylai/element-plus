@@ -10,6 +10,8 @@ import '../theme/index.scss'
 
 import DemoBlock from './components/DemoBlock.vue'
 
+import 'prismjs/themes/prism.css'
+
 const app = createApp(App)
 
 app.use(naive)

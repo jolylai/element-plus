@@ -1,24 +1,13 @@
 <template>
-  <component-demo
-    demo-file-name="<!--DEMO_FILE_NAME-->"
-    relative-url="<!--URL-->"
-    title="<!--TITLE_SLOT-->"
-    code="<!--CODE_SLOT-->"
-  >
+  <demo-block>
     <template #title>
       <!--TITLE_SLOT-->
     </template>
     <template #content>
       <!--CONTENT_SLOT-->
     </template>
-    <template #demo>
-      <div class="demo-card__view">
-        <!--DEMO_SLOT-->
-      </div>
+    <template #code>
+      <!--CODE_SLOT-->
     </template>
-  </component-demo>
+  </demo-block>
 </template>
-
-<!--SCRIPT_SLOT-->
-
-<!--STYLE_SLOT-->
