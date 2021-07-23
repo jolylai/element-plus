@@ -8,6 +8,27 @@
 
 <code src='./demos/basic.vue' />
 
+## 大小
+
+有 tiny、small、medium 和 large 尺寸。
+
+<code src='./demos/size.vue' />
+
+修改按钮的大小，其实就是修改按钮的 padding font-size 和 border-radius
+
+```scss
+@mixin button-size(
+  $padding-vertical,
+  $padding-horizontal,
+  $font-size,
+  $border-radius
+) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+```
+
 ### Button Props
 
 | 名称           | 类型                                                                    | 默认值      | 说明                                                |
@@ -35,8 +56,6 @@
 | -------- | ------------------------------------------ | ----------- | ---------------------------------------------------- |
 | size     | `'tiny' \| 'small' \| 'medium' \| 'large'` | `undefined` | 在组内的按钮的尺寸。如果设定，内部的按钮尺寸将不生效 |
 | vertical | `boolean`                                  | `false`     | 组内按钮的排列方式                                   |
-
-## Slots
 
 ### Button Slots
 

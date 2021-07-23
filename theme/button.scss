@@ -1,20 +1,65 @@
 @import './mixins/mixins.scss';
 @import './common/var.scss';
+@import './mixins/button';
 
 @include b(button) {
   display: inline-block;
-  padding: 8px 16px;
-  background: $--button-default-background-color;
-  border: $--border-base;
-  border-color: $--button-default-border-color;
-  color: $--button-default-font-color;
   border: 1px solid;
-  border-radius: 2px;
-  cursor: pointer;
+  border-color: $--color-text-secondary;
+  background-color: $--color-white;
 
-  &:hover {
+  @include button-size(
+    $--padding-xs,
+    $--padding-xs,
+    $--font-size-base,
+    $--border-radius-small
+  );
+
+  &:hover,
+  &:focus {
     color: $--color-primary;
     border-color: $--color-primary-light-7;
     background-color: $--color-primary-light-9;
+  }
+
+  &:active {
+    color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    border-color: mix(
+      $--color-black,
+      $--color-primary,
+      $--button-active-shade-percent
+    );
+    outline: none;
+  }
+
+  @include e(small) {
+    @include button-size(
+      $--padding-xss,
+      $--padding-xss,
+      $--button-small-font-size,
+      $--button-small-border-radius
+    );
+  }
+
+  @include e(medium) {
+    @include button-size(
+      $--padding-xss,
+      $--padding-xs,
+      $--button-medium-font-size,
+      $--border-radius-small
+    );
+  }
+
+  @include e(large) {
+    @include button-size(
+      $--padding-xs,
+      $--padding-sm,
+      $--font-size-large,
+      $--border-radius-base
+    );
   }
 }

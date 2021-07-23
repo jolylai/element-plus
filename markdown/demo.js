@@ -40,7 +40,7 @@ const resolveDemoInfo = (code, id) => {
 export const extractDemo = (raw, id) => {
   const scripts = []
 
-  const content = raw.replace(/(<code ([\s\S]*?) \/>)/, code => {
+  const content = raw.replace(/(<code ([\s\S]*?) \/>)/g, code => {
     const { name, tag, absolutePath } = resolveDemoInfo(code, id)
     scripts.push(`import ${name} from '${absolutePath}'`)
     return tag
