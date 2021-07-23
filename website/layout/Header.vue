@@ -27,12 +27,12 @@ export default defineComponent({
         {
           key: 'home',
           label: '首页',
-          // path: themeAndLocaleReg.exec(route.path)[0]
+          path: '/home',
         },
         {
           key: 'doc',
           label: '文档',
-          // path: themeAndLocaleReg.exec(route.path)[0] + '/docs/introduction'
+          path: '/docs/theme',
         },
         {
           key: 'component',

@@ -8,20 +8,25 @@
 import { computed, defineComponent } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { sidebarOptions } from '../config/sidebar'
+import { docsMenu, componentsMenu } from '../config'
+
 import { renderMenuLabel, findMenuValue } from '../utils/menu'
 
 export default defineComponent({
   setup() {
     const route = useRoute()
 
+    const options = computed(() => {
+      return route.path.includes('/docs/') ? docsMenu : componentsMenu
+    })
+
     const menuValue = computed(() => {
-      return findMenuValue(sidebarOptions, route.path)
+      return findMenuValue(options.value, route.path)
     })
 
     return {
       menuValue,
-      options: sidebarOptions,
+      options,
       renderMenuLabel,
     }
   },

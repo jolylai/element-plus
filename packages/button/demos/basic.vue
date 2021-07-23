@@ -1,3 +1,3 @@
 <template>
-  <n-button>button</n-button>
+  <po-button>Default</po-button>
 </template>

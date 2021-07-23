@@ -1,10 +1,20 @@
 @import './mixins/mixins.scss';
+@import './common/var.scss';
 
 @include b(button) {
   display: inline-block;
   padding: 8px 16px;
-  background-color: #fff;
+  background: $--button-default-background-color;
+  border: $--border-base;
+  border-color: $--button-default-border-color;
+  color: $--button-default-font-color;
   border: 1px solid;
   border-radius: 2px;
   cursor: pointer;
+
+  &:hover {
+    color: $--color-primary;
+    border-color: $--color-primary-light-7;
+    background-color: $--color-primary-light-9;
+  }
 }

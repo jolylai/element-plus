@@ -1,4 +1,9 @@
-export const zhDocRoutes = []
+export const zhDocRoutes = [
+  {
+    path: 'theme',
+    component: () => import('../docs/theme.md'),
+  },
+]
 
 export const zhComponentRoutes = [
   {
@@ -24,7 +29,7 @@ const routes = [
   // },
   {
     name: 'zhDocs',
-    path: '/zh-CN/:theme/docs',
+    path: '/docs',
     component: () => import('../layout/index.vue'),
     children: zhDocRoutes,
   },

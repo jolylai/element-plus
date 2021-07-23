@@ -1,6 +1,6 @@
 import { createItems, appendCounts } from '../utils/menu'
 
-export const sidebarOptions = createItems('/components', [
+const componentsMenu = createItems('/components', [
   appendCounts({
     type: 'group',
     zh: '通用组件',
@@ -28,3 +28,5 @@ export const sidebarOptions = createItems('/components', [
     ],
   }),
 ])
+
+export default componentsMenu
