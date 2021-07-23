@@ -8,10 +8,14 @@ import App from './App.vue'
 import pomelo from '../packages/index'
 import '../theme/index.scss'
 
+import DemoBlock from './components/DemoBlock.vue'
+
 const app = createApp(App)
 
 app.use(naive)
 app.use(router)
 app.use(pomelo)
+
+app.component('DemoBlock', DemoBlock)
 
 app.mount('#app')

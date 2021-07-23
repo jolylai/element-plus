@@ -11,6 +11,10 @@ export const zhComponentRoutes = [
     component: () => import('../../packages/button/README.md'),
   },
   {
+    path: 'space',
+    component: () => import('../../packages/space/README.md'),
+  },
+  {
     path: 'upload',
     component: () => import('../../packages/upload/README.md'),
   },

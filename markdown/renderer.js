@@ -1,4 +1,4 @@
-const hljs = require('highlight.js')
+import highlight from './highlight'
 
 const renderer = {
   table(header, body) {
@@ -20,26 +20,31 @@ const renderer = {
 
   tablecell(content, flags) {
     const type = flags.header ? 'th' : 'td'
-    const tag = flags.align ? '<' + type + ' align="' + flags.align + '">' : '<' + type + '>'
+    const tag = flags.align
+      ? '<' + type + ' align="' + flags.align + '">'
+      : '<' + type + '>'
     return tag + content + '</' + type + '>\n'
   },
-
-  code: (code, language) => {
-    if (language.startsWith('__')) {
-      language = language.replace('__', '')
-    }
-    const isLanguageValid = !!(language && hljs.getLanguage(language))
-    if (!isLanguageValid) {
-      throw new Error(`MdRendererError: ${language} is not valid for code - ${code}`)
-    }
-    const highlighted = hljs.highlight(code, { language }).value
-    const content = `<n-code><pre v-pre>${highlighted}</pre></n-code>`
-    return `<n-card size="small" class="md-card" content-style="padding: 0;">
-            <n-scrollbar x-scrollable content-style="padding: 12px; 16px;">
-              ${content}
-            </n-scrollbar>
-          </n-card>`
-  },
+  code: highlight,
+  // code: (code, language) => {
+  //   console.log('language: ', language)
+  //   if (language.startsWith('__')) {
+  //     language = language.replace('__', '')
+  //   }
+  //   const isLanguageValid = !!(language && hljs.getLanguage(language))
+  //   if (!isLanguageValid) {
+  //     throw new Error(
+  //       `MdRendererError: ${language} is not valid for code - ${code}`,
+  //     )
+  //   }
+  //   const highlighted = hljs.highlight(code, { language }).value
+  //   const content = `<n-code><pre v-pre>${highlighted}</pre></n-code>`
+  //   return `<n-card size="small" class="md-card" content-style="padding: 0;">
+  //           <n-scrollbar x-scrollable content-style="padding: 12px; 16px;">
+  //             ${content}
+  //           </n-scrollbar>
+  //         </n-card>`
+  // },
   heading: (text, level) => {
     const id = text.replace(/ /g, '-')
     return `<n-h${level} id="${id}">${text}</n-h${level}>`

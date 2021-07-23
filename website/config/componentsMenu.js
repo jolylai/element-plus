@@ -16,6 +16,19 @@ const componentsMenu = createItems('/components', [
   }),
   appendCounts({
     type: 'group',
+    zh: '布局',
+    en: 'Layout',
+    children: [
+      {
+        en: 'Space',
+        zh: '间距',
+        enSuffix: true,
+        path: '/space',
+      },
+    ],
+  }),
+  appendCounts({
+    type: 'group',
     zh: '数据录入组件',
     en: 'Data Input Components',
     children: [
