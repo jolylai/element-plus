@@ -15,6 +15,9 @@ import Space from './space'
 import Image from './image'
 import Upload from './upload'
 
+// 反馈
+import Popover from './popover'
+
 const components =  [
   Button,
   Icon,
@@ -23,7 +26,8 @@ const components =  [
   ELAffix ,
   ElEllipsis, 
   Image, 
-  Upload
+  Upload,
+  Popover
 ]
 
 const install = (app: App) => {

@@ -40,6 +40,19 @@ const componentsMenu = createItems('/components', [
       },
     ],
   }),
+  appendCounts({
+    type: 'group',
+    zh: '反馈组件',
+    en: 'Feedback Components',
+    children: [
+      {
+        en: 'Popover',
+        zh: '弹出框',
+        enSuffix: true,
+        path: '/popover',
+      },
+    ],
+  }),
 ])
 
 export default componentsMenu

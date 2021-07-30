@@ -49,7 +49,10 @@ export const getStyle = (el: HTMLElement, styleName: string): string => {
 }
 
 //  获取最近的滚动父元素
-export const getScrollContainer = (el: HTMLElement, isVertical?: boolean): Window | HTMLElement => {
+export const getScrollContainer = (
+  el: HTMLElement,
+  isVertical?: boolean,
+): Window | HTMLElement => {
   let parent: HTMLElement = el
 
   while (parent) {
@@ -65,4 +68,59 @@ export const getScrollContainer = (el: HTMLElement, isVertical?: boolean): Windo
   }
 
   return parent
+}
+
+export const hasClass = (el: HTMLElement, cls: string) => {
+  if (!el || !cls) return false
+  cls = cls.trim()
+  if (el.classList) {
+    return el.classList.contains(cls)
+  } else {
+    return ` ${el.className} `.indexOf(` ${cls} `) > -1
+  }
+}
+
+export const addClass = (el: HTMLElement, cls: string = ''): void => {
+  if (!el) return
+  let curClass = el.className
+
+  const classes = cls.split(' ')
+  for (let i = 0; i < classes.length; i++) {
+    const clsName = classes[i]
+    if (!clsName) continue
+
+    if (el.classList) {
+      el.classList.add(clsName)
+    } else if (!hasClass(el, clsName)) {
+      curClass += clsName
+    }
+  }
+
+  if (!el.classList) {
+    el.className = curClass
+  }
+}
+
+const trim = function(s: string) {
+  return (s || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
+}
+
+export function removeClass(el: HTMLElement, cls: string): void {
+  if (!el || !cls) return
+  const classes = cls.split(' ')
+  let curClass = ' ' + el.className + ' '
+
+  for (let i = 0, j = classes.length; i < j; i++) {
+    const clsName = classes[i]
+    if (!clsName) continue
+
+    if (el.classList) {
+      el.classList.remove(clsName)
+    } else if (hasClass(el, clsName)) {
+      curClass = curClass.replace(' ' + clsName + ' ', ' ')
+    }
+  }
+  if (!el.classList) {
+    el.className = trim(curClass)
+  }
 }

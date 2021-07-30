@@ -18,6 +18,10 @@ export const zhComponentRoutes = [
     path: 'upload',
     component: () => import('../../packages/upload/README.md'),
   },
+  {
+    path: 'popover',
+    component: () => import('../../packages/popover/README.md'),
+  },
 ]
 
 const routes = [

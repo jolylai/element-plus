@@ -1,4 +1,5 @@
-import { isArray, extend, isString, camelize } from '@vue/shared'
+import { isArray, extend, isString, camelize, toRawType } from '@vue/shared'
+import type { Ref } from 'vue'
 
 export function isNumber(value: unknown) {
   return typeof value === 'number'
@@ -24,6 +25,14 @@ export function addUnit(value: string | number) {
   }
 
   return ''
+}
+
+export function $<T>(ref: Ref<T>){
+  return ref.value
+}
+
+export function isHTMLElement(val: unknown): boolean{
+  return toRawType(val).startsWith('HTML')
 }
 
 export { isArray, isString, camelize }
