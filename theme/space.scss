@@ -2,4 +2,13 @@
 
 @include b(space) {
   display: flex;
+  flex-direction: row;
+
+  @include e(item) {
+    margin-right: 8px;
+  }
+
+  @include e(vertical) {
+    flex-direction: column;
+  }
 }

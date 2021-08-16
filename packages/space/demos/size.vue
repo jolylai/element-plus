@@ -1,0 +1,22 @@
+<template>
+  <po-space direction="vertical">
+    <po-space size="small">
+      <po-button>Oops!</po-button>
+      <po-button>Oops!</po-button>
+      <po-button>Oops!</po-button>
+      <po-button>Long! Long! Cross the line!</po-button>
+    </po-space>
+    <po-space size="small">
+      <po-button>Oops!</po-button>
+      <po-button>Oops!</po-button>
+      <po-button>Oops!</po-button>
+      <po-button>Long! Long! Cross the line!</po-button>
+    </po-space>
+    <po-space size="large">
+      <po-button>Oops!</po-button>
+      <po-button>Oops!</po-button>
+      <po-button>Oops!</po-button>
+      <po-button>Long! Long! Cross the line!</po-button>
+    </po-space>
+  </po-space>
+</template>

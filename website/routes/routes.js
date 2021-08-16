@@ -12,7 +12,7 @@ export const zhComponentRoutes = [
   },
   {
     path: 'space',
-    component: () => import('../../packages/space/README.md'),
+    component: () => import('../../packages/space/index.md'),
   },
   {
     path: 'upload',
