@@ -22,6 +22,10 @@ export const zhComponentRoutes = [
     path: 'popover',
     component: () => import('../../packages/popover/README.md'),
   },
+  {
+    path: 'config-provider',
+    component: () => import('../../packages/config-provider/index.md'),
+  },
 ]
 
 const routes = [

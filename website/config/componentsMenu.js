@@ -53,6 +53,19 @@ const componentsMenu = createItems('/components', [
       },
     ],
   }),
+  appendCounts({
+    type: 'group',
+    zh: '配置组件',
+    en: 'Config Components',
+    children: [
+      {
+        en: 'Config Provider',
+        zh: '全局配置',
+        enSuffix: true,
+        path: '/config-provider',
+      },
+    ],
+  }),
 ])
 
 export default componentsMenu

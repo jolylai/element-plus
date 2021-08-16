@@ -4,6 +4,9 @@ import ElProgress from './progress'
 import ELAffix from './affix'
 import ElEllipsis from './ellipsis'
 
+// 配置
+import ConfigProvider from './config-provider'
+
 // 通用
 import Button from './button'
 import Icon from './icon'
@@ -27,7 +30,8 @@ const components =  [
   ElEllipsis, 
   Image, 
   Upload,
-  Popover
+  Popover,
+  ConfigProvider
 ]
 
 const install = (app: App) => {
