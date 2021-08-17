@@ -1,6 +1,6 @@
 <template>
   <div v-show="visible" :id="id" class="po-message" :style="customStyle">
-    <slot></slot>
+    <slot>{{ message }}</slot>
   </div>
 </template>
 
@@ -12,6 +12,8 @@ const props = defineProps({
   offset: { type: Number, default: 20 },
   zIndex: { type: Number, default: 0 },
   duration: { type: Number, default: 3000 },
+  message: { type: [String] },
+  onClose: { type: Function, default: () => {} },
 })
 
 const customStyle = computed(() => {
@@ -26,6 +28,7 @@ const startTimer = () => {
     timer = setTimeout(() => {
       if (visible.value === true) {
         close()
+        props.onClose()
       }
     }, props.duration)
   }

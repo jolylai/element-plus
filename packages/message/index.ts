@@ -1,7 +1,9 @@
-import Message from './src/message'
+import { useMessage } from './src/message'
 
 // Message.install = app => {
 //   app.component(Message.name, Message)
 // }
 
-export default Message
+export { useMessage }
+
+// export default Message

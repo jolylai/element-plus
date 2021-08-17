@@ -20,7 +20,7 @@ import Upload from './upload'
 
 // 反馈
 import Popover from './popover'
-import Message from './message'
+import {useMessage} from './message'
 
 const components =  [
   Button,
@@ -33,7 +33,6 @@ const components =  [
   Upload,
   Popover,
   ConfigProvider,
-  Message
 ]
 
 const install = (app: App) => {
@@ -46,4 +45,4 @@ export default  {
   install,
 }
 
-export {Message}
+export {useMessage}
