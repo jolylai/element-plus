@@ -10,7 +10,8 @@ import '../theme/index.scss'
 
 import DemoBlock from './components/DemoBlock.vue'
 
-import 'prismjs/themes/prism.css'
+import './styles/vars.css'
+import './styles/code.css'
 
 const app = createApp(App)
 

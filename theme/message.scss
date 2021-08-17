@@ -1,0 +1,13 @@
+@import './mixins/mixins.scss';
+
+@include b(message) {
+  position: fixed;
+  z-index: 999;
+
+  top: 16px;
+  left: 50%;
+  transform: rotateX(50%);
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}

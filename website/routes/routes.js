@@ -26,6 +26,10 @@ export const zhComponentRoutes = [
     path: 'config-provider',
     component: () => import('../../packages/config-provider/index.md'),
   },
+  {
+    path: 'message',
+    component: () => import('../../packages/message/index.md'),
+  },
 ]
 
 const routes = [

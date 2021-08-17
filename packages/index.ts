@@ -20,6 +20,7 @@ import Upload from './upload'
 
 // 反馈
 import Popover from './popover'
+import Message from './message'
 
 const components =  [
   Button,
@@ -31,7 +32,8 @@ const components =  [
   Image, 
   Upload,
   Popover,
-  ConfigProvider
+  ConfigProvider,
+  Message
 ]
 
 const install = (app: App) => {
@@ -41,5 +43,7 @@ const install = (app: App) => {
 }
 
 export default  {
-  install
+  install,
 }
+
+export {Message}

@@ -20,3 +20,9 @@
     </po-space>
   </po-space>
 </template>
+
+<script lang="ts" setup>
+import { ref } from '@vue/reactivity'
+
+const size = ref('small')
+</script>

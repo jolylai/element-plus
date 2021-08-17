@@ -1,10 +1,14 @@
 import prism from 'prismjs'
 import loadLanguages from 'prismjs/components/index'
+import escapeHtml from 'escape-html'
 
 loadLanguages(['markup', 'css', 'javascript'])
 
 function wrap(code, lang) {
-  return `<pre v-pre class="language-${lang}"><code>${code}</code></pre>`
+  if (lang === 'text') {
+    code = escapeHtml(code)
+  }
+  return `<div class="language-${lang}"><pre v-pre><code>${code}</code></pre></div>`
 }
 
 export default highlight = (str, lang) => {

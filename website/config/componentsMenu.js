@@ -51,6 +51,12 @@ const componentsMenu = createItems('/components', [
         enSuffix: true,
         path: '/popover',
       },
+      {
+        en: 'Message',
+        zh: '信息',
+        enSuffix: true,
+        path: '/message',
+      },
     ],
   }),
   appendCounts({
