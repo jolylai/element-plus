@@ -3,6 +3,7 @@
 @include b(space) {
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   @include e(item) {
     margin-right: 8px;

@@ -10,6 +10,7 @@ import ConfigProvider from './config-provider'
 // 通用
 import Button from './button'
 import Icon from './icon'
+import Avatar from './avatar'
 
 // 布局
 import Space from './space'
@@ -25,6 +26,8 @@ import {useMessage} from './message'
 const components =  [
   Button,
   Icon,
+  Avatar,
+  
   Space,
   ElProgress, 
   ELAffix ,

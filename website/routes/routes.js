@@ -1,7 +1,5 @@
 import { componentsMenu } from '../config'
 
-console.log('componentsMenu: ', componentsMenu)
-
 const componentRoutes = componentsMenu
   .reduce((routes, components) => {
     if (Array.isArray(components.children)) {

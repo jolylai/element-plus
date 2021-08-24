@@ -14,7 +14,7 @@ const componentsMenu = createItems('/components', [
       },
       {
         en: 'Avatar',
-        zh: '按钮',
+        zh: '头像',
         enSuffix: true,
         path: '/avatar',
       },

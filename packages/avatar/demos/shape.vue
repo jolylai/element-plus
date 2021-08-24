@@ -1,0 +1,23 @@
+<template>
+  <po-space>
+    <po-avatar
+      size="small"
+      shape="round"
+      src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
+    />
+    <po-avatar
+      shape="round"
+      src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
+    />
+    <po-avatar
+      size="large"
+      shape="round"
+      src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
+    />
+    <po-avatar
+      :size="60"
+      shape="round"
+      src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
+    />
+  </po-space>
+</template>
