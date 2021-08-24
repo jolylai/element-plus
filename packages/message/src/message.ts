@@ -61,7 +61,6 @@ export function useMessage() {
 }
 
 export function close(id, userOnClose?: (vm: MessageVM) => void) {
-  console.log('id: ', id)
   const idx = instances.findIndex(vm => {
     const { id: _id } = vm.component.props
 

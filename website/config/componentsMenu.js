@@ -12,6 +12,12 @@ const componentsMenu = createItems('/components', [
         enSuffix: true,
         path: '/button',
       },
+      {
+        en: 'Avatar',
+        zh: '按钮',
+        enSuffix: true,
+        path: '/avatar',
+      },
     ],
   }),
   appendCounts({

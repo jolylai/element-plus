@@ -1,34 +1,28 @@
+import { componentsMenu } from '../config'
+
+console.log('componentsMenu: ', componentsMenu)
+
+const componentRoutes = componentsMenu
+  .reduce((routes, components) => {
+    if (Array.isArray(components.children)) {
+      return routes.concat(components.children)
+    }
+
+    return routes
+  }, [])
+  .map(({ en }) => {
+    const componentName = en.toLowerCase()
+
+    return {
+      path: componentName,
+      component: () => import(`../../packages/${componentName}/index.md`),
+    }
+  })
+
 export const zhDocRoutes = [
   {
     path: 'theme',
     component: () => import('../docs/theme.md'),
-  },
-]
-
-export const zhComponentRoutes = [
-  {
-    path: 'button',
-    component: () => import('../../packages/button/README.md'),
-  },
-  {
-    path: 'space',
-    component: () => import('../../packages/space/index.md'),
-  },
-  {
-    path: 'upload',
-    component: () => import('../../packages/upload/README.md'),
-  },
-  {
-    path: 'popover',
-    component: () => import('../../packages/popover/README.md'),
-  },
-  {
-    path: 'config-provider',
-    component: () => import('../../packages/config-provider/index.md'),
-  },
-  {
-    path: 'message',
-    component: () => import('../../packages/message/index.md'),
   },
 ]
 
@@ -54,7 +48,7 @@ const routes = [
     name: 'zhComponents',
     path: '/components',
     component: () => import('../layout/index.vue'),
-    children: zhComponentRoutes,
+    children: componentRoutes,
   },
   {
     name: 'not-found',
