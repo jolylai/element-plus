@@ -2,21 +2,21 @@
   <po-space>
     <po-avatar
       size="small"
-      shape="round"
+      shape="circle"
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
     />
     <po-avatar
-      shape="round"
+      shape="circle"
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
     />
     <po-avatar
       size="large"
-      shape="round"
+      shape="circle"
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
     />
     <po-avatar
       :size="60"
-      shape="round"
+      shape="circle"
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
     />
   </po-space>

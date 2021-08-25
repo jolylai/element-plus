@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import naive from 'naive-ui'
-
+import element from 'element-plus'
+import 'element-plus/dist/index.css'
 import router from './routes/router'
 import App from './App.vue'
 
@@ -16,6 +17,7 @@ import './styles/code.css'
 const app = createApp(App)
 
 app.use(naive)
+app.use(element)
 app.use(router)
 app.use(pomelo)
 
