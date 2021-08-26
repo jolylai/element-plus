@@ -1,6 +1,6 @@
 <template>
   <po-avatar
-    size="large"
+    :size="40"
     :style="{
       color: 'yellow',
       backgroundColor: 'red',

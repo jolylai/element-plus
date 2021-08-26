@@ -24,18 +24,22 @@ interface IProgressProps {
   textInside: boolean
   width: number
   showText: boolean
-  color: string | Array<string | { color: string; percentage: number }> | ProgressFuncType
+  color:
+    | string
+    | Array<string | { color: string; percentage: number }>
+    | ProgressFuncType
   format: ProgressFuncType
 }
 
 export default defineComponent({
-  name: 'ElProgress',
+  name: 'PoProgress',
   props: {
     percentage: { type: Number, required: true },
     type: {
       type: String,
       default: 'line',
-      validator: (val: string): boolean => ['line', 'circle', 'dashboard'].indexOf(val) > -1,
+      validator: (val: string): boolean =>
+        ['line', 'circle', 'dashboard'].indexOf(val) > -1,
     },
     duration: { type: Number, defautl: 2 },
   },

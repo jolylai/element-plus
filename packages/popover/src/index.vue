@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PatchFlags } from '@element-plus/utils/vnode'
+import { PatchFlags } from '@/utils/vnode'
 import {
   createTextVNode,
   defineComponent,

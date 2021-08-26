@@ -8,7 +8,7 @@
 
 <code src="./demos/basic.vue" />
 
-头像有 small（24px)、default（32px) 和 large(40px) 大小，也可以自己设定尺寸。
+头像有 small（24px)、medium（32px) 和 large(40px) 大小，也可以自己设定尺寸。
 
 ## 形状
 

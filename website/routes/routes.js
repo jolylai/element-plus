@@ -1,4 +1,4 @@
-import { componentsMenu } from '../config'
+import { componentsMenu, docsMenu } from '../config'
 
 const componentRoutes = componentsMenu
   .reduce((routes, components) => {
@@ -17,6 +17,23 @@ const componentRoutes = componentsMenu
     }
   })
 
+const docsRoutes = docsMenu
+  .reduce((routes, components) => {
+    if (Array.isArray(components.children)) {
+      return routes.concat(components.children)
+    }
+
+    return routes
+  }, [])
+  .map(({ en, path }) => {
+    const componentName = en.toLowerCase()
+
+    return {
+      path,
+      component: () => import(`../docs/${componentName}.md`),
+    }
+  })
+
 export const zhDocRoutes = [
   {
     path: 'theme',
@@ -28,18 +45,13 @@ const routes = [
   {
     name: 'home',
     path: '/',
-    redirect: '/components',
+    redirect: '/components/button',
   },
-  // {
-  //   name: 'home',
-  //   path: '/:lang/:theme',
-  //   component: () => import('../pages/home/index.vue'),
-  // },
   {
     name: 'zhDocs',
     path: '/docs',
     component: () => import('../layout/index.vue'),
-    children: zhDocRoutes,
+    children: docsRoutes,
   },
 
   {

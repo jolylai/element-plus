@@ -1,31 +1,9 @@
 <template>
-  <po-avatar
-    size="large"
-    :style="{
-      color: 'yellow',
-      backgroundColor: 'red',
-    }"
-  >
+  <po-avatar size="large" :style="avatarStyle">
     {{ name }}
   </po-avatar>
-  <el-avatar
-    :size="40"
-    :style="{
-      color: 'yellow',
-      backgroundColor: 'red',
-    }"
-  >
-    {{ name }}
-  </el-avatar>
 
-  <po-avatar
-    size="large"
-    shape="circle"
-    :style="{
-      color: 'yellow',
-      backgroundColor: 'red',
-    }"
-  >
+  <po-avatar size="large" shape="circle" :style="avatarStyle">
     {{ name }}
   </po-avatar>
 
@@ -40,5 +18,10 @@ const name = ref('Modestofadsfa')
 const onChange = e => {
   console.log('e: ', e)
   name.value = e.target.value
+}
+
+const avatarStyle = {
+  color: 'yellow',
+  backgroundColor: 'red',
 }
 </script>

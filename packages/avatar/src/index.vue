@@ -5,21 +5,19 @@
   </span>
 </template>
 
-<script setup>
-import { computed, defineProps, onMounted, ref } from 'vue'
+<script setup lang="ts">
+import { computed, defineProps, ref } from 'vue'
 
 const avatarRef = ref()
 
 const avatarTextRef = ref()
-
-onMounted(() => {})
 
 const props = defineProps({
   src: { type: String },
   size: {
     default: 'medium',
     type: [String, Number],
-    validator: value => {
+    validator: (value: number | string) => {
       if (typeof value === 'number') return true
       return ['small', 'medium', 'large'].includes(value)
     },
@@ -27,7 +25,7 @@ const props = defineProps({
   shape: {
     type: String,
     default: 'square',
-    validator: value => ['square', 'circle'].includes(value),
+    validator: (value: string) => ['square', 'circle'].includes(value),
   },
   alt: { type: String },
 })
@@ -49,7 +47,7 @@ const avatarClass = computed(() => {
 })
 
 const avatarStyle = computed(() => {
-  const size = props.size
+  const { size } = props
 
   if (typeof size === 'number') {
     return {

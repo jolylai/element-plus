@@ -7,14 +7,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType, onMounted, reactive, watch, computed, onUnmounted } from 'vue'
-import { getScrollContainer, on, off } from '@element-plus/utils/dom'
-import { addResizeListener, removeResizeListener } from '@element-plus/utils/resize-event'
+import {
+  defineComponent,
+  ref,
+  PropType,
+  onMounted,
+  reactive,
+  watch,
+  computed,
+  onUnmounted,
+} from 'vue'
+import { getScrollContainer, on, off } from '@/utils/dom'
+import { addResizeListener, removeResizeListener } from '@/utils/resize-event'
 
 type Position = 'top' | 'bottom'
 
 export default defineComponent({
-  name: 'ElAffix',
+  name: 'PoAffix',
   props: {
     zIndex: {
       type: Number,
@@ -60,7 +69,9 @@ export default defineComponent({
         return
       }
       const offset = props.offset ? `${props.offset}px` : 0
-      const transform = state.transform ? `translateY(${state.transform}px)` : ''
+      const transform = state.transform
+        ? `translateY(${state.transform}px)`
+        : ''
 
       return {
         height: `${state.height}px`,
@@ -79,7 +90,9 @@ export default defineComponent({
       state.width = rootRect.width
       state.height = rootRect.height
       state.scrollTop =
-        scrollContainer.value === window ? document.documentElement.scrollTop : scrollContainer.value.scrollTop
+        scrollContainer.value === window
+          ? document.documentElement.scrollTop
+          : scrollContainer.value.scrollTop
       state.clientHeight = document.documentElement.clientHeight
 
       if (props.position === 'top') {
@@ -92,8 +105,11 @@ export default defineComponent({
         }
       } else {
         if (props.target) {
-          const difference = state.clientHeight - targetRect.top - props.offset - state.height
-          state.fixed = state.clientHeight - props.offset < rootRect.bottom && state.clientHeight > targetRect.top
+          const difference =
+            state.clientHeight - targetRect.top - props.offset - state.height
+          state.fixed =
+            state.clientHeight - props.offset < rootRect.bottom &&
+            state.clientHeight > targetRect.top
           state.transform = difference < 0 ? -difference : 0
         } else {
           state.fixed = state.clientHeight - props.offset < rootRect.bottom
