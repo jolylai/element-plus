@@ -35,6 +35,19 @@ const componentsMenu = createItems('/components', [
   }),
   appendCounts({
     type: 'group',
+    zh: '导航',
+    en: 'Layout',
+    children: [
+      {
+        en: 'Affix',
+        zh: '固钉',
+        enSuffix: true,
+        path: '/affix',
+      },
+    ],
+  }),
+  appendCounts({
+    type: 'group',
     zh: '数据录入组件',
     en: 'Data Input Components',
     children: [

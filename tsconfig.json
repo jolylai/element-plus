@@ -13,7 +13,10 @@
     "lib": [
       "ESNext", "DOM"
     ],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@/*": ["packages/*"]
+    }
   },
   "exclude": [
     "node_modules"
