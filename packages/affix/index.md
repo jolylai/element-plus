@@ -1,5 +1,9 @@
 # 固钉 Affix
 
+## Tasking
+
+- [ ] 事件
+
 1. 获取滚动容器
 2. 获取元素相对窗口的位置
 
@@ -11,9 +15,23 @@
 
 通过设置 target 属性，让固钉始终保持在容器内，超过范围则隐藏。
 
+边界条件
+
+固钉条件
+
+```js
+const fixed = props.offset > rootRect.top && targetRect.bottom > 0
+```
+
+偏移
+
+```js
+const difference = targetRect.bottom - props.offset - state.height
+```
+
 <code src="./demos/target.vue" />
 
-## 基础使用
+## 距离底部
 
 <code src='./demos/bottom.vue' />
 

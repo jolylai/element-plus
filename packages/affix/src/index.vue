@@ -61,14 +61,16 @@ const affixStyle = computed(() => {
   const { fixed } = state
 
   if (!fixed) return
-
   const offset = props.offset ? `${props.offset}px` : 0
+  const transform = state.transform ? `translateY(${state.transform}px)` : ''
 
   return {
     position: 'fixed',
-    width: state.width,
-    height: state.height,
+    height: `${state.height}px`,
+    width: `${state.width}px`,
     top: props.position === 'top' ? offset : '',
+    bottom: props.position === 'bottom' ? offset : '',
+    transform: transform,
     zIndex: props.zIndex,
   }
 })
