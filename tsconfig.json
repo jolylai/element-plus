@@ -14,8 +14,10 @@
       "ESNext", "DOM"
     ],
     "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["packages/*"]
+      "@/*": ["packages/*"],
+      "pomelo-plus": ["packages/index.ts"]
     }
   },
   "exclude": [

@@ -25,12 +25,12 @@ const docsRoutes = docsMenu
 
     return routes
   }, [])
-  .map(({ en, path }) => {
-    const componentName = en.toLowerCase()
+  .map(route => {
+    const docPath = `../${route.path.slice(1)}.md`
 
     return {
-      path,
-      component: () => import(`../docs/${componentName}.md`),
+      path: route.path,
+      component: () => import(`../${route.path.slice(1)}.md`),
     }
   })
 

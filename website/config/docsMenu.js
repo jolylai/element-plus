@@ -12,6 +12,12 @@ const docsMenu = createItems('/docs', [
         enSuffix: true,
         path: '/theme',
       },
+      {
+        en: `单文件组件<script setup>`,
+        zh: `单文件组件<script setup>`,
+        enSuffix: false,
+        path: '/sfc-script-setup',
+      },
     ],
   }),
 ])

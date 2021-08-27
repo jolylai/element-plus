@@ -20,6 +20,7 @@ import {
   onUnmounted,
   reactive,
   ref,
+  watch,
 } from 'vue'
 import { getScrollContainer, off, on } from '@/utils/dom'
 
@@ -36,6 +37,11 @@ const props = withDefaults(defineProps<AffixProps>(), {
   zIndex: 100,
   target: '',
 })
+
+const emit = defineEmits<{
+  (e: 'scroll', { scrollTop: number, fixed: boolean }): void
+  (e: 'change', fixed: boolean): void
+}>()
 
 const state = reactive({
   fixed: false,
@@ -110,7 +116,15 @@ const updateState = () => {
 
 const onScroll = () => {
   updateState()
+  emit('scroll', { scrollTop: state.scrollTop, fixed: state.fixed })
 }
+
+watch(
+  () => state.fixed,
+  fixed => {
+    emit('change', fixed)
+  },
+)
 
 onMounted(() => {
   if (props.target) {
