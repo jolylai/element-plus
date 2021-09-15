@@ -116,6 +116,7 @@ const updateState = () => {
 
 const onScroll = () => {
   updateState()
+
   emit('scroll', { scrollTop: state.scrollTop, fixed: state.fixed })
 }
 

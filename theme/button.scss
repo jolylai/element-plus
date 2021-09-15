@@ -4,6 +4,7 @@
 
 @include b(button) {
   display: inline-block;
+  color: rgb(51, 54, 57);
   border: 1px solid;
   border-color: $--color-text-secondary;
   background-color: $--color-white;

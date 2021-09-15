@@ -2,15 +2,17 @@
 
 按钮用来触发一些操作。
 
+## 按钮类型
+
+按钮的 type 分别为 default、primary、info、success、warning 和 error。
+
+<code src='./demos/type.vue' />
+
 ## 基础
 
 按钮的 type 分别为 default、primary、info、success、warning 和 error。
 
 <code src='./demos/basic.vue' />
-
-## 类型
-
-<code src='./demos/type.vue' />
 
 按钮样式的变化： 默认显示 -> 鼠标移入 -> 鼠标点击 -> 按钮聚焦
 

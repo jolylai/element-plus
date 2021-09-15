@@ -1,31 +1,39 @@
 <template>
-  <button :class="classNames">
+  <button :class="buttonClass">
     <slot></slot>
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import type { PButtonSize, PButtonType} from './button.type'
-
-export default defineComponent({
+import { computed } from 'vue'
+export default {
   name: 'PoButton',
-  props: {
-    size: { type: String as PropType<PButtonSize>, },
-    type: { type: String as PropType<PButtonType>, }
-  },
-  setup(props) {
-    const classNames = [
-      'po-button',
-      {
-        [`po-button-${props.size}`]: !!props.size,
-        [`po-button-${props.type}`]: !!props.type,
-        },
-    ]
+}
+</script>
 
-    return {
-      classNames
-    }
-  },
+<script lang="ts" setup>
+import { defineProps, withDefaults } from 'vue'
+
+export type ButtonSize = 'small' | 'medium' | 'default' | 'large'
+
+export type ButtonType = 'primary' | 'success' | 'warning' | 'danger'
+
+export interface ButtonProps {
+  size?: ButtonSize
+  type?: ButtonType
+}
+
+const props = withDefaults(defineProps<ButtonProps>(), {
+  // type: 'primary',
+})
+
+const buttonClass = computed(() => {
+  const classList = ['po-button']
+
+  if (props.type) {
+    classList.push(`po-button-${props.type}`)
+  }
+
+  return classList
 })
 </script>

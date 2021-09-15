@@ -1,15 +1,19 @@
 # 固钉 Affix
 
+将页面元素钉在可视范围。
+
+## 何时使用
+
+当内容区域比较长，需要滚动页面时，这部分内容对应的操作或者导航需要在滚动范围内始终展现。常用于侧边菜单和按钮组合。
+
+页面可视范围过小时，慎用此功能以免遮挡页面内容。
+
+## 实现
+
+### 滚动监听
+
 1. 获取滚动容器
 2. 获取元素相对窗口的位置
-
-## 基础使用
-
-<code src='./demos/basic.vue' />
-
-## 指定容器
-
-通过设置 target 属性，让固钉始终保持在容器内，超过范围则隐藏。
 
 边界条件
 
@@ -25,11 +29,25 @@ const fixed = props.offset > rootRect.top && targetRect.bottom > 0
 const difference = targetRect.bottom - props.offset - state.height
 ```
 
+## 基础使用
+
+固钉默认固定在页面顶部。
+
+<code src='./demos/basic.vue' />
+
+## 滚动容器
+
+<code src="./demos/scroll.vue" />
+
+## 状态回调
+
+<code src="./demos/state.vue" />
+
+## 指定容器
+
+通过设置 target 属性，让固钉始终保持在容器内，超过范围则隐藏。
+
 <code src="./demos/target.vue" />
-
-## 距离底部
-
-<code src='./demos/bottom.vue' />
 
 ### Attributes
 
