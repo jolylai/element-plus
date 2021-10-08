@@ -3,7 +3,7 @@
     <po-anchor-link href="#components-anchor-demo-basic" title="Basic demo" />
     <po-anchor-link href="#components-anchor-demo-static" title="Static demo" />
     <po-anchor-link
-      href="#components-anchor-demo-basic"
+      href="#components-anchor-demo-target"
       title="Basic demo with Target"
       target="_blank"
     />

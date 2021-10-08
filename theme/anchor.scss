@@ -16,7 +16,7 @@
     }
 
     @include m(active) {
-      color: red;
+      color: $--color-primary-light-3;
     }
   }
 }
