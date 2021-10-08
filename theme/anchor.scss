@@ -1,0 +1,22 @@
+@import './mixins/mixins.scss';
+@import './common/var.scss';
+
+@include b(anchor) {
+  list-style: none;
+  border-left: 2px solid #eee;
+  padding-left: 16px;
+
+  @include e(link) {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      color: $--color-primary;
+    }
+
+    @include m(active) {
+      color: red;
+    }
+  }
+}

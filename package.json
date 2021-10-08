@@ -10,7 +10,8 @@
     "website:build": "vite build",
     "build": "rollup -c",
     "serve": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "build:theme": "npx sass --watch theme:dist/theme"
   },
   "license": "MIT",
   "config": {

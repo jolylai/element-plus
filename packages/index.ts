@@ -23,6 +23,8 @@ import Upload from './upload'
 import Popover from './popover'
 import {useMessage} from './message'
 
+import {Anchor, AnchorLink} from './anchor'
+
 const components =  [
   Button,
   Icon,
@@ -36,6 +38,8 @@ const components =  [
   Upload,
   Popover,
   ConfigProvider,
+  Anchor,
+  AnchorLink
 ]
 
 const install = (app: App) => {

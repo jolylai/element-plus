@@ -71,6 +71,12 @@ const componentsMenu = createItems('/components', [
         path: '/popover',
       },
       {
+        en: 'Popper',
+        zh: '弹出框',
+        enSuffix: true,
+        path: '/popper',
+      },
+      {
         en: 'Message',
         zh: '信息',
         enSuffix: true,
@@ -88,6 +94,19 @@ const componentsMenu = createItems('/components', [
         zh: '全局配置',
         enSuffix: true,
         path: '/config-provider',
+      },
+    ],
+  }),
+  appendCounts({
+    type: 'group',
+    zh: '其他',
+    en: 'Others',
+    children: [
+      {
+        en: 'Anchor',
+        zh: '锚点',
+        enSuffix: true,
+        path: '/anchor',
       },
     ],
   }),

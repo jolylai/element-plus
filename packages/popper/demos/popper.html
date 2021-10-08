@@ -7,6 +7,13 @@
     <title>Document</title>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
     <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
       #tooltip {
         background-color: #333;
         color: white;
@@ -28,7 +35,7 @@
       // Pass the button, the tooltip, and some options, and Popper will do the
       // magic positioning for you:
       Popper.createPopper(button, tooltip, {
-        placement: 'top',
+        placement: 'right',
       })
     </script>
   </body>
