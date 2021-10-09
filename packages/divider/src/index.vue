@@ -1,6 +1,9 @@
 <template>
   <div :class="classNames">
-    <div v-if="$slots.default" :class="textClassNames">
+    <div
+      v-if="$slots.default && direction !== 'vertical'"
+      :class="['po-divider-text', `po-divider-${props.position}`]"
+    >
       <slot></slot>
     </div>
   </div>
@@ -37,14 +40,6 @@ const classNames = computed(() => {
   if (props.dashed) {
     cls.push('po-divider-dashed')
   }
-
-  return cls
-})
-
-const textClassNames = computed(() => {
-  const cls = ['po-divider-text']
-
-  cls.push(`po-divider-${props.position}`)
 
   return cls
 })
