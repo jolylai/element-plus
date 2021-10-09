@@ -7,3 +7,7 @@
 ## 对齐
 
 <code src="./demos/align.vue" />
+
+## 排序
+
+<code src="./demos/order.vue" />

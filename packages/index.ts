@@ -15,8 +15,7 @@ import Avatar from './avatar'
 // 布局
 import Space from './space'
 import Divider from './divider'
-import Row from './row'
-import Col from './col'
+import {Row, Col} from './grid'
 
 // 数据录入
 import Image from './image'

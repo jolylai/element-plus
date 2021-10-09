@@ -38,10 +38,10 @@ const componentsMenu = createItems('/components', [
         path: '/divider',
       },
       {
-        en: 'Row',
+        en: 'Grid',
         zh: '格栅',
         enSuffix: true,
-        path: '/row',
+        path: '/grid',
       },
     ],
   }),
