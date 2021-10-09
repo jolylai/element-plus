@@ -37,6 +37,12 @@ const componentsMenu = createItems('/components', [
         enSuffix: true,
         path: '/divider',
       },
+      {
+        en: 'Row',
+        zh: '格栅',
+        enSuffix: true,
+        path: '/row',
+      },
     ],
   }),
   appendCounts({
