@@ -31,6 +31,12 @@ const componentsMenu = createItems('/components', [
         enSuffix: true,
         path: '/space',
       },
+      {
+        en: 'Divider',
+        zh: '分割线',
+        enSuffix: true,
+        path: '/divider',
+      },
     ],
   }),
   appendCounts({

@@ -14,6 +14,7 @@ import Avatar from './avatar'
 
 // 布局
 import Space from './space'
+import Divider from './divider'
 
 // 数据录入
 import Image from './image'
@@ -31,6 +32,8 @@ const components =  [
   Avatar,
   
   Space,
+  Divider,
+  
   ElProgress, 
   ELAffix ,
   ElEllipsis, 

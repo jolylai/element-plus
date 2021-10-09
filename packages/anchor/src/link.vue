@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'PoAnchorLink',
@@ -11,7 +11,11 @@ export default defineComponent({
     href: { type: String },
     title: { type: String },
   },
-  setup(props, { slots }) {},
+  setup(props, { slots }) {
+    return () => {
+      return
+    }
+  },
 })
 </script>
 
