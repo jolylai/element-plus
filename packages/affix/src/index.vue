@@ -13,15 +13,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import {
-  computed,
-  defineProps,
-  onMounted,
-  onUnmounted,
-  reactive,
-  ref,
-  watch,
-} from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 import { getScrollContainer, off, on } from '@/utils/dom'
 
 interface AffixProps {

@@ -12,7 +12,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { defineProps, withDefaults } from 'vue'
+import { withDefaults } from 'vue'
 
 export type ButtonSize = 'small' | 'medium' | 'default' | 'large'
 
