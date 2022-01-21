@@ -24,6 +24,9 @@ import Upload from './upload'
 // 反馈
 import Popover from './popover'
 import {useMessage} from './message'
+import progress from './progress';
+;
+
 
 import {Anchor, AnchorLink} from './anchor'
 

@@ -18,6 +18,12 @@ const componentsMenu = createItems('/components', [
         enSuffix: true,
         path: '/avatar',
       },
+      {
+        en: 'Icon',
+        zh: '图标',
+        enSuffix: true,
+        path: '/icon',
+      },
     ],
   }),
   appendCounts({
@@ -87,6 +93,12 @@ const componentsMenu = createItems('/components', [
         zh: '弹出框',
         enSuffix: true,
         path: '/popper',
+      },
+      {
+        en: 'Progress',
+        zh: '进度条',
+        enSuffix: true,
+        path: '/progress',
       },
       {
         en: 'Message',

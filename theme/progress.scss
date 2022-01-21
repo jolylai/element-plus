@@ -5,37 +5,16 @@
   position: relative;
   line-height: 1;
   display: flex;
-  align-items: center;
 
-  @include e(text) {
-    font-size: 14px;
-    color: $--color-text-regular;
-    margin-left: 5px;
-    min-width: 50px;
-    line-height: 1;
-
-    i {
-      vertical-align: middle;
-      display: block;
-    }
+  @include e(bar) {
+    flex-grow: 1;
+    border-radius: 999px;
+    overflow: hidden;
+    background-color: #9d9d9d;
   }
 
-  @include m((circle, dashboard)) {
-    display: inline-block;
-
-    .#{$namespace}-progress__text {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      margin: 0;
-      transform: translate(0, -50%);
-
-      i {
-        vertical-align: middle;
-        display: inline-block;
-      }
-    }
+  @include e(text) {
+    min-width: 50px;
+    margin-left: 6px;
   }
 }

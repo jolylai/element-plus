@@ -990,6 +990,11 @@
   resolved "https://registry.nlark.com/@css-render/vue3-ssr/download/@css-render/vue3-ssr-0.15.4.tgz#ae29bc76f7eb40830d0ecd8086ce3726a1c6e8e3"
   integrity sha1-rim8dvfrQIMNDs2Ahs43JqHG6OM=
 
+"@element-plus/icons-vue@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.npmmirror.com/@element-plus/icons-vue/download/@element-plus/icons-vue-0.2.6.tgz#28e48aa4abd5b02638b41c1d95a6e7f96bb23308"
+  integrity sha512-2gg7VCq4d2firgl7/aVym4Cx/wqKFwKybEQGJiiWJN4urW36+QdAEG1knqSD9qidbjhVp0Jnc9XdSTR1/4Whzw==
+
 "@element-plus/icons@^0.0.11":
   version "0.0.11"
   resolved "https://registry.nlark.com/@element-plus/icons/download/@element-plus/icons-0.0.11.tgz#9b187c002774548b911850d17fa5fc2f9a515f57"

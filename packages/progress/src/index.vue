@@ -1,21 +1,24 @@
 <template>
-  <div :class="['el-progress']">
-    <div class="el-progress-bar">
-      <div class="el-progress-bar-outer">
-        <div class="el-progress-bar-inner" :style="barStyle"></div>
+  <div :class="['po-progress']">
+    <div class="po-progress-bar">
+      <div class="po-progress-bar-outer">
+        <div
+          class="po-progress-bar-inner"
+          :style="{ width: percent + '%' }"
+        ></div>
       </div>
     </div>
-    <div class="el-progress-text">{{ percentage }}%</div>
+    <div class="po-progress-text">{{ percent }}%</div>
   </div>
 </template>
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
 
-type ProgressFuncType = (percentage: number) => string
+type ProgressFuncType = (percent: number) => string
 
 interface IProgressProps {
   type: string
-  percentage: number
+  percent: number
   status: string
   indeterminate: boolean
   duration: number
@@ -26,7 +29,7 @@ interface IProgressProps {
   showText: boolean
   color:
     | string
-    | Array<string | { color: string; percentage: number }>
+    | Array<string | { color: string; percent: number }>
     | ProgressFuncType
   format: ProgressFuncType
 }
@@ -34,7 +37,7 @@ interface IProgressProps {
 export default defineComponent({
   name: 'PoProgress',
   props: {
-    percentage: { type: Number, required: true },
+    percent: { type: Number, default: 0 },
     type: {
       type: String,
       default: 'line',
@@ -43,17 +46,9 @@ export default defineComponent({
     },
     duration: { type: Number, defautl: 2 },
   },
-  setup(props: IProgressProps) {
-    const barStyle = computed(() => {
-      return {
-        width: props.percentage + '%',
-        animationDuration: props.duration,
-      }
-    })
-
-    return {
-      barStyle,
-    }
+  setup(props) {
+    console.log('props: ', props)
+    return {}
   },
 })
 </script>
