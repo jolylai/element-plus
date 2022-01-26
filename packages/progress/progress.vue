@@ -4,10 +4,7 @@
     <div v-if="type === 'line'" class="el-progress-line">
       <div class="po-progress-bar">
         <div class="po-progress-outer">
-          <div
-            class="po-progress-inner"
-            :style="{ width: percent + '%' }"
-          ></div>
+          <div class="po-progress-inner" :style="{ width: percent + '%' }" />
         </div>
       </div>
       <span class="po-progress-text">

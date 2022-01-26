@@ -13,12 +13,6 @@ const componentsMenu = createItems('/components', [
         path: '/button',
       },
       {
-        en: 'Avatar',
-        zh: '头像',
-        enSuffix: true,
-        path: '/avatar',
-      },
-      {
         en: 'Icon',
         zh: '图标',
         enSuffix: true,
@@ -61,6 +55,25 @@ const componentsMenu = createItems('/components', [
         zh: '固钉',
         enSuffix: true,
         path: '/affix',
+      },
+    ],
+  }),
+  appendCounts({
+    type: 'group',
+    zh: '数据展示',
+    en: 'Data Display Components',
+    children: [
+      {
+        en: 'Avatar',
+        zh: '头像',
+        enSuffix: true,
+        path: '/avatar',
+      },
+      {
+        en: 'Badge',
+        zh: '徽标数',
+        enSuffix: true,
+        path: '/badge',
       },
     ],
   }),

@@ -21,6 +21,11 @@ import {Row, Col} from './grid'
 import Image from './image'
 import Upload from './upload'
 
+// 数据展示
+import Badge from './badge';
+;
+
+
 // 反馈
 import Popover from './popover'
 import {useMessage} from './message'
@@ -48,7 +53,9 @@ const components =  [
   Popover,
   ConfigProvider,
   Anchor,
-  AnchorLink
+  AnchorLink,
+
+  Badge
 ]
 
 const install = (app: App) => {

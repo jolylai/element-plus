@@ -1,0 +1,33 @@
+@import 'mixins/mixins';
+@import 'common/var.scss';
+
+@include b(badge) {
+  position: relative;
+  display: inline-block;
+
+  @include e(count) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+
+    font-size: 12px;
+    height: 20px;
+    min-width: 20px;
+    text-align: center;
+    color: $--color-white;
+    background-color: $--color-danger;
+    border-radius: 999px;
+  }
+}
+
+@include b(badge-without-wrap) {
+  sup {
+    display: inline-block;
+    background-color: $--color-danger;
+    color: $--color-white;
+    padding: 0 8px;
+    border-radius: 999px;
+    height: 20px;
+  }
+}
