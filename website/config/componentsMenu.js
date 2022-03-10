@@ -18,6 +18,12 @@ const componentsMenu = createItems('/components', [
         enSuffix: true,
         path: '/icon',
       },
+      {
+        en: 'Scrollbar',
+        zh: '滚动条',
+        enSuffix: true,
+        path: '/scrollbar',
+      },
     ],
   }),
   appendCounts({
@@ -87,6 +93,12 @@ const componentsMenu = createItems('/components', [
         zh: '上传',
         enSuffix: true,
         path: '/upload',
+      },
+      {
+        en: 'cascader-panel',
+        zh: '级联选择',
+        enSuffix: true,
+        path: '/cascader-panel',
       },
     ],
   }),

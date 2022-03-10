@@ -20,17 +20,17 @@ import {Row, Col} from './grid'
 // 数据录入
 import Image from './image'
 import Upload from './upload'
+import Cascader from './cascader-panel'
 
 // 数据展示
 import Badge from './badge';
-;
+
 
 
 // 反馈
 import Popover from './popover'
 import {useMessage} from './message'
 import progress from './progress';
-;
 
 
 import {Anchor, AnchorLink} from './anchor'
@@ -55,7 +55,8 @@ const components =  [
   Anchor,
   AnchorLink,
 
-  Badge
+  Badge,
+  Cascader
 ]
 
 const install = (app: App) => {
