@@ -1,6 +1,6 @@
 import { createPopper } from '@popperjs/core'
 import { ComponentPublicInstance, computed, ref, SetupContext } from 'vue'
-import { $, isHTMLElement } from '../../../utils/util'
+import { $, isHTMLElement } from '../../../../utils/util'
 import { IPopperOptions } from './defaults'
 import usePopperOptions from './popper-options'
 
@@ -13,7 +13,7 @@ export type EmitType =
 
 export default function usePopper(
   props: IPopperOptions,
-  { emit }: SetupContext<EmitType[]>,
+  { emit }: SetupContext<EmitType[]>
 ) {
   const arrowRef = ref()
   const triggerRef = ref(null)
@@ -22,7 +22,7 @@ export default function usePopper(
   const visibility = computed<boolean>(() => false)
 
   const popperOptions = usePopperOptions(props, {
-    arrow: arrowRef,
+    arrow: arrowRef
   })
 
   function initializePopper() {
@@ -38,7 +38,7 @@ export default function usePopper(
     const popperInstance = createPopper(
       _trigger,
       $(popperRef),
-      $(popperOptions),
+      $(popperOptions)
     )
 
     popperInstance.update()

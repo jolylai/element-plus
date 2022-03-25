@@ -1,5 +1,5 @@
 import { computed, ExtractPropTypes, PropType, watch, ref } from 'vue'
-import { isValidSize } from '../../utils/validator'
+import { isValidSize } from '../../../utils/validator'
 
 const sizeMap: Record<string, number> = {
   small: 8,

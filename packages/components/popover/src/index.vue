@@ -1,5 +1,4 @@
 <script lang="ts">
-import { PatchFlags } from '@/utils/vnode'
 import {
   createTextVNode,
   defineComponent,
@@ -7,7 +6,7 @@ import {
   h,
   PropType,
   renderSlot,
-  toDisplayString,
+  toDisplayString
 } from 'vue'
 import { defaultProps, renderPopper } from '../../popper'
 import { Effect, TriggerType } from '../../popper/src/use-popper/defaults'
@@ -17,35 +16,35 @@ export default defineComponent({
   props: {
     ...defaultProps,
     content: {
-      type: String,
+      type: String
     },
     trigger: {
       type: String as PropType<TriggerType>,
-      default: 'click',
+      default: 'click'
     },
     title: {
-      type: String,
+      type: String
     },
     transition: {
       type: String,
-      default: 'fade-in-linear',
+      default: 'fade-in-linear'
     },
     width: {
       type: [String, Number],
-      default: 150,
+      default: 150
     },
     appendToBody: {
       type: Boolean,
-      default: true,
+      default: true
     },
-    tabindex: [String, Number],
+    tabindex: [String, Number]
   },
   setup() {},
 
   render() {
     const { $slots } = this
     const content = renderSlot($slots, 'default', {}, () => {
-      return [createTextVNode(toDisplayString(this.content), PatchFlags.TEXT)]
+      return [createTextVNode(toDisplayString(this.content), 1)]
     })
 
     const {
@@ -59,12 +58,12 @@ export default defineComponent({
       showArrow,
       transition,
       visibility,
-      tabindex,
+      tabindex
     } = this
 
     const kls = [
       this.content ? 'el-popover--plain' : '',
-      'po-popover',
+      'po-popover'
       // popperClass,
     ].join(' ')
 
@@ -80,16 +79,16 @@ export default defineComponent({
         onMouseleave: onPopperMouseLeave,
         // onAfterEnter,
         // onAfterLeave,
-        stopPopperMouseEvent: false,
+        stopPopperMouseEvent: false
       },
       [
         // title,
-        content,
+        content
         // renderArrow(showArrow),
-      ],
+      ]
     )
 
     return h(Fragment, null, [popover])
-  },
+  }
 })
 </script>

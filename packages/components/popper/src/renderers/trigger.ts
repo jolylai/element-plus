@@ -1,5 +1,5 @@
 import { VNode, Ref, ComponentPublicInstance, cloneVNode } from 'vue'
-import { getFirstValidNode } from '@/utils/vnode'
+import { getFirstValidNode } from '@/utils/vue/vnode'
 
 type EventHandler = (e: Event) => any
 
@@ -13,7 +13,7 @@ interface IRenderTriggerProps extends Record<string, unknown> {
 
 export default function renderTrigger(
   trigger: VNode,
-  extraProps: IRenderTriggerProps,
+  extraProps: IRenderTriggerProps
 ) {
   const firstElement = getFirstValidNode(trigger)
   if (!firstElement) throw Error('trigger expects single rooted node')

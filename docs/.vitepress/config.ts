@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import path from 'path'
 // import demoPlugin from './plugins/demo'
 import { vitePluginVitepressDemo } from 'vite-plugin-vitepress-demo'
 
@@ -18,32 +19,39 @@ export default defineConfig({
       {
         text: '组件',
         link: '/components/button/',
-        activeMatch: '^/components/',
-      },
+        activeMatch: '^/components/'
+      }
     ],
 
     sidebar: {
-      '/components/': getComponentsSidebar(),
-    },
+      '/components/': getComponentsSidebar()
+    }
   },
   // markdown: {
   //   config: md => demoPlugin(md),
   // },
 
   vite: {
+    // @ts-ignore
     plugins: [vitePluginVitepressDemo()],
-  },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../../packages')
+        // 'pomelo-plus': path.resolve(__dirname, '../../packages')
+      }
+    }
+  }
 })
 
 function getComponentsSidebar() {
   return [
     {
       text: '通用组件',
-      children: [{ text: 'Button 按钮', link: '/components/button/' }],
+      children: [{ text: 'Button 按钮', link: '/components/button/' }]
     },
     {
       text: '数据展示',
-      children: [{ text: 'Table', link: '/components/table/' }],
-    },
+      children: [{ text: 'Table', link: '/components/table/' }]
+    }
   ]
 }

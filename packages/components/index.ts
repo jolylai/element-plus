@@ -1,4 +1,4 @@
-import type { App } from 'vue'
+import type { App, Plugin } from 'vue'
 
 import ElProgress from './progress'
 import ELAffix from './affix'
@@ -15,7 +15,7 @@ import Avatar from './avatar'
 // 布局
 import Space from './space'
 import Divider from './divider'
-import {Row, Col} from './grid'
+import { Row, Col } from './grid'
 
 // 数据录入
 import Image from './image'
@@ -24,31 +24,35 @@ import Cascader from './cascader-panel'
 
 // 数据展示
 import Badge from './badge';
+import Table from './table'
 
 
 
 // 反馈
 import Popover from './popover'
-import {useMessage} from './message'
+import { useMessage } from './message'
 import progress from './progress';
 
 
-import {Anchor, AnchorLink} from './anchor'
+import { Anchor, AnchorLink } from './anchor'
 
-const components =  [
+const components = [
+  Table,
+
+
   Button,
   Icon,
   Avatar,
-  
+
   Space,
   Divider,
   Row,
   Col,
 
-  ElProgress, 
-  ELAffix ,
-  ElEllipsis, 
-  Image, 
+  ElProgress,
+  ELAffix,
+  ElEllipsis,
+  Image,
   Upload,
   Popover,
   ConfigProvider,
@@ -57,16 +61,17 @@ const components =  [
 
   Badge,
   Cascader
-]
+] as Plugin[]
 
 const install = (app: App) => {
-  components.forEach(component =>{
+  components.forEach(component => {
+    // @ts-ignore
     app.component(component.name, component)
   })
 }
 
-export default  {
+export default ({
   install,
-}
+} as Plugin)
 
-export {useMessage}
+export { useMessage }

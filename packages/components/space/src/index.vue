@@ -1,6 +1,6 @@
 <script lang="ts">
-import { PatchFlags } from '@/utils/vnode'
-import { createVNode, defineComponent, h, renderSlot } from 'vue'
+// import { PatchFlags } from '@/utils'
+import { createVNode, defineComponent, renderSlot } from 'vue'
 
 import { defaultProps, useSpace } from './useSpace'
 
@@ -29,26 +29,26 @@ export default defineComponent({
             {
               class: 'po-space-item',
               style: itemStyle,
-              key: `LoopKey${loopKey}`,
+              key: `LoopKey${loopKey}`
             },
             {
-              default: () => [child],
-            },
-          ),
+              default: () => [child]
+            }
+          )
         )
       })
 
       return createVNode(
         'div',
         {
-          class: classes,
+          class: classes
         },
-        extractedChildren,
-        PatchFlags.STYLE | PatchFlags.CLASS,
+        extractedChildren
+        // PatchFlags.STYLE | PatchFlags.CLASS
       )
     }
 
     return children.children
-  },
+  }
 })
 </script>

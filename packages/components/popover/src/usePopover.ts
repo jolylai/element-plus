@@ -1,8 +1,8 @@
 import { computed, ref, SetupContext, watch } from 'vue'
 import usePopper, { EmitType } from '../../popper/src/use-popper'
 import { IPopperOptions } from '../../popper/src/use-popper/defaults'
-import PopupManager from '../../utils/popup-manager'
-import { isString } from '../../utils/util'
+import PopupManager from '../../../utils/popup-manager'
+import { isString } from '../../../utils/util'
 
 export interface IUsePopover extends IPopperOptions {
   width: number | string
@@ -22,7 +22,7 @@ const usePopover = (props: IUsePopover, ctx: SetupContext<string[]>) => {
   const properStyle = computed(() => {
     return {
       width: width.value,
-      zIndex: zIndex.value,
+      zIndex: zIndex.value
     }
   })
 
