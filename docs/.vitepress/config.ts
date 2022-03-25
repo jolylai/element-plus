@@ -1,15 +1,15 @@
 import { defineConfig } from 'vitepress'
+// import demoPlugin from './plugins/demo'
+import { vitePluginVitepressDemo } from 'vite-plugin-vitepress-demo'
 
 export default defineConfig({
-  lang: 'en-US',
-  title: 'VitePress',
+  title: 'Pomelo Plus',
   description: 'Vite & Vue powered static site generator.',
   lastUpdated: true,
 
   themeConfig: {
     repo: 'jolylai/pomelo-plus',
     docsDir: 'docs',
-    docsBranch: 'main',
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: 'Last Updated',
@@ -17,7 +17,7 @@ export default defineConfig({
     nav: [
       {
         text: '组件',
-        link: '/components',
+        link: '/components/button/',
         activeMatch: '^/components/',
       },
     ],
@@ -26,13 +26,24 @@ export default defineConfig({
       '/components/': getComponentsSidebar(),
     },
   },
+  // markdown: {
+  //   config: md => demoPlugin(md),
+  // },
+
+  vite: {
+    plugins: [vitePluginVitepressDemo()],
+  },
 })
 
 function getComponentsSidebar() {
   return [
     {
-      text: 'Introduction',
-      children: [{ text: 'Table', link: '/components/table' }],
+      text: '通用组件',
+      children: [{ text: 'Button 按钮', link: '/components/button/' }],
+    },
+    {
+      text: '数据展示',
+      children: [{ text: 'Table', link: '/components/table/' }],
     },
   ]
 }

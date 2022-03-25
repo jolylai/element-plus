@@ -9,6 +9,12 @@
     "docs:serve": "vitepress serve ."
   },
   "devDependencies": {
+    "@types/markdown-it": "^12.2.3",
+    "@types/markdown-it-container": "^2.0.5",
     "vitepress": "^0.22.3"
+  },
+  "dependencies": {
+    "markdown-it-container": "^3.0.0",
+    "vite-plugin-vitepress-demo": "^1.1.5"
   }
 }

@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { useLocal, useLocalProps } from '../hooks'
+import { useLocal, useLocalProps } from '../../hooks'
 
 export default defineComponent({
   name: 'PoConfigProvider',
