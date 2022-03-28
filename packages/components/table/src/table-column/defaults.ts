@@ -43,4 +43,11 @@ export interface TableColumnCtx<T> {
   ) => VNode | string
   selectable: (row: T, index: number) => boolean
   reserveSelection: boolean
+  renderCell: (data: any) => void
+  getColumnIndex: () => number
+}
+
+export default {
+  property: String,
+  prop: String
 }

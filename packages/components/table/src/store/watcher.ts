@@ -4,6 +4,8 @@ import { TableColumnCtx } from '../table-column/defaults'
 function useWatcher<T>() {
   const columns: Ref<TableColumnCtx<T>[]> = ref([])
   const _columns: Ref<TableColumnCtx<T>[]> = ref([])
+  const data: Ref<T[]> = ref([])
+  const _data: Ref<T[]> = ref([])
 
   const updateColumns = () => {
     columns.value = []
@@ -12,7 +14,9 @@ function useWatcher<T>() {
   return {
     states: {
       columns,
-      _columns
+      _columns,
+      data,
+      _data
     }
   }
 }

@@ -25,6 +25,7 @@ import Cascader from './cascader-panel'
 // 数据展示
 import Badge from './badge';
 import Table from './table'
+import { PoTableColumn} from './table'
 
 
 
@@ -38,7 +39,7 @@ import { Anchor, AnchorLink } from './anchor'
 
 const components = [
   Table,
-
+  PoTableColumn,
 
   Button,
   Icon,

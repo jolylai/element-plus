@@ -8,7 +8,7 @@ export interface TableBodyProps<T> {
 const defaultProps = {
   store: {
     require: true,
-    type: Object as PropType<TableBodyProps<any>>
+    type: Object as PropType<TableBodyProps<any>['store']>,
   }
 }
 
