@@ -1,7 +1,8 @@
 /* Element Chalk Variables */
-@use "sass:math";
+@use 'sass:math';
+@use 'sass:map';
 
-@import '../mixins/config';
+@use '../mixins/function.scss' as *;
 
 // Special comment for theme configurator
 // type|skipAutoTranslation|Category|Order
@@ -1003,7 +1004,7 @@ $--breakpoints: (
   'sm': '(min-width: #{$--sm})',
   'md': '(min-width: #{$--md})',
   'lg': '(min-width: #{$--lg})',
-  'xl': '(min-width: #{$--xl})',
+  'xl': '(min-width: #{$--xl})'
 ) !default;
 
 $--breakpoints-spec: (
@@ -1017,5 +1018,5 @@ $--breakpoints-spec: (
   'lg-and-up': '(min-width: #{$--lg})',
   'lg-only': '(min-width: #{$--lg}) and (max-width: #{$--xl})',
   'lg-and-down': '(max-width: #{$--xl})',
-  'xl-only': '(min-width: #{$--xl})',
+  'xl-only': '(min-width: #{$--xl})'
 ) !default;

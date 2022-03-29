@@ -1,10 +1,10 @@
 import { globby, $ } from 'zx'
 ;(async () => {
-  const files = await globby('theme', {
+  const files = await globby('packages/theme', {
     absolute: true,
     expandDirectories: {
-      extensions: ['css', 'css.map'],
-    },
+      extensions: ['css', 'css.map']
+    }
   })
 
   for (let file of files) {

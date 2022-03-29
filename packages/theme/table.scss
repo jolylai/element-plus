@@ -1,0 +1,17 @@
+@use 'sass:map';
+
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+@use 'common/var' as *;
+
+// @include b(table) {
+//   @include set-component-css-var('table', $table);
+// }
+
+@include b(table) {
+  .hidden-columns {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+}
