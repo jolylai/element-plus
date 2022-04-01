@@ -2,7 +2,7 @@ import { h } from 'vue'
 
 export function hColgroup(props) {
   const isAuto = props.tableLayout === 'auto'
-  console.log(' props.tableLayout: ', props.tableLayout)
+
   let columns = props.columns || []
   if (isAuto) {
     if (columns.every(column => column.width === undefined)) {
@@ -22,7 +22,7 @@ export function hColgroup(props) {
     } else {
       propsData.name = column.id
     }
-    console.log('propsData: ', propsData)
+
     return propsData
   }
 

@@ -1,3 +1,3 @@
-## Table 表格
+## 基础表格
 
-<demo src="./demos/basic.vue"></demo>
+<basic />

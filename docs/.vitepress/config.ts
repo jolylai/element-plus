@@ -1,7 +1,9 @@
 import { defineConfig } from 'vitepress'
 import path from 'path'
 // import demoPlugin from './plugins/demo'
-import { vitePluginVitepressDemo } from 'vite-plugin-vitepress-demo'
+import Components from 'unplugin-vue-components/vite'
+
+console.log('process.cwd(): ', process.cwd())
 
 export default defineConfig({
   title: 'Pomelo Plus',
@@ -10,7 +12,7 @@ export default defineConfig({
 
   themeConfig: {
     repo: 'jolylai/pomelo-plus',
-    docsDir: 'docs',
+    docsDir: 'packages',
     editLinks: true,
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: 'Last Updated',
@@ -32,12 +34,32 @@ export default defineConfig({
   // },
 
   vite: {
-    // @ts-ignore
-    plugins: [vitePluginVitepressDemo()],
+    plugins: [
+      // @ts-ignore
+      Components({
+        dirs: ['/docs/components/table/demos'],
+        deep: true,
+        extensions: ['vue'],
+        // // directoryAsNamespace: true,
+        dts: true,
+        // globalNamespaces: ['global'],
+        // importPathTransform: path => {
+        //   console.log('path: ', path)
+
+        //   return path.endsWith('.svg') ? `${path}?component` : undefined
+        // },
+        include: [/\.vue$/, /\.md$/],
+        resolvers: [
+          name => {
+            console.log('name: ', name)
+            if (name === 'Basic') return '/components/table/demos/basic.vue'
+          }
+        ]
+      })
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '../../packages')
-        // 'pomelo-plus': path.resolve(__dirname, '../../packages')
       }
     }
   }

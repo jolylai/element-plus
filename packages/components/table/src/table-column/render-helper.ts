@@ -36,12 +36,13 @@ export default function useRender<T>(
     return column
   }
 
-  const setColumnRender = (column: TableColumnCtx<T>) => {
+  const setColumnRenders = (column: TableColumnCtx<T>) => {
     column.renderCell = data => {
-      console.log('data: renderCell', data)
       const children = defaultRenderCell(data)
       return h('div', { class: 'cell' }, children)
     }
+
+    return column
   }
 
   const getColumnElIndex = (children, child) => {
@@ -63,7 +64,7 @@ export default function useRender<T>(
   return {
     columnId,
     getPropsData,
-    setColumnRender,
+    setColumnRenders,
     columnOrTableParent,
     getColumnElIndex,
     setColumnWidth

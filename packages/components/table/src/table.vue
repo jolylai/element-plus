@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table :class="[ns.b()]">
     <div ref="hiddenColumns" class="hidden-columns">
       <slot />
     </div>
@@ -20,7 +20,9 @@ import TableBody from './table-body'
 import { createStore } from './store/helper'
 import { TABLE_INJECTION_KEY } from './tokens'
 import useStyle from './table/style-helper'
-import {hColgroup} from './h-helper'
+import { hColgroup } from './h-helper'
+
+import { useNamespace } from '@/hooks'
 
 let tableIdSeed = 1
 
@@ -31,6 +33,9 @@ export default defineComponent({
   setup(props) {
     type Row = typeof props.data[number]
 
+    const ns = useNamespace('table')
+
+    // table 实例
     const table = getCurrentInstance() as Table<Row>
     const tableId = `po-table-${tableIdSeed++}`
     table.tableId = tableId
@@ -43,7 +48,7 @@ export default defineComponent({
 
     const hiddenColumns = ref()
 
-    return { store, hiddenColumns, tableLayout }
+    return { ns, store, hiddenColumns, tableLayout }
   }
 })
 </script>

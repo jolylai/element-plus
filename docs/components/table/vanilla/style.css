@@ -1,0 +1,21 @@
+table {
+  color: #606266;
+}
+
+/* header */
+thead {
+  color: #909399;
+}
+
+thead th {
+  border-bottom: 1px solid #ebeef5;
+
+  text-align: left;
+  padding: 8px 0;
+}
+
+/* body */
+tbody td {
+  border-bottom: 1px solid #ebeef5;
+  padding: 8px 0;
+}

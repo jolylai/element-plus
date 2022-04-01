@@ -7,6 +7,7 @@ import {
   onMounted,
   ref
 } from 'vue'
+import { compose } from '../../util'
 import type { TableColumn, TableColumnCtx } from './defaults'
 import defaultProps from './defaults'
 import useRender from './render-helper'
@@ -33,7 +34,8 @@ export default defineComponent({
     const {
       columnId,
       getPropsData,
-      setColumnRender,
+      setColumnWidth,
+      setColumnRenders,
       columnOrTableParent,
       getColumnElIndex
     } = useRender((props as unknown) as TableColumnCtx<unknown>, slots, owner)
@@ -73,9 +75,13 @@ export default defineComponent({
       ]
 
       let column = getPropsData(basicProps, sortProps, selectProps, filterProps)
-      console.log('column: ', column)
+      
       column = Object.assign(defaults, column)
-      setColumnRender(column)
+
+      const chain = compose(        setColumnRenders,
+        setColumnWidth,)
+
+       column = chain(column)
 
       columnConfig.value = column
     })

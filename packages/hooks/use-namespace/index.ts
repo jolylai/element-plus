@@ -1,6 +1,6 @@
 import { computed, unref } from 'vue'
 
-const defaultNamespace = 'el'
+const defaultNamespace = 'po'
 const statePrefix = 'is-'
 
 const _bem = (

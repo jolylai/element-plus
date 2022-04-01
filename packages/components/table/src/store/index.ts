@@ -15,7 +15,6 @@ function useStore<T>() {
       states._data.value = data
     },
     insertColumn(states: StoreStates, column: TableColumnCtx<T>) {
-      console.log('column: insertColumn', column)
       states._columns.value.push(column)
       states.columns.value.push(column)
     }
