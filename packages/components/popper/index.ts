@@ -1,10 +1,7 @@
-import Popper from './src/index.vue'
+import PoPopper from './src/popper.vue'
+import PoPopperContent from './src/content.vue'
+import PoPopperTrigger from './src/trigger.vue'
 
-Popper.install = app => {
-  app.component(Popper.name, Popper)
-}
+export { PoPopper, PoPopperContent, PoPopperTrigger }
 
-export default Popper
-
-export * from './src/renderers/index'
-export { default as defaultProps, Effect } from './src/use-popper/defaults'
+export default PoPopper

@@ -1,3 +1,3 @@
 ## 基础表格
 
-<basic />
+<demo-table-basic />

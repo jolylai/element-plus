@@ -1,9 +1,7 @@
 import { defineConfig } from 'vitepress'
 import path from 'path'
-// import demoPlugin from './plugins/demo'
 import Components from 'unplugin-vue-components/vite'
-
-console.log('process.cwd(): ', process.cwd())
+import { kebabCase } from 'lodash'
 
 export default defineConfig({
   title: 'Pomelo Plus',
@@ -29,37 +27,60 @@ export default defineConfig({
       '/components/': getComponentsSidebar()
     }
   },
-  // markdown: {
-  //   config: md => demoPlugin(md),
-  // },
 
   vite: {
     plugins: [
       // @ts-ignore
       Components({
-        dirs: ['/docs/components/table/demos'],
+        dirs: ['/docs/components', 'packages/components'],
         deep: true,
         extensions: ['vue'],
-        // // directoryAsNamespace: true,
         dts: true,
-        // globalNamespaces: ['global'],
+        include: [/\.vue$/, /\.md$/],
         // importPathTransform: path => {
         //   console.log('path: ', path)
-
         //   return path.endsWith('.svg') ? `${path}?component` : undefined
         // },
-        include: [/\.vue$/, /\.md$/],
         resolvers: [
-          name => {
-            console.log('name: ', name)
-            if (name === 'Basic') return '/components/table/demos/basic.vue'
+          {
+            type: 'component',
+            resolve: name => {
+              console.log('name: ', name)
+
+              if (!name.match(/^Po[A-Z]/)) return
+
+              const partialName = kebabCase(name.slice(2))
+
+              const componentName = partialName.split('-')
+              console.log('componentName: ', componentName)
+
+              return {
+                name,
+                importName: name,
+                path: `pomelo-plus/${componentName[0]}`
+              }
+            }
+          },
+          {
+            type: 'component',
+            resolve: name => {
+              if (!name.match(/^Demo[A-Z]/)) return
+              const kebabCaseName = kebabCase(name)
+              const componentName = kebabCaseName.split('-')[1]
+              return {
+                name: kebabCaseName,
+                path: `@/demo/${componentName}/demos/${kebabCaseName}.vue`
+              }
+            }
           }
         ]
       })
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '../../packages')
+        '@': path.resolve(__dirname, '../../packages'),
+        'pomelo-plus': path.resolve(__dirname, '../packages/component'),
+        '@/demo': path.resolve(__dirname, '../components')
       }
     }
   }
@@ -73,7 +94,10 @@ function getComponentsSidebar() {
     },
     {
       text: '数据展示',
-      children: [{ text: 'Table', link: '/components/table/' }]
+      children: [
+        { text: 'Table', link: '/components/table/' },
+        { text: 'popper', link: '/components/popper/' }
+      ]
     }
   ]
 }

@@ -10,7 +10,7 @@ import {
   onDeactivated,
   renderSlot,
   toDisplayString,
-  withDirectives,
+  withDirectives
 } from 'vue'
 import { renderArrow, renderPopper, renderTrigger } from './renderers'
 import usePopper from './use-popper'
@@ -24,7 +24,7 @@ export default defineComponent({
     'after-enter',
     'after-leave',
     'before-enter',
-    'before-leave',
+    'before-leave'
   ],
   setup(props, context) {
     if (!context.slots.trigger) throw new Error('Trigger must be provided!')
@@ -62,7 +62,7 @@ export default defineComponent({
       showArrow,
       transition,
       visibility,
-      stopPopperMouseEvent,
+      stopPopperMouseEvent
     } = this
 
     const isManual = this.isManualMode()
@@ -84,13 +84,13 @@ export default defineComponent({
         onAfterLeave,
         onBeforeEnter,
         onBeforeLeave,
-        visibility,
+        visibility
       },
       [
         renderSlot($slots, 'defautl', {}, () => {
           return [toDisplayString(this.content)]
-        }),
-      ],
+        })
+      ]
     )
 
     // trigger
@@ -100,7 +100,7 @@ export default defineComponent({
       class: kls,
       style,
       ref: 'triggerRef',
-      ...this.events,
+      ...this.events
     }
 
     const trigger = isManual
@@ -113,11 +113,11 @@ export default defineComponent({
         Teleport as any,
         {
           to: 'body',
-          disabled: !appendToBody,
+          disabled: !appendToBody
         },
-        [popper],
-      ),
+        [popper]
+      )
     ])
-  },
+  }
 })
 </script>

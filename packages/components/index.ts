@@ -30,6 +30,7 @@ import { PoTableColumn} from './table'
 
 
 // 反馈
+import PoPopper from './popper'
 import Popover from './popover'
 import { useMessage } from './message'
 import progress from './progress';
@@ -40,6 +41,7 @@ import { Anchor, AnchorLink } from './anchor'
 const components = [
   Table,
   PoTableColumn,
+  PoPopper,
 
   Button,
   Icon,

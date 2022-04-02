@@ -4,7 +4,10 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Basic: typeof import('./../../../../../../components/table/demos/basic.vue')['default']
+    'demo-popper-basic': typeof import('@/demo/popper/demos/demo-popper-basic.vue')['default']
+    PoPopper: typeof import('@/components/popper')['PoPopper']
+    PoPopperContent: typeof import('@/components/popper')['PoPopperContent']
+    PoPopperTrigger: typeof import('@/components/popper')['PoPopperTrigger']
   }
 }
 
