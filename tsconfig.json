@@ -14,12 +14,9 @@
       "ESNext", "DOM"
     ],
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["packages/*"],
-      "pomelo-plus": ["packages/index.ts"]
-    }
+    "types": ["unplugin-vue-define-options"]
   },
+  "include": ["packages"],
   "exclude": [
     "node_modules"
   ]

@@ -1,5 +1,5 @@
 <script lang="ts">
-// import { PatchFlags } from '@/utils'
+// import { PatchFlags } from '@pomelo-plus/utils'
 import { createVNode, defineComponent, renderSlot } from 'vue'
 
 import { defaultProps, useSpace } from './useSpace'

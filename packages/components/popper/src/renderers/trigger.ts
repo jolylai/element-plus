@@ -1,5 +1,5 @@
 import { VNode, Ref, ComponentPublicInstance, cloneVNode } from 'vue'
-import { getFirstValidNode } from '@/utils/vue/vnode'
+import { getFirstValidNode } from '@pomelo-plus/utils/vue/vnode'
 
 type EventHandler = (e: Event) => any
 

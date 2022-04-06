@@ -1,80 +1,80 @@
-import type { App, Plugin } from 'vue'
+export * from './popper'
+export * from './tooltip'
 
-import ElProgress from './progress'
-import ELAffix from './affix'
-import ElEllipsis from './ellipsis'
+// import type { App, Plugin } from 'vue'
 
-// 配置
-import ConfigProvider from './config-provider'
+// import ElProgress from './progress'
+// import ELAffix from './affix'
+// import ElEllipsis from './ellipsis'
 
-// 通用
-import Button from './button'
-import Icon from './icon'
-import Avatar from './avatar'
+// // 配置
+// import ConfigProvider from './config-provider'
 
-// 布局
-import Space from './space'
-import Divider from './divider'
-import { Row, Col } from './grid'
+// // 通用
+// import Button from './button'
+// import Icon from './icon'
+// import Avatar from './avatar'
 
-// 数据录入
-import Image from './image'
-import Upload from './upload'
-import Cascader from './cascader-panel'
+// // 布局
+// import Space from './space'
+// import Divider from './divider'
+// import { Row, Col } from './grid'
 
-// 数据展示
-import Badge from './badge';
-import Table from './table'
-import { PoTableColumn} from './table'
+// // 数据录入
+// import Image from './image'
+// import Upload from './upload'
+// import Cascader from './cascader-panel'
 
+// // 数据展示
+// import Badge from './badge';
+// import Table from './table'
+// import { PoTableColumn} from './table'
 
+// // 反馈
+// import PoPopper from './popper'
+// import Popover from './popover'
+// import { useMessage } from './message'
+// import progress from './progress';
 
-// 反馈
-import PoPopper from './popper'
-import Popover from './popover'
-import { useMessage } from './message'
-import progress from './progress';
+// import { Anchor, AnchorLink } from './anchor'
 
+// const components = [
+//   Table,
+//   PoTableColumn,
+//   PoPopper,
 
-import { Anchor, AnchorLink } from './anchor'
+//   Button,
+//   Icon,
+//   Avatar,
 
-const components = [
-  Table,
-  PoTableColumn,
-  PoPopper,
+//   Space,
+//   Divider,
+//   Row,
+//   Col,
 
-  Button,
-  Icon,
-  Avatar,
+//   ElProgress,
+//   ELAffix,
+//   ElEllipsis,
+//   Image,
+//   Upload,
+//   Popover,
+//   ConfigProvider,
+//   Anchor,
+//   AnchorLink,
 
-  Space,
-  Divider,
-  Row,
-  Col,
+//   Badge,
+//   Cascader
+// ] as Plugin[]
 
-  ElProgress,
-  ELAffix,
-  ElEllipsis,
-  Image,
-  Upload,
-  Popover,
-  ConfigProvider,
-  Anchor,
-  AnchorLink,
+// const install = (app: App) => {
+//   components.forEach(component => {
+//     // @ts-ignore
+//     app.component(component.name, component)
+//   })
+// }
 
-  Badge,
-  Cascader
-] as Plugin[]
+// export default ({
+//   install,
+// } as Plugin)
 
-const install = (app: App) => {
-  components.forEach(component => {
-    // @ts-ignore
-    app.component(component.name, component)
-  })
-}
-
-export default ({
-  install,
-} as Plugin)
-
-export { useMessage }
+// export { useMessage }

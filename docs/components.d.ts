@@ -5,9 +5,11 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'demo-popper-basic': typeof import('@/demo/popper/demos/demo-popper-basic.vue')['default']
-    PoPopper: typeof import('@/components/popper')['PoPopper']
-    PoPopperContent: typeof import('@/components/popper')['PoPopperContent']
-    PoPopperTrigger: typeof import('@/components/popper')['PoPopperTrigger']
+    'demo-tooltip-basic': typeof import('@/demo/tooltip/demos/demo-tooltip-basic.vue')['default']
+    PoPopper: typeof import('pomelo-plus')['PoPopper']
+    PoPopperContent: typeof import('pomelo-plus')['PoPopperContent']
+    PoPopperTrigger: typeof import('pomelo-plus')['PoPopperTrigger']
+    PoTooltip: typeof import('pomelo-plus')['PoTooltip']
   }
 }
 

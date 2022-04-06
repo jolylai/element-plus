@@ -22,7 +22,7 @@ import { TABLE_INJECTION_KEY } from './tokens'
 import useStyle from './table/style-helper'
 import { hColgroup } from './h-helper'
 
-import { useNamespace } from '@/hooks'
+import { useNamespace } from '@pomelo-plus/hooks'
 
 let tableIdSeed = 1
 

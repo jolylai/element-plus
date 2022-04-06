@@ -1,7 +1,7 @@
 {
   "name": "pomelo-plus",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "repository": "git@github.com:jolylai/pomelo-plus.git",
   "author": "jolylai <jolylai163@163.com>",
@@ -11,10 +11,7 @@
     "build": "rollup -c",
     "serve": "vite preview",
     "test": "jest",
-    "build:theme": "npx sass --watch theme:dist/theme",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "build:theme": "npx sass --watch theme:dist/theme"
   },
   "license": "MIT",
   "config": {
@@ -29,6 +26,7 @@
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-typescript": "^7.13.0",
     "@rollup/plugin-babel": "^5.3.0",
+    "@types/lodash": "^4.14.181",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/babel-preset-jsx": "^1.2.4",
@@ -46,10 +44,10 @@
     "sass": "^1.34.0",
     "typescript": "^4.3.2",
     "unplugin-vue-components": "^0.18.5",
+    "unplugin-vue-define-options": "^0.6.0",
     "vite": "^2.3.4",
     "vite-plugin-md": "^0.6.7",
     "vite-plugin-style-import": "^0.10.1",
-    "vitepress": "^0.22.3",
     "vue": "^3.2.2",
     "vue-jest": "^5.0.0-alpha.10",
     "vue-loader": "^15.9.7",
@@ -58,7 +56,11 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.6",
+    "@pomelo-plus/components": "workspace:^0.0.1",
+    "@pomelo-plus/hooks": "workspace:^0.0.1",
+    "@pomelo-plus/theme": "workspace:^0.0.1",
+    "@pomelo-plus/utils": "workspace:^0.0.1",
     "@popperjs/core": "^2.9.2",
-    "vite-plugin-vitepress-demo": "^1.1.5"
+    "lodash": "^4.17.21"
   }
 }

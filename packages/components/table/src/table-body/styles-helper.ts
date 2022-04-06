@@ -1,4 +1,4 @@
-import { useNamespace } from '@/hooks'
+import { useNamespace } from '@pomelo-plus/hooks'
 import { TableBodyProps } from './defaults'
 
 export default function useStyle<T>(props: Partial<TableBodyProps<T>>) {

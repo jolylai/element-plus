@@ -4,7 +4,6 @@ import { hasOwn } from '@vue/shared'
 
 import type { ExtractPropTypes, PropType } from 'vue'
 
-
 const wrapperKey = Symbol()
 export type PropWrapper<T> = { [wrapperKey]: T }
 

@@ -8,13 +8,13 @@
 
 <script lang="ts">
 export default {
-  name: 'PoAffix',
+  name: 'PoAffix'
 }
 </script>
 
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
-import { getScrollContainer, off, on } from '@/utils/dom'
+import { getScrollContainer, off, on } from '@pomelo-plus/utils/dom'
 
 interface AffixProps {
   position?: 'top' | 'bottom'
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<AffixProps>(), {
   offset: 0,
   position: 'top',
   zIndex: 100,
-  target: '',
+  target: ''
 })
 
 const emit = defineEmits<{
@@ -41,7 +41,7 @@ const state = reactive({
   height: 0,
   clientHeight: 0,
   scrollTop: 0,
-  transform: 0,
+  transform: 0
 })
 
 const root = ref<HTMLElement>()
@@ -51,7 +51,7 @@ const scrollContainer = ref()
 const rootStyle = computed(() => {
   return {
     height: state.fixed ? `${state.height}px` : '',
-    width: state.fixed ? `${state.width}px` : '',
+    width: state.fixed ? `${state.width}px` : ''
   }
 })
 
@@ -69,7 +69,7 @@ const affixStyle = computed(() => {
     top: props.position === 'top' ? offset : '',
     bottom: props.position === 'bottom' ? offset : '',
     transform: transform,
-    zIndex: props.zIndex,
+    zIndex: props.zIndex
   }
 })
 
@@ -116,7 +116,7 @@ watch(
   () => state.fixed,
   fixed => {
     emit('change', fixed)
-  },
+  }
 )
 
 onMounted(() => {

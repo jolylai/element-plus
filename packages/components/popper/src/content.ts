@@ -1,4 +1,4 @@
-import { buildProps, definePropType } from '@/utils'
+import { buildProps, definePropType } from '@pomelo-plus/utils'
 
 export const usePopperContentProps = buildProps({
   referenceEl: {
