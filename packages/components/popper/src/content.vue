@@ -1,5 +1,6 @@
 <template>
   <span ref="popperContentRef">
+    <span>jjjj</span>
     <slot />
   </span>
 </template>
@@ -21,19 +22,22 @@ const { popperInstanceRef, contentRef, triggerRef } = inject(
 
 const createPopperInstance = (referenceEl, popperContentEl) => {
   return createPopper(referenceEl, popperContentEl, {
-    placement: 'right'
+    placement: 'right',
   })
 }
 
 onMounted(() => {
   watch(
     triggerRef,
-    referenceEl => {
+    (referenceEl) => {
       console.log('referenceEl: ', referenceEl)
-      createPopperInstance(popperContentRef.value, referenceEl)
+      console.log('popperContentRef.value: ', popperContentRef.value)
+      if (popperContentRef.value && referenceEl) {
+        createPopperInstance(referenceEl, popperContentRef.value)
+      }
     },
     {
-      immediate: true
+      immediate: true,
     }
   )
 })
@@ -41,6 +45,6 @@ onMounted(() => {
 
 <script lang="ts">
 export default {
-  name: 'PoPopper'
+  name: 'PoPopper',
 }
 </script>

@@ -1,8 +1,14 @@
 <template>
-  <div ref="popperTriggerRef">
+  <span ref="popperTriggerRef" v-bind="$attrs">
     <slot></slot>
-  </div>
+  </span>
 </template>
+
+<script lang="ts">
+export default {
+  inheritAttrs: true,
+}
+</script>
 
 <script lang="ts" setup>
 import { inject, onMounted, ref } from 'vue'

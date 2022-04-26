@@ -94,7 +94,7 @@ function getComponentsSidebar() {
       children: [
         { text: 'Table', link: '/components/table/' },
         { text: 'popper', link: '/components/popper/' },
-        { text: 'tooltip', link: '/components/tooltip/' },
+        { text: 'Tooltip', link: '/components/tooltip/' },
       ],
     },
   ]

@@ -1,6 +1,8 @@
 import { withInstall } from '@pomelo-plus/utils'
-import ToolTip from './src/tooltip.vue'
+import Tooltip from './src/tooltip.vue'
 
-const PoToolTip = withInstall(ToolTip)
+const PoTooltip = withInstall(Tooltip)
 
-export default PoToolTip
+export { PoTooltip }
+
+export default PoTooltip
