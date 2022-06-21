@@ -1,0 +1,36 @@
+:root {
+  /* 产品色 */
+  --color-primary: #2177b8;
+  --color-hover: #40a9ff;
+  --color-click: #096dd9;
+  --color-active: #1890ff;
+
+  /* 功能色 */
+  --color-success: #f05a46;
+  --color-warning: #f7b924;
+  --color-danger: #d9534f;
+
+  /* 中性色 */
+
+  /* border */
+  --border-color: hsv(0, 0, 85%);
+}
+
+.btn {
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--border-color);
+  border-radius: 2px;
+  padding: 8px 16px;
+  background-color: #fff;
+}
+
+.btn.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.btn.btn-success {
+  background-color: var(--color-success);
+  color: #fff;
+}
