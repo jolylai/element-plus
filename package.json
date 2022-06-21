@@ -6,6 +6,7 @@
   "repository": "git@github.com:jolylai/pomelo-plus.git",
   "author": "jolylai <jolylai163@163.com>",
   "scripts": {
+    "dev": "pnpm -C play dev",
     "start": "vite ",
     "website:build": "vite build",
     "build": "rollup -c",
