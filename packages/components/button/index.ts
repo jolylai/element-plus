@@ -1,7 +1,6 @@
-import Button from './src/index.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Button from './src/button.vue'
 
-Button.install = app => {
-  app.component(Button.name, Button)
-}
+const PoButton = withInstall(Button)
 
-export default Button
+export default PoButton

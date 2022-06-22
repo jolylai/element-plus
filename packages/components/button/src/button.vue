@@ -1,11 +1,14 @@
 <template>
-  <button :class="buttonClass">
-    <slot></slot>
+  <button :class="[ns.b()]">
+    <span>
+      <slot></slot>
+    </span>
   </button>
 </template>
 
 <script lang="ts">
 import { computed } from 'vue'
+
 export default {
   name: 'PoButton',
 }
@@ -13,6 +16,7 @@ export default {
 
 <script lang="ts" setup>
 import { withDefaults } from 'vue'
+import { useNamespace } from '@pomelo-plus/hooks'
 
 export type ButtonSize = 'small' | 'medium' | 'default' | 'large'
 
@@ -36,4 +40,6 @@ const buttonClass = computed(() => {
 
   return classList
 })
+
+const ns = useNamespace('button')
 </script>
