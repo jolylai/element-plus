@@ -1,0 +1,8 @@
+@use 'common/var' as *;
+@use 'mixins/var' as *;
+
+:root {
+  @include set-css-var-value('color-white', $color-white);
+  @include set-component-css-var('border-color', $border-color);
+  @include set-component-css-var('border-radius', $border-radius);
+}

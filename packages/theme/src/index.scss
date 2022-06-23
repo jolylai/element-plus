@@ -1,24 +1,26 @@
+@use './var.scss';
+
 // 通用组件
 @use './button.scss';
-@use './avatar.scss';
+// @use './avatar.scss';
 
-// 布局
-@use './divider.scss';
-@use './row.scss';
-@use './col.scss';
+// // 布局
+// @use './divider.scss';
+// @use './row.scss';
+// @use './col.scss';
 
-// 数据展示
-@use './table.scss';
-@use './badge.scss';
+// // 数据展示
+// @use './table.scss';
+// @use './badge.scss';
 
-@use './affix.scss';
-@use './ellipsis.scss';
-@use './image.scss';
-@use './upload.scss';
-@use './icon.scss';
-@use './space.scss';
-@use './message.scss';
-@use './anchor.scss';
+// @use './affix.scss';
+// @use './ellipsis.scss';
+// @use './image.scss';
+// @use './upload.scss';
+// @use './icon.scss';
+// @use './space.scss';
+// @use './message.scss';
+// @use './anchor.scss';
 
-// 反馈
-@use './progress.scss';
+// // 反馈
+// @use './progress.scss';

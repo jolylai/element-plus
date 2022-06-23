@@ -1,104 +1,27 @@
-@import './mixins/mixins.scss';
-@import './common/var.scss';
-@import './mixins/button';
+@use 'sass:map';
+
+@use 'common/var' as *;
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+@use './mixins/function' as *;
 
 @include b(button) {
-  display: inline-block;
-  color: rgb(51, 54, 57);
-  border: 1px solid;
-  border-color: $--color-text-secondary;
-  background-color: $--color-white;
+  @include set-component-css-var('button', $button);
+}
 
-  @include button-size(
-    $--padding-xs,
-    $--padding-xs,
-    $--font-size-base,
-    $--border-radius-small
-  );
+@include b(button) {
+  font-size: 14px;
+  line-height: 1.5715;
 
-  &:hover,
-  &:focus {
-    color: $--color-primary;
-    border-color: $--color-primary-light-7;
-    background-color: $--color-primary-light-9;
+  background-color: getCssVar('color-white');
+  border-style: solid;
+  border-width: 1px;
+  border-color: getCssVar('button', 'border-color');
+  border-radius: getCssVar('border-radius', 'base');
+
+  &:hover {
+    background-color: getCssVar('button', 'hover', 'bg-color');
   }
 
-  &:active {
-    color: mix(
-      $--color-black,
-      $--color-primary,
-      $--button-active-shade-percent
-    );
-    border-color: mix(
-      $--color-black,
-      $--color-primary,
-      $--button-active-shade-percent
-    );
-    outline: none;
-  }
-
-  // type
-  @include e(primary) {
-    @include button-variant(
-      $--button-primary-font-color,
-      $--button-primary-background-color,
-      $--button-primary-border-color
-    );
-  }
-  @include e(success) {
-    @include button-variant(
-      $--button-success-font-color,
-      $--button-success-background-color,
-      $--button-success-border-color
-    );
-  }
-  @include e(warning) {
-    @include button-variant(
-      $--button-warning-font-color,
-      $--button-warning-background-color,
-      $--button-warning-border-color
-    );
-  }
-  @include e(danger) {
-    @include button-variant(
-      $--button-danger-font-color,
-      $--button-danger-background-color,
-      $--button-danger-border-color
-    );
-  }
-  @include e(info) {
-    @include button-variant(
-      $--button-info-font-color,
-      $--button-info-background-color,
-      $--button-info-border-color
-    );
-  }
-
-  // size
-  @include e(small) {
-    @include button-size(
-      $--padding-xss,
-      $--padding-xss,
-      $--button-small-font-size,
-      $--button-small-border-radius
-    );
-  }
-
-  @include e(medium) {
-    @include button-size(
-      $--padding-xss,
-      $--padding-xs,
-      $--button-medium-font-size,
-      $--border-radius-small
-    );
-  }
-
-  @include e(large) {
-    @include button-size(
-      $--padding-xs,
-      $--padding-sm,
-      $--font-size-large,
-      $--border-radius-base
-    );
-  }
+   
 }

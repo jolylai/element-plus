@@ -10,8 +10,8 @@ export * from './tooltip'
 // // 配置
 // import ConfigProvider from './config-provider'
 
-// // 通用
-// import Button from './button'
+// 通用
+export * from './button'
 // import Icon from './icon'
 // import Avatar from './avatar'
 
