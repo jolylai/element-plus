@@ -1,7 +1,6 @@
-import Space from './src/index.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Space from './src/space'
 
-Space.install = app => {
-  app.component(Space.name, Space)
-}
+export const PoSpace = withInstall(Space)
 
-export default Space
+export default PoSpace

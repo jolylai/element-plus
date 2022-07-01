@@ -41,6 +41,37 @@ $color-danger: map.get($colors, 'danger', 'base') !default;
 $color-error: map.get($colors, 'error', 'base') !default;
 $color-info: map.get($colors, 'info', 'base') !default;
 
+$types: primary, success, warning, danger, error, info;
+
+// https://sass-lang.com/documentation/values/maps#immutability
+// mix colors with white/black to generate light/dark level
+@mixin set-color-mix-level(
+  $type,
+  $number,
+  $mode: 'light',
+  $mix-color: $color-white
+) {
+  $colors: map.deep-merge(
+    (
+      $type: (
+        '#{$mode}-#{$number}':
+          mix(
+            $mix-color,
+            map.get($colors, $type, 'base'),
+            math.percentage(math.div($number, 10))
+          ),
+      ),
+    ),
+    $colors
+  ) !global;
+}
+
+@each $type in $types {
+  @for $i from 1 through 9 {
+    @include set-color-mix-level($type, $i, 'light', $color-white);
+  }
+}
+
 // Border
 $border-color: () !default;
 $border-color: map.merge(

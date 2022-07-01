@@ -23,5 +23,14 @@
     background-color: getCssVar('button', 'hover', 'bg-color');
   }
 
-   
+  &:active {
+    color: getCssVar('button', 'active', 'text-color');
+    border-color: getCssVar('button', 'active', 'border-color');
+    background-color: getCssVar('button', 'active', 'bg-color');
+    outline: none;
+  }
+
+  // @include button-size(
+  //   map.get($button-padding-vertical, $button)
+  // )
 }

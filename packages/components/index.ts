@@ -16,7 +16,7 @@ export * from './button'
 // import Avatar from './avatar'
 
 // // 布局
-// import Space from './space'
+export * from './space'
 // import Divider from './divider'
 // import { Row, Col } from './grid'
 

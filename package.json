@@ -10,7 +10,9 @@
     "build": "rollup -c",
     "serve": "vite preview",
     "test": "jest",
-    "build:theme": "npx sass --watch theme:dist/theme"
+    "build:theme": "npx sass --watch theme:dist/theme",
+    "docs:start": "pnpm run -C docs start",
+    "docs:build": "pnpm run -C docs build"
   },
   "license": "MIT",
   "config": {
