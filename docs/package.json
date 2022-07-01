@@ -13,7 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "vite-plugin-inspect": "^0.4.3",
-    "vitepress": "^0.22.3"
+    "vitepress": "1.0.0-alpha.4"
   },
   "dependencies": {
     "pomelo-plus": "workspace:^0.0.1"

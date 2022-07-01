@@ -12,14 +12,11 @@ const vitePluginMdDemo = (): Plugin => {
     enforce: 'pre',
 
     transform(code: string, id: string) {
-
       if (/\.md$/.test(id)) {
-        console.log('id: ', id)
-        console.log('code: ', code)
         return transformCode(id, code)
       }
       return code
-    }
+    },
   }
 }
 
