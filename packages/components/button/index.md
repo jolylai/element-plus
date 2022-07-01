@@ -6,7 +6,7 @@
 
 按钮的 type 分别为 default、primary、info、success、warning 和 error。
 
-<!-- <demo src='./demos/type.vue' /> -->
+<demo src='./demos/type.vue' />
 
 ## 基础
 

@@ -1,23 +1,38 @@
-import type { Plugin } from 'vite'
+import type { PluginOption } from 'vite'
+import { createFilter } from '@rollup/pluginutils'
 
 function transformCode(code: string, id: string) {
+  console.log('code: ', code)
   const reg = /<demo([^>]*)/g
 
   return code
 }
 
-const vitePluginMdDemo = (): Plugin => {
+const vitePluginVitepressDemo = (): PluginOption => {
+  console.log('vitePluginVitepressDemo')
+
+  /** filter out files which aren't Markdown files */
+  const filter = createFilter(/\.md$/)
+
   return {
     name: 'vite-plugin-vitepress-demo',
     enforce: 'pre',
-
+    load(id) {
+      console.log('id: ', id)
+      return null
+    },
     transform(code: string, id: string) {
-      if (/\.md$/.test(id)) {
+      console.log('code: ', code)
+      console.log('id: ', id)
+      if (!filter(id)) return
+
+      try {
         return transformCode(id, code)
+      } catch (error) {
+        this.error(error)
       }
-      return code
     },
   }
 }
 
-export default vitePluginMdDemo
+export default vitePluginVitepressDemo

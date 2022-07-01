@@ -1,4 +1,4 @@
-import { defineConfig, Plugin } from 'vite'
+import { defineConfig } from 'vite'
 import path from 'path'
 import { kebabCase } from 'lodash'
 import Inspect from 'vite-plugin-inspect'
@@ -9,8 +9,7 @@ import Docs from './.vitepress/plugins/docs'
 import Demo from './.vitepress/plugins/demo'
 
 export default defineConfig({
-  // root: '../packages',
-  // plugins: [Docs()],
+  plugins: [Demo()],
 })
 
 defineConfig({

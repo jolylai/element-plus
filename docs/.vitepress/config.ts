@@ -23,10 +23,7 @@ function getComponentsSidebar() {
   return [
     {
       text: '通用组件',
-      items: [
-        { text: 'Button 按钮', link: '/components/button/' },
-        { text: 'Table', link: '/components/table/' },
-      ],
+      items: [{ text: 'Button 按钮', link: '/components/button/' }],
     },
     {
       text: '数据展示',
