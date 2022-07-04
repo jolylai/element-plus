@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitepress'
+import Components from 'unplugin-vue-components/vite'
+
 import Demo from './plugins/demo'
+import PomeloPlusResolver from './plugins/resolver'
 
 export default defineConfig({
   title: 'Pomelo Plus',
@@ -19,12 +22,13 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [Demo()],
-    server: {
-      watch: {
-        cwd: process.cwd(),
-      },
-    },
+    plugins: [
+      Demo(),
+      Components({
+        dts: process.cwd(),
+        resolvers: [PomeloPlusResolver()],
+      }),
+    ],
   },
 })
 
