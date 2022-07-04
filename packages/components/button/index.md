@@ -2,17 +2,9 @@
 
 按钮用来触发一些操作。
 
-## 按钮类型
-
-按钮的 type 分别为 default、primary、info、success、warning 和 error。
-
-<demo src='./demos/type.vue' />
-
 ## 基础
 
-按钮的 type 分别为 default、primary、info、success、warning 和 error。
-
-<!-- <demo src='./demos/basic.vue' /> -->
+<demo src='./demos/basic.vue' />
 
 按钮样式的变化： 默认显示 -> 鼠标移入 -> 鼠标点击 -> 按钮聚焦
 
@@ -41,11 +33,17 @@ button {
 }
 ```
 
+## 按钮类型
+
+按钮的 type 分别为 default、primary、info、success、warning 和 error。
+
+<demo src='./demos/type.vue' />
+
 ## 大小
 
 有 tiny、small、medium 和 large 尺寸。
 
-<!-- <demo src='./demos/size.vue' /> -->
+<demo src='./demos/size.vue' />
 
 修改按钮的大小，其实就是修改按钮的 padding font-size 和 border-radius
 
