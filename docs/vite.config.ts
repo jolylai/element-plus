@@ -5,7 +5,6 @@ import Inspect from 'vite-plugin-inspect'
 
 import Components from 'unplugin-vue-components/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
-import Docs from './.vitepress/plugins/docs'
 import Demo from './.vitepress/plugins/demo'
 
 export default defineConfig({

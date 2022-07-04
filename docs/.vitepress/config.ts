@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import Demo from './plugins/demo'
 
 export default defineConfig({
   title: 'Pomelo Plus',
@@ -15,6 +16,14 @@ export default defineConfig({
     ],
     sidebar: {
       '/components/': getComponentsSidebar(),
+    },
+  },
+  vite: {
+    plugins: [Demo()],
+    server: {
+      watch: {
+        cwd: process.cwd(),
+      },
     },
   },
 })
