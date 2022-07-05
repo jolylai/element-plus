@@ -6,7 +6,7 @@ import PomeloPlusResolver from './plugins/resolver'
 
 export default defineConfig({
   title: 'Pomelo Plus',
-  srcDir: '../packages',
+  // srcDir: '../packages',
   description: 'Vite & Vue powered static site generator.',
   lastUpdated: true,
   themeConfig: {
@@ -25,7 +25,7 @@ export default defineConfig({
     plugins: [
       Demo(),
       Components({
-        dts: process.cwd(),
+        // dts: process.cwd(),
         resolvers: [PomeloPlusResolver()],
       }),
     ],

@@ -2,7 +2,12 @@ import { AttributeNode, baseParse, ElementNode } from '@vue/compiler-core'
 import type { PluginOption } from 'vite'
 import { createFilter } from '@rollup/pluginutils'
 
+import fs from 'fs'
+import path from 'path'
+
 let index = 0
+
+const ComponentsDir = path.resolve(process.cwd(), '../packages')
 
 function createComponentName() {
   return `Demo${index++}`
@@ -39,8 +44,8 @@ function transformCode(code: string, id: string) {
     const ast = parseDemoElement(match)
     const componentName = createComponentName()
 
-    const path = ast.props.src
-    scripts.push(`import ${componentName} from '${path}'`)
+    const filePath = path.resolve(id.replace('index.md', ''), ast.props.src)
+    scripts.push(`import ${componentName} from '${filePath}'`)
 
     return `<${componentName} />`
   })
@@ -55,16 +60,26 @@ function transformCode(code: string, id: string) {
 const vitePluginVitepressDemo = (): PluginOption => {
   /** filter out files which aren't Markdown files */
   const filter = createFilter(/\.md$/)
+  let filePath = ''
 
   return {
     name: 'vite-plugin-vitepress-demo',
     enforce: 'pre',
+    load(id: string) {
+      if (!filter(id)) return
+
+      if (id.indexOf('/components') > -1) {
+        filePath = path.join(ComponentsDir, id)
+
+        return fs.readFileSync(filePath, 'utf-8')
+      }
+    },
 
     transform(code: string, id: string) {
       if (!filter(id)) return
 
       try {
-        return transformCode(code, id)
+        return transformCode(code, filePath)
       } catch (error) {
         this.error(error)
       }
