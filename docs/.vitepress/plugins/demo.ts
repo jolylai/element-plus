@@ -2,8 +2,6 @@ import { AttributeNode, baseParse, ElementNode } from '@vue/compiler-core'
 import type { PluginOption } from 'vite'
 import { createFilter } from '@rollup/pluginutils'
 
-import path from 'path'
-
 let index = 0
 
 function createComponentName() {

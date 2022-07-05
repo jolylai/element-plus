@@ -7,11 +7,15 @@ import PomeloPlusResolver from './plugins/resolver'
 import Inspect from 'vite-plugin-inspect'
 export default defineConfig({
   title: 'Pomelo Plus',
-  // srcDir: '../packages',
   description: 'Vite & Vue powered static site generator.',
   lastUpdated: true,
   themeConfig: {
     nav: [
+      {
+        text: '指南',
+        link: '/guide/getting-started',
+        activeMatch: '^/guide/',
+      },
       {
         text: '组件',
         link: '/components/button/',
