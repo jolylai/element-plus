@@ -4,6 +4,7 @@ import Components from 'unplugin-vue-components/vite'
 import Demo from './plugins/demo'
 import PomeloPlusResolver from './plugins/resolver'
 
+import Inspect from 'vite-plugin-inspect'
 export default defineConfig({
   title: 'Pomelo Plus',
   // srcDir: '../packages',
@@ -23,9 +24,10 @@ export default defineConfig({
   },
   vite: {
     plugins: [
+      Inspect(),
       Demo(),
       Components({
-        // dts: process.cwd(),
+        dts: true,
         resolvers: [PomeloPlusResolver()],
       }),
     ],

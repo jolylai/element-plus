@@ -1,25 +1,6 @@
 import { kebabCase } from 'lodash'
-import path from 'path'
-import {
-  ComponentResolver,
-  SideEffectsInfo,
-} from 'unplugin-vue-components/types'
 
-const ComponentsDir = path.resolve(process.cwd(), '../packages/components')
-const ThemeDir = path.resolve(process.cwd(), '../packages/theme/src')
-
-const componentsPath = (partialName: string) => {
-  return path.join(ComponentsDir, partialName)
-}
-
-const resolveScss = (filename: string) =>
-  path.join(ThemeDir, `${filename}.scss`)
-
-function getSideEffectsLegacy(
-  partialName: string
-): SideEffectsInfo | undefined {
-  return [resolveScss('base'), resolveScss(partialName)]
-}
+import { ComponentResolver } from 'unplugin-vue-components/types'
 
 export default function PomeloPlusResolver(): ComponentResolver[] {
   return [
@@ -32,8 +13,11 @@ export default function PomeloPlusResolver(): ComponentResolver[] {
 
         return {
           name,
-          path: componentsPath(partialName),
-          sideEffects: getSideEffectsLegacy(partialName),
+          path: `@pomelo-plus/components/${partialName}`,
+          sideEffects: [
+            '@pomelo-plus/theme/src/base.scss',
+            `@pomelo-plus/theme/src/${partialName}.scss`,
+          ],
         }
       },
     },
