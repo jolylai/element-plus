@@ -3,6 +3,31 @@
 
 @use '../mixins/function.scss' as *;
 
+// Font
+// 字体大小
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    base: 14px,
+    lg: 16px,
+    sm: 12px,
+  ),
+  $font-size
+);
+
+$text-color: () !default;
+$text-color: map.merge(
+  (
+    default: 24px,
+    secondary: 16px,
+    inverse: 12px,
+    dark: 8px,
+    dark-secondary: 4px,
+  ),
+  $text-color
+);
+
+
 // Color
 $colors: () !default;
 $colors: map.deep-merge(
@@ -97,17 +122,6 @@ $margin: map.merge(
   $margin
 );
 
-$text-color: () !default;
-$text-color: map.merge(
-  (
-    default: 24px,
-    secondary: 16px,
-    inverse: 12px,
-    dark: 8px,
-    dark-secondary: 4px,
-  ),
-  $text-color
-);
 
 // Border
 $border-color: () !default;

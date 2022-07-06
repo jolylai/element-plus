@@ -1,19 +1,42 @@
-import { Fragment, Text, Comment, openBlock, createBlock } from 'vue'
+import { Fragment, Text, Comment, openBlock, createBlock, isVNode } from 'vue'
 import type { VNode, VNodeChild, VNodeTypes } from 'vue'
 
 type Children = VNodeTypes[] | VNodeTypes
 
+export function isFragment(node: VNode): boolean
+export function isFragment(node: unknown): node is VNode
+export function isFragment(node: unknown): node is VNode {
+  return isVNode(node) && node.type === Fragment
+}
+
+export function isText(node: VNode): boolean
+export function isText(node: unknown): node is VNode
+export function isText(node: unknown): node is VNode {
+  return isVNode(node) && node.type === Text
+}
+
+export function isComment(node: VNode): boolean
+export function isComment(node: unknown): node is VNode
+export function isComment(node: unknown): node is VNode {
+  return isVNode(node) && node.type === Comment
+}
+
 const TEMPLATE = 'template'
+export function isTemplate(node: VNode): boolean
+export function isTemplate(node: unknown): node is VNode
+export function isTemplate(node: unknown): node is VNode {
+  return isVNode(node) && node.type === TEMPLATE
+}
 
-export const isFragment = (node: VNodeChild) =>
-  (node as VNode).type === Fragment
-
-export const isText = (node: VNodeChild) => (node as VNode).type === Text
-
-export const isComment = (node: VNodeChild) => (node as VNode).type === Comment
-
-export const isTemplate = (node: VNodeChild) =>
-  (node as VNode).type === TEMPLATE
+/**
+ * determine if the element is a valid element type rather than fragments and comment e.g. <template> v-if
+ * @param node {VNode} node to be tested
+ */
+export function isValidElementNode(node: VNode): boolean
+export function isValidElementNode(node: unknown): node is VNode
+export function isValidElementNode(node: unknown): node is VNode {
+  return isVNode(node) && !isFragment(node) && !isComment(node)
+}
 
 export enum PatchFlags {
   TEXT = 1,
@@ -48,7 +71,7 @@ function getChildren(node: VNode, depth: number): undefined | VNode {
 
 export const getFirstValidNode = (
   nodes: VNodeChild,
-  maxDepth = 3,
+  maxDepth = 3
 ): ReturnType<typeof getChildren> => {
   if (Array.isArray(nodes)) {
     return getChildren(nodes[0] as VNode, maxDepth)
@@ -62,7 +85,7 @@ export function renderBlock(
   props: any,
   children?: Children,
   patchFlg?: number,
-  patchProps?: string[],
+  patchProps?: string[]
 ) {
   return openBlock(), createBlock(vnode, props, children, patchFlg, patchProps)
 }

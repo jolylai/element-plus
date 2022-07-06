@@ -6,7 +6,7 @@ const spaceItemProps = buildProps({
   prefixCls: {
     type: String,
   },
-})
+} as const)
 
 export default defineComponent({
   name: 'PoSpaceItem',
@@ -16,7 +16,7 @@ export default defineComponent({
     const classes = computed(() => `${props.prefixCls || ns.b()}__item`)
 
     return () => {
-      return h('div', { class: classes }, renderSlot(slots, 'default'))
+      return h('div', { class: classes.value }, renderSlot(slots, 'default'))
     }
   },
 })
