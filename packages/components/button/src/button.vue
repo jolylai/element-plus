@@ -1,5 +1,5 @@
 <template>
-  <button :class="[ns.b()]">
+  <button :class="[ns.b(), ns.m(type), ns.m(size)]">
     <span>
       <slot></slot>
     </span>

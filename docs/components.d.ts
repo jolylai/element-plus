@@ -5,6 +5,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     PoButton: typeof import('@pomelo-plus/components/button')['default']
+    PoSpace: typeof import('@pomelo-plus/components/space')['default']
     PoTooltip: typeof import('pomelo-plus')['default']
   }
 }

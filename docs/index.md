@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: VitePress
+title: Pomelo Plus
 titleTemplate: Vite & Vue Powered Static Site Generator
 
 hero:
-  name: VitePress
+  name: Pomelo Plus
   text: Vite & Vue Powered Static Site Generator
   tagline: Simple, powerful, and performant. Meet the modern SSG framework you've always wanted.
   actions:

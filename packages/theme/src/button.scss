@@ -2,6 +2,7 @@
 
 @use 'common/var' as *;
 @use 'mixins/mixins' as *;
+@use 'mixins/button' as *;
 @use 'mixins/var' as *;
 @use './mixins/function' as *;
 
@@ -10,30 +11,54 @@
 }
 
 @include b(button) {
-  font-size: 14px;
-  line-height: 1.5715;
-
-  // box
-  padding: 6px 16px;
-
-  background-color: getCssVar('color-primary');
+  padding:getCssVar('padding', 'xxs') getCssVar('padding', 'sm');
+  background-color: getCssVar('color-white');
   border-style: solid;
   border-width: 1px;
   border-color: getCssVar('button', 'border-color');
-  border-radius: getCssVar('border-radius', 'base');
+  border-radius: getCssVar('border-radius', 'small');
 
-  &:hover {
-    background-color: getCssVar('button', 'hover', 'bg-color');
+  transition: all .2s;
+
+  &:hover,&:focus {
+    border-color: getCssVar('button', 'hover', 'border-color');
+    color: getCssVar('button', 'hover', 'border-color');
   }
 
   &:active {
-    color: getCssVar('button', 'active', 'text-color');
     border-color: getCssVar('button', 'active', 'border-color');
-    background-color: getCssVar('button', 'active', 'bg-color');
+    color: getCssVar('button', 'active', 'border-color');
     outline: none;
   }
 
-  // @include button-size(
-  //   map.get($button-padding-vertical, $button)
-  // )
+  //  按钮类型
+  @each $type in (primary, success, warning, danger, info) {
+    @include m($type) {
+      background-color: getCssVar('color', $type);
+      border-color: getCssVar('color', $type);
+      color: getCssVar('color', 'white');
+      
+      &:hover,&:focus {
+        background-color: getCssVar('color', $type);
+        border-color: getCssVar('button', 'hover', 'border-color');
+        color: getCssVar('color', 'white');
+      }
+    
+      &:active {
+        border-color: getCssVar('button', 'active', 'border-color');
+        outline: none;
+      }
+    }
+  }
+
+  //  size
+  @each $size in (large, small) {
+    @include m($size) {
+      @include button-size(
+        map.get($button-padding-vertical, $size),
+        map.get($button-padding-horizontal, $size), 
+        map.get($button-font-size, $size)
+        )
+      }
+  }
 }

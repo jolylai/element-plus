@@ -8,6 +8,7 @@
 
 :root {
   @include set-css-var-value('color-white', $color-white);
+  @include set-component-css-var('padding', $padding);
   @include set-component-css-var('border-color', $border-color);
   @include set-component-css-var('border-radius', $border-radius);
   // --el-color-#{$type}

@@ -2,7 +2,7 @@
 
 按钮用来触发一些操作。
 
-## 基础
+## 基础使用
 
 <demo src='./demos/basic.vue' />
 
@@ -39,9 +39,11 @@ button {
 
 <demo src='./demos/type.vue' />
 
-## 大小
+不同类型的按钮其实也就是对 background-color border-color color 的修改
 
-有 tiny、small、medium 和 large 尺寸。
+## 按钮大小
+
+有 small、default 和 large 尺寸。
 
 <demo src='./demos/size.vue' />
 

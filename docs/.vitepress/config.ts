@@ -42,7 +42,10 @@ function getComponentsSidebar() {
   return [
     {
       text: '通用组件',
-      items: [{ text: 'Button 按钮', link: '/components/button/' }],
+      items: [
+        { text: 'Button 按钮', link: '/components/button/' },
+        { text: 'Space 间距', link: '/components/space/' },
+      ],
     },
     {
       text: '数据展示',
