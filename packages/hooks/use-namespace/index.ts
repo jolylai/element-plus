@@ -66,6 +66,6 @@ export const useNamespace = (block: string) => {
     em,
     bm,
     bem,
-    is
+    is,
   }
 }

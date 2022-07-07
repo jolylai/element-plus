@@ -20,7 +20,8 @@ export * from './space'
 // import Divider from './divider'
 // import { Row, Col } from './grid'
 
-// // 数据录入
+// 数据录入
+export * from './checkbox'
 // import Image from './image'
 // import Upload from './upload'
 // import Cascader from './cascader-panel'
