@@ -2,7 +2,6 @@
 
 // 通用组件
 @use './button.scss';
-// @use './avatar.scss';
 
 @use './checkbox.scss';
 
@@ -11,7 +10,8 @@
 // @use './row.scss';
 // @use './col.scss';
 
-// // 数据展示
+// 数据展示
+@use './avatar.scss';
 // @use './table.scss';
 // @use './badge.scss';
 

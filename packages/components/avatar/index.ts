@@ -1,9 +1,6 @@
-import Avatar from './src/index.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Avatar from './src/avatar.vue'
 
-Avatar.name = 'PoAvatar'
+export const PoAvatar = withInstall(Avatar)
 
-Avatar.install = app => {
-  app.component('PoAvatar', Avatar)
-}
-
-export default Avatar
+export default PoAvatar

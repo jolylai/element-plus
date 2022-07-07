@@ -1,18 +1,12 @@
-@import './mixins/mixins.scss';
-@import './common/var.scss';
-
-// avatar-size
-$--avatar-size-small: 24px;
-$--avatar-size-medium: 32px;
-$--avatar-size-large: 40px;
+@use 'mixins/mixins.scss' as *;
+ 
 
 @include b(avatar) {
   display: inline-block;
-  width: $--avatar-size-medium;
-  height: $--avatar-size-medium;
-  line-height: $--avatar-size-medium;
-  border-radius: $--border-radius-small;
-  text-align: center;
+  width: 32px;
+  height: 32px;
+  border-radius: getCssVar('border-radius', 'circle');
+
   overflow: hidden;
 
   img {
@@ -20,22 +14,17 @@ $--avatar-size-large: 40px;
     height: 100%;
   }
 
-  @include e(small) {
-    width: $--avatar-size-small;
-    height: $--avatar-size-small;
-    line-height: $--avatar-size-small;
-  }
-  @include e(large) {
-    width: $--avatar-size-large;
-    height: $--avatar-size-large;
-    line-height: $--avatar-size-large;
-  }
+   @include m(small){
+    width: 24px;
+    height: 24px;
+   }
 
-  @include e(circle) {
-    border-radius: $--border-radius-circle;
-  }
+   @include m(large){
+    width: 40px;
+    height: 40px;
+   }
 
-  @include e(text) {
-    padding: 0 4px;
-  }
+   @include m(square){
+    border-radius: getCssVar('border-radius', 'sm');
+   }
 }
