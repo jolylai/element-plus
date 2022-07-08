@@ -27,7 +27,6 @@ $text-color: map.merge(
   $text-color
 );
 
-
 // Color
 $colors: () !default;
 $colors: map.deep-merge(
@@ -122,7 +121,6 @@ $margin: map.merge(
   $margin
 );
 
-
 // Border
 $border-color: () !default;
 $border-color: map.merge(
@@ -151,7 +149,7 @@ $border-radius: map.merge(
   ),
   $border-radius
 );
- 
+
 // Button
 $button: () !default;
 $button: map.merge(
@@ -205,4 +203,16 @@ $button-font-size: map.merge(
     'small': 12px,
   ),
   $button-font-size
+);
+
+
+// Avatar
+$avatar-size: () !default;
+$avatar-size: map.merge(
+  (
+    'large': 40px,
+    'default': 32px,
+    'small': 24px,
+  ),
+  $avatar-size
 );

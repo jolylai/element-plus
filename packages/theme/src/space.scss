@@ -2,6 +2,7 @@
 
 @include b(space) {
   display: flex;
+  align-items: center;
 
   @include e(vertical) {
     flex-direction: column;

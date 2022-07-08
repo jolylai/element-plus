@@ -61,8 +61,8 @@
     "@pomelo-plus/hooks": "workspace:^0.0.1",
     "@pomelo-plus/theme": "workspace:^0.0.1",
     "@pomelo-plus/utils": "workspace:^0.0.1",
-    "pomelo-plus": "workspace:^0.0.1",
     "@popperjs/core": "^2.9.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "pomelo-plus": "workspace:^0.0.1"
   }
 }

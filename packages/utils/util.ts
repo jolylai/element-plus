@@ -1,7 +1,7 @@
 import { isArray, extend, isString, camelize, toRawType } from '@vue/shared'
 import type { Ref } from 'vue'
 
-export function isNumber(value: unknown) {
+export function isNumber(value: unknown): value is Number {
   return typeof value === 'number'
 }
 
@@ -27,11 +27,11 @@ export function addUnit(value: string | number) {
   return ''
 }
 
-export function $<T>(ref: Ref<T>){
+export function $<T>(ref: Ref<T>) {
   return ref.value
 }
 
-export function isHTMLElement(val: unknown): boolean{
+export function isHTMLElement(val: unknown): boolean {
   return toRawType(val).startsWith('HTML')
 }
 

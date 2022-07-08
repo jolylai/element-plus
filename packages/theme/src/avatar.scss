@@ -1,11 +1,23 @@
+@use 'common/var.scss' as *;
 @use 'mixins/mixins.scss' as *;
- 
+@use 'mixins/var' as *;
 
 @include b(avatar) {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
+  @include set-component-css-var('avatar-size', $avatar-size);
+
+  // 文字垂直居中对齐
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: getCssVar('avatar-size');
+  height: getCssVar('avatar-size');
   border-radius: getCssVar('border-radius', 'circle');
+  color: getCssVar('color-white');
+  background: #ccc;
+  white-space: nowrap;
+
+  vertical-align: middle;
 
   overflow: hidden;
 
@@ -14,17 +26,17 @@
     height: 100%;
   }
 
-   @include m(small){
+  @include m(small) {
     width: 24px;
     height: 24px;
-   }
+  }
 
-   @include m(large){
+  @include m(large) {
     width: 40px;
     height: 40px;
-   }
+  }
 
-   @include m(square){
+  @include m(square) {
     border-radius: getCssVar('border-radius', 'sm');
-   }
+  }
 }

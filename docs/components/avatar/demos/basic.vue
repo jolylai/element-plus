@@ -11,10 +11,10 @@
       size="large"
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
     />
-    <!-- <po-avatar
+    <po-avatar
       :size="60"
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
-    /> -->
+    />
   </po-space>
   <po-space>
     <po-avatar
@@ -32,6 +32,7 @@
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
     />
     <po-avatar
+      :size="60"
       shape="square"
       src="https://cy-picgo.oss-cn-hangzhou.aliyuncs.com/jucy-beef-burger.jpg"
     />
