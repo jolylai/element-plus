@@ -1,0 +1,25 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(upload) {
+  display: inline-block;
+
+  @include e(input) {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+  }
+}
+
+@include b(upload-list) {
+  margin-top: getCssVar('margin', 'xs');
+  @include e(item) {
+    margin-top: getCssVar('margin', 'xxs');
+    color: getCssVar('text-color');
+    display: flex;
+    align-items: center;
+  }
+
+  @include e(name) {
+    flex-grow: 1;
+    padding: 0 getCssVar('padding', 'xs');
+  }
+}

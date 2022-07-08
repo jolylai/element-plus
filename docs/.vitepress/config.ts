@@ -30,6 +30,9 @@ export default defineConfig({
     },
   },
   vite: {
+    optimizeDeps: {
+      include: ['@popperjs/core', 'vue', 'lodash'],
+    },
     plugins: [
       Inspect(),
       Demo(),

@@ -14,6 +14,25 @@
 
 ## UploadFile
 
+```ts
+export type UploadStatus = 'ready' | 'success' | 'uploading' | 'fail'
+
+export interface UploadRawFile extends File {
+  uid: number
+}
+
+export type UploadFile = {
+  name: string
+  percentage?: number
+  status: UploadStatus
+  size?: number
+  response?: unknown
+  uid: number
+  url?: string
+  raw?: UploadRawFile
+}
+```
+
 继承自 File，附带额外属性用于渲染。
 
 | 参数    | 说明                                   | 类型   | 默认值 |

@@ -1,3 +1,6 @@
-import Upload from './src/index.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Upload from './src/upload.vue'
 
-export default Upload
+export const PoUpload = withInstall(Upload)
+
+export default PoUpload

@@ -1,6 +1,14 @@
-import { UploadAjaxError, UploadProgressEvent, UploadRequestOptions } from './upload.type'
+import {
+  UploadAjaxError,
+  UploadProgressEvent,
+  UploadRequestOptions,
+} from './upload'
 
-function getError(action: string, option: UploadRequestOptions, xhr: XMLHttpRequest) {
+function getError(
+  action: string,
+  option: UploadRequestOptions,
+  xhr: XMLHttpRequest
+) {
   let msg: string
   if (xhr.response) {
     msg = `${xhr.response.error || xhr.response}`
@@ -50,7 +58,7 @@ const ajax = (option: UploadRequestOptions) => {
   const formData = new FormData()
 
   if (option.data) {
-    Object.keys(option.data).forEach(key => {
+    Object.keys(option.data).forEach((key) => {
       formData.append(key, option.data[key])
     })
   }
@@ -78,7 +86,10 @@ const ajax = (option: UploadRequestOptions) => {
   const headers = option.headers || {}
 
   for (const item in headers) {
-    if (Object.prototype.hasOwnProperty.call(headers, item) && headers[item] !== null) {
+    if (
+      Object.prototype.hasOwnProperty.call(headers, item) &&
+      headers[item] !== null
+    ) {
       xhr.setRequestHeader(item, headers[item])
     }
   }

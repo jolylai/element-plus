@@ -18,11 +18,11 @@ $font-size: map.merge(
 $text-color: () !default;
 $text-color: map.merge(
   (
-    default: 24px,
-    secondary: 16px,
-    inverse: 12px,
-    dark: 8px,
-    dark-secondary: 4px,
+    default: rgb(71 85 105),
+    secondary: rgb(148 163 184),
+    inverse: #fff,
+    dark: #000,
+    dark-secondary: rgb(30 41 59),
   ),
   $text-color
 );

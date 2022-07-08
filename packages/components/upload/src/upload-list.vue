@@ -1,7 +1,7 @@
 <template>
-  <ul class="po-upload-list">
-    <li class="po-upload-list-item" v-for="file in files">
-      <i class="po-icon">
+  <div :class="[ns.b()]">
+    <a :class="[ns.e('item')]" v-for="file in files">
+      <i>
         <svg
           viewBox="64 64 896 896"
           focusable="false"
@@ -16,8 +16,8 @@
           ></path>
         </svg>
       </i>
-      <a class="po-upload-list-name">{{ file.name }}</a>
-      <span class="po-upload-list-actions">
+      <span :class="[ns.e('name')]">{{ file.name }}</span>
+      <span :class="[ns.e('actions')]">
         <i class="po-icon">
           <svg
             viewBox="64 64 896 896"
@@ -34,26 +34,26 @@
           </svg>
         </i>
       </span>
-    </li>
-  </ul>
+    </a>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, watch } from 'vue'
+<script lang="ts" setup>
+import { useNamespace } from '@pomelo-plus/hooks'
+import { UploadFile } from './upload'
+import { useUploadList } from './upload-list'
 
-export default defineComponent({
+export type UploadListProps = {
+  files: UploadFile[]
+}
+
+defineOptions({
   name: 'UploadList',
-  props: {
-    files: { type: Array as PropType<File[]>, default: () => [] },
-  },
-  setup(props) {
-    watch(
-      () => props.files,
-      () => {
-        console.log(props.files)
-      },
-      { immediate: true },
-    )
-  },
 })
+
+const props = withDefaults(defineProps<UploadListProps>(), {})
+
+const ns = useNamespace('upload-list')
+
+const { classes } = useUploadList()
 </script>
