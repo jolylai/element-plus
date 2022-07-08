@@ -1,3 +1,3 @@
 # 按钮 Button
 
-<code src='./demos/basic.vue' />
+<demo src='./demos/basic.vue' />

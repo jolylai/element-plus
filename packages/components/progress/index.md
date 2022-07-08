@@ -9,9 +9,9 @@
 - 当一个操作会打断当前界面，或者需要在后台运行，且耗时可能超过 2 秒时；
 - 当需要显示一个操作完成的百分比时。
 
-<code src='./demos/demo1.vue' />
+<demo src='./demos/demo1.vue' />
 
-<code src='./demos/demo2.vue' />
+<demo src='./demos/demo2.vue' />
 
 ## Progress
 

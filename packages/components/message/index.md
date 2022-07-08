@@ -29,4 +29,4 @@ render(null, container)
 
 ## 基础使用
 
-<code src="./demos/basic.vue" />
+<demo src="./demos/basic.vue" />

@@ -6,6 +6,6 @@
 
 一般出现在通知图标或头像的右上角，用于显示需要处理的消息条数，通过醒目视觉形式吸引用户处理。
 
-<code src="./demos/demo1.vue" />
+<demo src="./demos/demo1.vue" />
 
-<code src="./demos/demo2.vue" />
+<demo src="./demos/demo2.vue" />

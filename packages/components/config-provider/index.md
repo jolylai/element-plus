@@ -19,4 +19,4 @@ export default {
 }
 ```
 
-<code src='./demos/locale.vue' />
+<demo src='./demos/locale.vue' />

@@ -57,7 +57,10 @@ function getComponentsSidebar() {
     },
     {
       text: '数据录入',
-      items: [{ text: 'Checkbox', link: '/components/checkbox/' }],
+      items: [
+        { text: 'Checkbox 多选框', link: '/components/checkbox/' },
+        { text: 'Upload 上传', link: '/components/upload/' },
+      ],
     },
     {
       text: '数据展示',

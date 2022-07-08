@@ -2,19 +2,19 @@
 
 ## 基础使用
 
-<code src='./demos/basic.vue' />
+<demo src='./demos/basic.vue' />
 
 ## 位置
 
-<code src='./demos/position.vue' />
+<demo src='./demos/position.vue' />
 
 ## 垂直分割线
 
-<code src='./demos/vertical.vue' />
+<demo src='./demos/vertical.vue' />
 
 ## 自定义样式
 
-<code src='./demos/custom.vue' />
+<demo src='./demos/custom.vue' />
 
 ### Button Props
 

@@ -2,12 +2,12 @@
 
 ## 基础
 
-<code src="./demos/basic.vue" />
+<demo src="./demos/basic.vue" />
 
 ## 对齐
 
-<code src="./demos/align.vue" />
+<demo src="./demos/align.vue" />
 
 ## 排序
 
-<code src="./demos/order.vue" />
+<demo src="./demos/order.vue" />

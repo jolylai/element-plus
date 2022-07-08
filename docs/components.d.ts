@@ -9,6 +9,7 @@ declare module 'vue' {
     PoCheckbox: typeof import('@pomelo-plus/components/checkbox')['default']
     PoSpace: typeof import('@pomelo-plus/components/space')['default']
     PoTooltip: typeof import('pomelo-plus')['default']
+    PoUpload: typeof import('@pomelo-plus/components/upload')['default']
   }
 }
 

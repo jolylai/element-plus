@@ -33,21 +33,21 @@ const difference = targetRect.bottom - props.offset - state.height
 
 固钉默认固定在页面顶部。
 
-<code src='./demos/basic.vue' />
+<demo src='./demos/basic.vue' />
 
 ## 滚动容器
 
-<code src="./demos/scroll.vue" />
+<demo src="./demos/scroll.vue" />
 
 ## 状态回调
 
-<code src="./demos/state.vue" />
+<demo src="./demos/state.vue" />
 
 ## 指定容器
 
 通过设置 target 属性，让固钉始终保持在容器内，超过范围则隐藏。
 
-<code src="./demos/target.vue" />
+<demo src="./demos/target.vue" />
 
 ### Attributes
 
