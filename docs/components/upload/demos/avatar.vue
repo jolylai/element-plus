@@ -1,5 +1,4 @@
 <template>
-  {{ imgUrl }}
   <po-upload
     action="http://47.113.95.50:7070/api/file"
     :show-file-list="false"
@@ -7,12 +6,13 @@
     :on-success="onSuccess"
     :before-upload="onBeforeUpload"
   >
-    <po-avatar :src="imgUrl" :size="80" />
+    <po-avatar v-if="imgUrl" :src="imgUrl" :size="80" />
+    <div v-else class="avatar-uploader">上传</div>
   </po-upload>
 </template>
 
 <script lang="ts" setup>
-const imgUrl = ref<string>('https://picsum.photos/200')
+const imgUrl = ref<string>()
 
 const headers = {
   Authorization:
@@ -20,14 +20,22 @@ const headers = {
 }
 
 const onSuccess = (response, uploadFile) => {
-  console.log('response, uploadFile: ', response, uploadFile)
-
-  console.log('response.data.url: ', response.data.url)
   imgUrl.value = response.data.url
 }
 
 const onBeforeUpload = (rawFile) => {
-  console.log('rawFile: ', rawFile)
   return false
 }
 </script>
+
+<style scoped>
+.avatar-uploader {
+  width: 80px;
+  height: 80px;
+  border: 1px dashed #9d9d9d;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

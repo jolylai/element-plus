@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "add": "^2.0.6",
+    "unocss": "^0.44.0",
     "vite-plugin-inspect": "^0.4.3",
     "vitepress": "1.0.0-alpha.4"
   },
