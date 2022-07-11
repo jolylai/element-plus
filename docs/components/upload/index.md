@@ -12,6 +12,10 @@
 
 <demo src='./demos/basic.vue' />
 
+## 用户头像
+
+<demo src='./demos/avatar.vue' />
+
 ## UploadFile
 
 ```ts

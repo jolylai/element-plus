@@ -4,8 +4,7 @@
   display: inline-block;
 
   @include e(input) {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
+    display: none;
   }
 }
 
@@ -16,6 +15,16 @@
     color: getCssVar('text-color');
     display: flex;
     align-items: center;
+
+    &.is-success {
+      color: getCssVar('color', 'success');
+    }
+    &.is-uploading {
+      color: getCssVar('color', 'info');
+    }
+    &.is-fail {
+      color: getCssVar('color', 'error');
+    }
   }
 
   @include e(name) {

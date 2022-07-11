@@ -1,6 +1,9 @@
 <template>
   <div :class="[ns.b()]">
-    <a :class="[ns.e('item')]" v-for="file in files">
+    <div
+      :class="[ns.e('item'), ns.is(file.status, true)]"
+      v-for="file in files"
+    >
       <i>
         <svg
           viewBox="64 64 896 896"
@@ -16,9 +19,9 @@
           ></path>
         </svg>
       </i>
-      <span :class="[ns.e('name')]">{{ file.name }}</span>
+      <span :class="[ns.e('name')]">{{ file.name }} {{ file.percentage }}</span>
       <span :class="[ns.e('actions')]">
-        <i class="po-icon">
+        <i class="po-icon" @click="onRemove(file)">
           <svg
             viewBox="64 64 896 896"
             focusable="false"
@@ -34,17 +37,19 @@
           </svg>
         </i>
       </span>
-    </a>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useNamespace } from '@pomelo-plus/hooks'
+import {} from '@element-plus/icons-vue'
 import { UploadFile } from './upload'
 import { useUploadList } from './upload-list'
 
 export type UploadListProps = {
   files: UploadFile[]
+  onRemove: (file: UploadFile) => void
 }
 
 defineOptions({

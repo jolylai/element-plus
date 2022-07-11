@@ -26,6 +26,7 @@ export default defineConfig({
       },
     ],
     sidebar: {
+      '/guide/': getGuideSidebar(),
       '/components/': getComponentsSidebar(),
     },
   },
@@ -47,6 +48,19 @@ export default defineConfig({
     ],
   },
 })
+
+function getGuideSidebar() {
+  return [
+    // { text: '快速开始', link: '/guide/getting-started' },
+    {
+      text: '通用组件',
+      items: [
+        { text: '快速开始', link: '/guide/getting-started' },
+        { text: '主题', link: '/guide/theme' },
+      ],
+    },
+  ]
+}
 
 function getComponentsSidebar() {
   return [
