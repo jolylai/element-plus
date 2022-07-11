@@ -47,16 +47,6 @@ export type AjaxEventListener = (
   file: UploadRawFile
 ) => unknown
 
-export type FileHandler<T = void> = (
-  file: UploadFile,
-  uploadFiles: UploadFile[]
-) => T
-export type FileResultHandler<T = any> = (
-  param: T,
-  file: UploadFile,
-  uploadFiles: UploadFile[]
-) => void
-
 let fileId = 1
 export const genFileId = () => Date.now() + fileId
 

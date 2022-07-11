@@ -15,8 +15,9 @@
 import { ref } from 'vue'
 import { useNamespace } from '@pomelo-plus/hooks'
 import { genFileId, UploadProgressEvent } from './upload'
-import type { UploadUserFile, UploadFile, UploadRawFile } from './upload'
+import type { UploadUserFile, UploadRawFile } from './upload'
 import ajax from './ajax'
+import { Awaitable } from '@pomelo-plus/utils'
 
 export type UploadContentProps = {
   action: string
@@ -25,6 +26,9 @@ export type UploadContentProps = {
   name?: string
   fileList?: UploadUserFile[]
   withCredentials?: boolean
+  beforeUpload?: (
+    file: UploadRawFile
+  ) => Awaitable<void | undefined | null | boolean | File | Blob>
   onStart?: (file: UploadRawFile) => void
   onSuccess?: (response: any, uploadFile: UploadRawFile) => void
   onProgress?: (event: UploadProgressEvent, uploadFile: UploadRawFile) => void
@@ -71,12 +75,41 @@ const uploadFiles = (files: File[]) => {
   }
 }
 
-const upload = (file: UploadRawFile) => {
-  // todo check file before upload
-  doUpload(file)
+const upload = async (rawFile: UploadRawFile) => {
+  if (!props.beforeUpload) {
+    return doUpload(rawFile)
+  }
+
+  let hookResult: Exclude<
+    ReturnType<UploadContentProps['beforeUpload']>,
+    Promise<any>
+  >
+  try {
+    hookResult = await props.beforeUpload(rawFile)
+  } catch (error) {
+    hookResult = false
+  }
+
+  if (hookResult === false) {
+    return
+  }
+
+  let file: File = rawFile
+
+  if (hookResult instanceof Blob) {
+    if (hookResult instanceof File) {
+      file = hookResult
+    } else {
+      file = new File([hookResult], rawFile.name, {
+        type: rawFile.type,
+      })
+    }
+  }
+
+  doUpload(Object.assign(file, { uid: rawFile.uid }))
 }
 
-const doUpload = (file: UploadRawFile) => {
+const doUpload = (rawFile: UploadRawFile) => {
   const {
     action,
     data,
@@ -92,17 +125,17 @@ const doUpload = (file: UploadRawFile) => {
     action,
     data,
     filename: name,
-    file,
+    file: rawFile,
     headers,
     withCredentials,
     onProgress: (e: UploadProgressEvent) => {
-      onProgress(e, file)
+      onProgress(e, rawFile)
     },
     onSuccess: (response: XMLHttpRequestResponseType) => {
-      onSuccess(response, file)
+      onSuccess(response, rawFile)
     },
     onError: (error) => {
-      onError(error, file)
+      onError(error, rawFile)
     },
   })
 }

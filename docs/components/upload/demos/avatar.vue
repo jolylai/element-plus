@@ -5,6 +5,7 @@
     :show-file-list="false"
     :headers="headers"
     :on-success="onSuccess"
+    :before-upload="onBeforeUpload"
   >
     <po-avatar :src="imgUrl" :size="80" />
   </po-upload>
@@ -23,5 +24,10 @@ const onSuccess = (response, uploadFile) => {
 
   console.log('response.data.url: ', response.data.url)
   imgUrl.value = response.data.url
+}
+
+const onBeforeUpload = (rawFile) => {
+  console.log('rawFile: ', rawFile)
+  return false
 }
 </script>

@@ -13,12 +13,15 @@
 </template>
 
 <script lang="ts" setup>
-import type { UploadUserFile, UploadFile } from './upload'
+import { Awaitable } from '@pomelo-plus/utils'
+import { computed } from '@vue/reactivity'
+import { NOOP } from '@vue/shared'
+import type { UploadUserFile, UploadRawFile, UploadFile } from './upload'
 import UploadContent, { UploadContentProps } from './upload-content.vue'
 import UploadList from './upload-list.vue'
 import { useHandler } from './use-handlers'
 
-export type UploadProps = {
+export interface UploadProps {
   action: string
   headers?: Headers | Record<string, any>
   data?: Record<string, any>
@@ -26,6 +29,10 @@ export type UploadProps = {
   fileList?: UploadUserFile[]
   showFileList?: boolean
   withCredentials?: boolean
+  onStart?: (rawFile: UploadRawFile) => void
+  beforeUpload?: (
+    file: UploadRawFile
+  ) => Awaitable<void | undefined | null | boolean | File | Blob>
   onChange?: (file: UploadFile, fileList: UploadFile[]) => void
   onSuccess?: (
     response: any,
@@ -44,14 +51,19 @@ export type UploadProps = {
   ) => void
 }
 
+defineOptions({
+  name: 'PoUpload',
+})
+
 const props = withDefaults(defineProps<UploadProps>(), {
   name: 'file',
   withCredentials: false,
   showFileList: true,
-  onChange: () => {},
-  onSuccess: () => {},
-  onProgress: () => {},
-  onError: () => {},
+  onStart: NOOP,
+  onChange: NOOP,
+  onSuccess: NOOP,
+  onProgress: NOOP,
+  onError: NOOP,
 })
 
 const {
@@ -63,11 +75,12 @@ const {
   handleRemove,
 } = useHandler(props)
 
-const uploadContentProps: UploadContentProps = {
+const uploadContentProps = computed<UploadContentProps>(() => ({
   ...props,
+  beforeUpload: props.beforeUpload,
   onStart: handleStart,
   onProgress: handleProgress,
   onSuccess: handleSuccess,
   onError: handleError,
-}
+}))
 </script>
