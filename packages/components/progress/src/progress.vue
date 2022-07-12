@@ -1,62 +1,48 @@
 <template>
-  <div :class="[ns.b(), ns.e(type)]">
+  <div :class="[ns.b(), ns.e(type), ns.is(status)]">
     <!-- line -->
     <div v-if="type === 'line'" :class="[ns.b('bar')]">
       <div :class="[ns.be('bar', 'outer')]">
-        <div
-          :class="[ns.be('bar', 'inner')]"
-          :style="{ width: percent + '%' }"
-        />
+        <div :class="[ns.be('bar', 'inner')]" :style="barStyle" />
       </div>
     </div>
 
     <!-- circle -->
-    <div v-else class="po-progress-circle">
+    <div
+      v-else
+      :class="[ns.b('circle')]"
+      :style="{ height: `${width}px`, width: `${width}px` }"
+    >
       <svg viewBox="0 0 100 100">
         <path
-          class="el-progress-circle__track"
-          d="
-          M 50 50
-          m 0 -47
-          a 47 47 0 1 1 0 94
-          a 47 47 0 1 1 0 -94
-          "
-          stroke="#e5e9f2"
-          stroke-width="4.8"
+          :class="ns.be('circle', 'track')"
+          :d="trackPath"
+          :stroke="`var(${ns.cssVarName('color-')}, #e5e9f2)`"
+          :stroke-width="relativeStrokeWidth"
           fill="none"
-          style="stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 0px"
+          :style="trailPathStyle"
         ></path>
         <path
-          class="el-progress-circle__path"
-          d="
-          M 50 50
-          m 0 -47
-          a 47 47 0 1 1 0 94
-          a 47 47 0 1 1 0 -94
-          "
+          :class="ns.be('circle', 'path')"
+          :d="trackPath"
           stroke="#20a0ff"
           fill="none"
           stroke-linecap="round"
-          stroke-width="4.8"
-          style="
-            stroke-dasharray: 73.8274px, 295.31px;
-            stroke-dashoffset: 0px;
-            transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;
-          "
+          :stroke-width="relativeStrokeWidth"
+          :style="circlePathStyle"
         ></path>
       </svg>
-
-      <span class="po-progress-text">{{ format(percent) }}</span>
     </div>
 
+    <!-- text -->
     <span :class="[ns.e('text')]">
       <slot>
-        <span v-if="!status">
+        <span v-if="status == 'normal' || status == 'active'">
           {{ format(percent) }}
         </span>
-        <!-- <span v-else :class="[ns.e('icon')]">
-            <component :is="statusIcon" />
-          </span> -->
+        <span v-else :class="[ns.e('icon')]">
+          <component :is="statusIcon" />
+        </span>
       </slot>
     </span>
   </div>
@@ -64,15 +50,15 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-// import {
-//   WarningFilled,
-//   CircleCheck,
-//   CircleClose,
-//   Check,
-//   Close,
-// } from '@element-plus/icons-vue'
+import type { CSSProperties } from 'vue'
+import { CircleCheck, CircleClose, Check, Close } from '@element-plus/icons-vue'
 import { useNamespace } from '@pomelo-plus/hooks'
-import type { ProgressStatus, ProgressFuncType, ProgressType } from './progress'
+import {
+  ProgressStatus,
+  ProgressFuncType,
+  ProgressType,
+  useSvgPath,
+} from './progress'
 
 export interface ProgressProps {
   percent: number
@@ -81,30 +67,43 @@ export interface ProgressProps {
   type?: ProgressType
   // indeterminate: boolean
   // duration: number
-  // strokeWidth: number
   // strokeLinecap: string
   // textInside: boolean
-  // width: number
+  strokeWidth?: number
+  width?: number
   // showText: boolean
-  // color:
-  //   | string
-  //   | Array<string | { color: string; percent: number }>
-  //   | ProgressFuncType
+  color?:
+    | string
+    | Array<string | { color: string; percent: number }>
+    | ProgressFuncType
 }
 
 const props = withDefaults(defineProps<ProgressProps>(), {
   percent: 0,
   format: (percent) => `${percent} %`,
   type: 'line',
+  status: 'normal',
+  width: 126,
+  strokeWidth: 6,
 })
 
 const ns = useNamespace('progress')
 
-// const statusIcon = computed(() => {
-//   if (props.type === 'line') {
-//     return props.status === 'success' ? CircleCheck : CircleClose
-//   } else {
-//     return props.status === 'success' ? Check : Close
-//   }
-// })
+const statusIcon = computed(() => {
+  if (props.type === 'line') {
+    return props.status === 'success' ? CircleCheck : CircleClose
+  } else {
+    return props.status === 'success' ? Check : Close
+  }
+})
+
+const barStyle = computed<CSSProperties>(() => {
+  const { percent } = props
+  return {
+    width: `${percent}%`,
+  }
+})
+
+const { trackPath, relativeStrokeWidth, trailPathStyle, circlePathStyle } =
+  useSvgPath(props)
 </script>

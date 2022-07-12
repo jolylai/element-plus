@@ -9,6 +9,14 @@
 
 <demo src='./demos/basic.vue' />
 
+## 自定义颜色
+
+<!-- <demo src='./demos/color.vue' /> -->
+
+## 环形进度条
+
+<demo src='./demos/circle.vue' />
+
 ## Progress
 
 | 参数    | 说明                                   | 类型   | 默认值 |
