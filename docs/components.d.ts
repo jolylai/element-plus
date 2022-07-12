@@ -7,6 +7,7 @@ declare module 'vue' {
     PoAvatar: typeof import('@pomelo-plus/components/avatar')['default']
     PoButton: typeof import('@pomelo-plus/components/button')['default']
     PoCheckbox: typeof import('@pomelo-plus/components/checkbox')['default']
+    PoProgress: typeof import('@pomelo-plus/components/progress')['default']
     PoSpace: typeof import('@pomelo-plus/components/space')['default']
     PoTooltip: typeof import('pomelo-plus')['default']
     PoUpload: typeof import('@pomelo-plus/components/upload')['default']

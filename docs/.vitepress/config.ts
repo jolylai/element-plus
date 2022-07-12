@@ -63,5 +63,9 @@ function getComponentsSidebar() {
         { text: 'Tooltip', link: '/components/tooltip/' },
       ],
     },
+    {
+      text: '反馈',
+      items: [{ text: 'Progress 进度条', link: '/components/progress/' }],
+    },
   ]
 }

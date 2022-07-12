@@ -1,7 +1,6 @@
-import Progress from './progress.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Progress from './src/progress.vue'
 
-Progress.install = app => {
-  app.component(Progress.name, Progress)
-}
+export const PoProgress = withInstall(Progress)
 
-export default Progress
+export default PoProgress

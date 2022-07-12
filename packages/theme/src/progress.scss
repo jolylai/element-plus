@@ -2,91 +2,35 @@
 @import 'common/var.scss';
 
 @include b(progress) {
-  position: relative;
-  line-height: 1.5;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
 
-  @include e(bar) {
-    display: inline-block;
-    width: 100%;
-    box-sizing: border-box;
-    padding-right: 3em;
-    margin-right: -3em;
+  @include e(icon) {
+    svg {
+      width: 12px;
+      height: 12px;
+    }
   }
 
+  @include e(text) {
+    line-height: 1;
+    margin-left: getCssVar('margin', 'xs');
+  }
+}
+
+@include b(progress-bar) {
+  flex-grow: 1;
+
   @include e(outer) {
-    border-radius: 999px;
-    background-color: #f5f5f5;
+    height: 8px;
+    background-color: #0000000a;
+    border-radius: 100px;
   }
 
   @include e(inner) {
     height: 8px;
-    background-color: $--color-primary;
-    border-radius: 999px;
-  }
-
-  @include e(text) {
-    display: inline-block;
-    width: 2em;
-    margin-left: 8px;
-    color: #00000073;
-    font-size: 1em;
-    line-height: 1;
-    white-space: nowrap;
-    text-align: left;
-    vertical-align: middle;
-    word-break: normal;
-  }
-
-  @include m((circle, dashboard)) {
-    display: inline-block;
-    width: 120px;
-    height: 120px;
-    font-size: 24px;
-
-    //
-    .#{$namespace}-progress-text {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      transform: translateY(-50%);
-      text-align: center;
-      margin: 0;
-    }
-  }
-  // icon
-  @include e(icon) {
-    svg {
-      width: 16px;
-      height: 16px;
-    }
-  }
-
-  // 状态
-  @include when(success) {
-    .#{$namespace}-progress-inner {
-      background-color: $--color-success;
-    }
-  }
-  @include when(exception) {
-    .#{$namespace}-progress-inner {
-      background-color: $--color-danger;
-    }
-  }
-  @include when(active) {
-    .#{$namespace}-progress-inner::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: #fff;
-      border-radius: 10px;
-      opacity: 0;
-      animation: progress-active 3s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-    }
+    border-radius: 100px;
+    background-color: getCssVar('color', 'primary');
   }
 }
 
