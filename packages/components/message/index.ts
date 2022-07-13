@@ -1,9 +1,5 @@
-import { useMessage } from './src/message'
+import { widthInstallFunction } from '@pomelo-plus/utils'
 
-// Message.install = app => {
-//   app.component(Message.name, Message)
-// }
+import Message from './src/method'
 
-export { useMessage }
-
-// export default Message
+export const PoMessage = widthInstallFunction(Message, '$message')

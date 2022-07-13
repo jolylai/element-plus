@@ -1,6 +1,6 @@
 import { h, isVNode, render } from 'vue'
 
-import MessageConstructor from './index.vue'
+import MessageConstructor from './message.vue'
 
 import {
   IMessageOptions,
@@ -37,7 +37,7 @@ function createMessage(userOpts: IMessageOptions) {
   const vm = h(
     MessageConstructor,
     options,
-    isVNode(options.message) ? { default: () => options.message } : null,
+    isVNode(options.message) ? { default: () => options.message } : null
   )
 
   instances.push(vm)
@@ -61,7 +61,7 @@ export function useMessage() {
 }
 
 export function close(id, userOnClose?: (vm: MessageVM) => void) {
-  const idx = instances.findIndex(vm => {
+  const idx = instances.findIndex((vm) => {
     const { id: _id } = vm.component.props
 
     return id === _id

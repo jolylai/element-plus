@@ -65,7 +65,10 @@ function getComponentsSidebar() {
     },
     {
       text: '反馈',
-      items: [{ text: 'Progress 进度条', link: '/components/progress/' }],
+      items: [
+        { text: 'Progress 进度条', link: '/components/progress/' },
+        { text: 'Message 全局提示', link: '/components/message/' },
+      ],
     },
   ]
 }

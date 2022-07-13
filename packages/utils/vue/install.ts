@@ -1,11 +1,11 @@
 import { NOOP } from '@vue/shared'
-import { SFCWithInstall } from './typescript'
+import { SFCInstallWithContext, SFCWithInstall } from './typescript'
 
 export const withInstall = <T, E extends Record<string, any>>(
   main: T,
   extra?: E
 ) => {
-  ;(main as SFCWithInstall<T>).install = app => {
+  ;(main as SFCWithInstall<T>).install = (app) => {
     for (const comp of [main, ...Object.values(extra ?? {})]) {
       app.component(comp.name, comp)
     }
@@ -18,6 +18,14 @@ export const withInstall = <T, E extends Record<string, any>>(
   }
 
   return main as SFCWithInstall<T> & E
+}
+
+export const widthInstallFunction = <T>(fn: T, name: string) => {
+  ;(fn as SFCWithInstall<T>).install = (app) => {
+    app.config.globalProperties[name] = fn
+  }
+
+  return fn as SFCInstallWithContext<T>
 }
 
 export const withNoopInstall = <T>(component: T) => {
