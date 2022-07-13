@@ -44,7 +44,7 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   setup() {
-    const percentageRef = ref(0)
+    const percentageRef = ref(10)
 
     const add = () => {
       percentageRef.value += 10

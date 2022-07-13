@@ -6,6 +6,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     PoAvatar: typeof import('@pomelo-plus/components/avatar')['default']
     PoButton: typeof import('@pomelo-plus/components/button')['default']
+    PoButtonGroup: typeof import('@pomelo-plus/components/button-group')['default']
     PoCheckbox: typeof import('@pomelo-plus/components/checkbox')['default']
     PoProgress: typeof import('@pomelo-plus/components/progress')['default']
     PoSpace: typeof import('@pomelo-plus/components/space')['default']

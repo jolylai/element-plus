@@ -13,10 +13,14 @@
 
 <demo src='./demos/line.vue' />
 
-## 自定义颜色
-
-<demo src='./demos/color.vue' />
-
 ## 环形进度条
 
 <demo src='./demos/circle.vue' />
+
+## 仪表盘
+
+<demo src='./demos/dashboard.vue' />
+
+## 自定义颜色
+
+<demo src='./demos/color.vue' />
