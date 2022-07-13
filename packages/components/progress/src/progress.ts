@@ -1,3 +1,4 @@
+import { isFunction, isString } from '@vue/shared'
 import { computed, CSSProperties } from 'vue'
 import type { ProgressProps } from './progress.vue'
 
@@ -60,17 +61,53 @@ export const useSvgPath = (props: ProgressProps) => {
 }
 
 export const useBar = (props: ProgressProps) => {
+  const getColors = (colors: any[]) => {
+    const span = 100 / colors.length
+
+    const seriesColors = colors.map((seriesColor, index) => {
+      if (isString(seriesColor)) {
+        return {
+          color: seriesColor,
+          percentage: (index + 1) * span,
+        }
+      }
+
+      return seriesColor
+    })
+
+    return seriesColors.sort((a, b) => a.percentage - b.percentage)
+  }
+
+  const getCurrentColor = (percentage: number) => {
+    const { color } = props
+    if (isString(color)) {
+      return color
+    } else if (isFunction(color)) {
+      return color(percentage)
+    } else {
+      const colors = getColors(color)
+      for (const color of colors) {
+        if (percentage < color.percentage) return color.color
+      }
+
+      return colors[colors.length - 1]?.color
+    }
+  }
+
   const barInnerStyle = computed<CSSProperties>(() => {
     const { percentage } = props
     return {
       width: `${percentage}%`,
+      backgroundColor: getCurrentColor(percentage),
     }
   })
 
   const barStyle = computed<CSSProperties>(() => {
     const { strokeWidth, textInside } = props
     const barHeight = textInside ? Math.max(16, strokeWidth) : strokeWidth
-    return { height: `${barHeight}px` }
+    return {
+      height: `${barHeight}px`,
+    }
   })
 
   return { barStyle, barInnerStyle }

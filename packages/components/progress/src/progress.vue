@@ -4,11 +4,11 @@
     <div v-if="type === 'line'" :class="[ns.b('bar')]" :style="barStyle">
       <div :class="[ns.be('bar', 'outer')]">
         <div :class="[ns.be('bar', 'inner')]" :style="barInnerStyle">
-          <span v-if="textInside" :class="[ns.be('bar', 'innerText')]">
+          <div v-if="textInside" :class="[ns.be('bar', 'innerText')]">
             <slot>
               {{ format(percentage) }}
             </slot>
-          </span>
+          </div>
         </div>
       </div>
     </div>
@@ -56,7 +56,6 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import type { CSSProperties } from 'vue'
 import { CircleCheck, CircleClose, Check, Close } from '@element-plus/icons-vue'
 import { useNamespace } from '@pomelo-plus/hooks'
 import {
@@ -94,6 +93,7 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   strokeWidth: 6,
   showText: true,
   textInside: false,
+  color: '',
 })
 
 const ns = useNamespace('progress')

@@ -1,5 +1,5 @@
 <template>
-  <div class="demo-progress">
+  <po-space direction="vertical">
     <po-progress :percentage="percentage" :color="customColor" />
 
     <po-progress :percentage="percentage" :color="customColorMethod" />
@@ -7,10 +7,10 @@
     <po-progress :percentage="percentage" :color="customColors" />
     <po-progress :percentage="percentage" :color="customColors" />
     <po-space>
-      <po-button @click="decrease">-</po-button>
-      <po-button @click="increase">+</po-button>
+      <po-button @click="decrease">减少 10%</po-button>
+      <po-button @click="increase">增加 10%</po-button>
     </po-space>
-  </div>
+  </po-space>
 </template>
 
 <script lang="ts" setup>
@@ -49,9 +49,3 @@ const decrease = () => {
   }
 }
 </script>
-<style scoped>
-.demo-progress .po-progress--line {
-  margin-bottom: 15px;
-  width: 350px;
-}
-</style>

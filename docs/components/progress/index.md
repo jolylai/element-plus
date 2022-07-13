@@ -15,18 +15,8 @@
 
 ## 自定义颜色
 
-<!-- <demo src='./demos/color.vue' /> -->
+<demo src='./demos/color.vue' />
 
 ## 环形进度条
 
 <demo src='./demos/circle.vue' />
-
-## Progress
-
-| 参数       | 说明                                   | 类型   | 默认值 |
-| ---------- | -------------------------------------- | ------ | ------ |
-| name       | 文件名                                 | string | -      |
-| percentage | 上传进度                               | number | -      |
-| status     | 上传状态，不同状态展示颜色也会有所不同 |        | -      |
-| uid        | 唯一标识符，不设置时会自动生成         | string | -      |
-| url        | 下载地址                               | string | -      |
