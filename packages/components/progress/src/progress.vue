@@ -3,7 +3,13 @@
     <!-- line -->
     <div v-if="type === 'line'" :class="[ns.b('bar')]" :style="barStyle">
       <div :class="[ns.be('bar', 'outer')]">
-        <div :class="[ns.be('bar', 'inner')]" :style="barInnerStyle">
+        <div
+          :class="[
+            ns.be('bar', 'inner'),
+            indeterminate ? [ns.bem('bar', 'inner', 'indeterminate')] : '',
+          ]"
+          :style="barInnerStyle"
+        >
           <div v-if="textInside" :class="[ns.be('bar', 'innerText')]">
             <slot>
               {{ format(percentage) }}
@@ -33,7 +39,7 @@
           :d="trackPath"
           :stroke="stroke"
           fill="none"
-          stroke-linecap="round"
+          :stroke-linecap="strokeLinecap"
           :stroke-width="relativeStrokeWidth"
           :style="circlePathStyle"
         ></path>
@@ -58,22 +64,16 @@
 import { computed } from 'vue'
 import { CircleCheck, CircleClose, Check, Close } from '@element-plus/icons-vue'
 import { useNamespace } from '@pomelo-plus/hooks'
-import {
-  ProgressStatus,
-  ProgressFuncType,
-  ProgressType,
-  useSvgPath,
-  useBar,
-} from './progress'
+import { ProgressStatus, ProgressType, useSvgPath, useBar } from './progress'
 
 export interface ProgressProps {
   percentage: number
   status?: ProgressStatus
   format?: (percentage: number) => string
   type?: ProgressType
-  // indeterminate: boolean
-  // duration: number
-  // strokeLinecap: string
+  indeterminate?: boolean
+  duration?: number
+  strokeLinecap?: 'butt' | 'round' | 'square'
   textInside?: boolean
   strokeWidth?: number
   width?: number
@@ -81,7 +81,7 @@ export interface ProgressProps {
   color?:
     | string
     | Array<string | { color: string; percentage: number }>
-    | ProgressFuncType
+    | ((percentage: number) => string)
 }
 
 const props = withDefaults(defineProps<ProgressProps>(), {
@@ -94,6 +94,9 @@ const props = withDefaults(defineProps<ProgressProps>(), {
   showText: true,
   textInside: false,
   color: '',
+  strokeLinecap: 'round',
+  indeterminate: false,
+  duration: 3,
 })
 
 const ns = useNamespace('progress')
