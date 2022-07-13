@@ -1,11 +1,11 @@
 <template>
   <div class="demo-progress">
-    <po-progress :percent="percent" :color="customColor" />
+    <po-progress :percentage="percentage" :color="customColor" />
 
-    <po-progress :percent="percent" :color="customColorMethod" />
+    <po-progress :percentage="percentage" :color="customColorMethod" />
 
-    <po-progress :percent="percent" :color="customColors" />
-    <po-progress :percent="percent" :color="customColors" />
+    <po-progress :percentage="percentage" :color="customColors" />
+    <po-progress :percentage="percentage" :color="customColors" />
     <po-space>
       <po-button @click="decrease">-</po-button>
       <po-button @click="increase">+</po-button>
@@ -16,36 +16,36 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const percent = ref(20)
+const percentage = ref(20)
 const customColor = ref('#409eff')
 
 const customColors = [
-  { color: '#f56c6c', percent: 20 },
-  { color: '#e6a23c', percent: 40 },
-  { color: '#5cb87a', percent: 60 },
-  { color: '#1989fa', percent: 80 },
-  { color: '#6f7ad3', percent: 100 },
+  { color: '#f56c6c', percentage: 20 },
+  { color: '#e6a23c', percentage: 40 },
+  { color: '#5cb87a', percentage: 60 },
+  { color: '#1989fa', percentage: 80 },
+  { color: '#6f7ad3', percentage: 100 },
 ]
 
-const customColorMethod = (percent: number) => {
-  if (percent < 30) {
+const customColorMethod = (percentage: number) => {
+  if (percentage < 30) {
     return '#909399'
   }
-  if (percent < 70) {
+  if (percentage < 70) {
     return '#e6a23c'
   }
   return '#67c23a'
 }
 const increase = () => {
-  percent.value += 10
-  if (percent.value > 100) {
-    percent.value = 100
+  percentage.value += 10
+  if (percentage.value > 100) {
+    percentage.value = 100
   }
 }
 const decrease = () => {
-  percent.value -= 10
-  if (percent.value < 0) {
-    percent.value = 0
+  percentage.value -= 10
+  if (percentage.value < 0) {
+    percentage.value = 0
   }
 }
 </script>

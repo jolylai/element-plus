@@ -1,5 +1,5 @@
 <template>
-  <po-progress type="circle" :percent="75" />
-  <po-progress type="circle" :percent="70" status="exception" />
-  <po-progress type="circle" :percent="100" />
+  <po-progress type="circle" :percentage="75" />
+  <po-progress type="circle" :percentage="70" status="exception" />
+  <po-progress type="circle" :percentage="100" />
 </template>

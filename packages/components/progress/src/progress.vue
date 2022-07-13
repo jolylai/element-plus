@@ -1,9 +1,15 @@
 <template>
   <div :class="[ns.b(), ns.e(type), ns.is(status)]">
     <!-- line -->
-    <div v-if="type === 'line'" :class="[ns.b('bar')]">
+    <div v-if="type === 'line'" :class="[ns.b('bar')]" :style="barStyle">
       <div :class="[ns.be('bar', 'outer')]">
-        <div :class="[ns.be('bar', 'inner')]" :style="barStyle" />
+        <div :class="[ns.be('bar', 'inner')]" :style="barInnerStyle">
+          <span v-if="textInside" :class="[ns.be('bar', 'innerText')]">
+            <slot>
+              {{ format(percentage) }}
+            </slot>
+          </span>
+        </div>
       </div>
     </div>
 
@@ -35,10 +41,10 @@
     </div>
 
     <!-- text -->
-    <span :class="[ns.e('text')]">
+    <span v-if="!textInside && showText" :class="[ns.e('text')]">
       <slot>
         <span v-if="status == 'normal' || status == 'active'">
-          {{ format(percent) }}
+          {{ format(percentage) }}
         </span>
         <span v-else :class="[ns.e('icon')]">
           <component :is="statusIcon" />
@@ -58,33 +64,36 @@ import {
   ProgressFuncType,
   ProgressType,
   useSvgPath,
+  useBar,
 } from './progress'
 
 export interface ProgressProps {
-  percent: number
+  percentage: number
   status?: ProgressStatus
-  format?: (percent: number) => string
+  format?: (percentage: number) => string
   type?: ProgressType
   // indeterminate: boolean
   // duration: number
   // strokeLinecap: string
-  // textInside: boolean
+  textInside?: boolean
   strokeWidth?: number
   width?: number
-  // showText: boolean
+  showText?: boolean
   color?:
     | string
-    | Array<string | { color: string; percent: number }>
+    | Array<string | { color: string; percentage: number }>
     | ProgressFuncType
 }
 
 const props = withDefaults(defineProps<ProgressProps>(), {
-  percent: 0,
-  format: (percent) => `${percent} %`,
+  percentage: 0,
+  format: (percentage: number) => `${percentage} %`,
   type: 'line',
   status: 'normal',
   width: 126,
   strokeWidth: 6,
+  showText: true,
+  textInside: false,
 })
 
 const ns = useNamespace('progress')
@@ -97,12 +106,7 @@ const statusIcon = computed(() => {
   }
 })
 
-const barStyle = computed<CSSProperties>(() => {
-  const { percent } = props
-  return {
-    width: `${percent}%`,
-  }
-})
+const { barStyle, barInnerStyle } = useBar(props)
 
 const { trackPath, relativeStrokeWidth, trailPathStyle, circlePathStyle } =
   useSvgPath(props)

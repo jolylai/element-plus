@@ -5,7 +5,6 @@
 @use 'mixins/var' as *;
 @use 'mixins/mixins' as *;
 
-
 :root {
   @include set-css-var-value('color-white', $color-white);
   @include set-component-css-var('padding', $padding);
@@ -13,10 +12,10 @@
   @include set-component-css-var('border-color', $border-color);
   @include set-component-css-var('border-radius', $border-radius);
   @include set-component-css-var('text-color', $text-color);
+  @include set-component-css-var('font-size', $font-size);
   // --el-color-#{$type}
   // --el-color-#{$type}-light-{$i}
   @each $type in (primary, success, warning, danger, error, info) {
     @include set-css-color-type($colors, $type);
   }
-
 }

@@ -1,7 +1,7 @@
 import { computed, CSSProperties } from 'vue'
 import type { ProgressProps } from './progress.vue'
 
-export type ProgressFuncType = (percent: number) => string
+export type ProgressFuncType = (percentage: number) => string
 export type ProgressStatus = 'normal' | 'success' | 'exception' | 'active'
 export type ProgressType = 'line' | 'circle' | 'dashboard'
 
@@ -49,7 +49,7 @@ export const useSvgPath = (props: ProgressProps) => {
 
   const circlePathStyle = computed<CSSProperties>(() => ({
     strokeDasharray: `${
-      perimeter.value * rate.value * (props.percent / 100)
+      perimeter.value * rate.value * (props.percentage / 100)
     }px, ${perimeter.value}px`,
     strokeDashoffset: strokeDashoffset.value,
     transition:
@@ -57,4 +57,21 @@ export const useSvgPath = (props: ProgressProps) => {
   }))
 
   return { trackPath, relativeStrokeWidth, trailPathStyle, circlePathStyle }
+}
+
+export const useBar = (props: ProgressProps) => {
+  const barInnerStyle = computed<CSSProperties>(() => {
+    const { percentage } = props
+    return {
+      width: `${percentage}%`,
+    }
+  })
+
+  const barStyle = computed<CSSProperties>(() => {
+    const { strokeWidth, textInside } = props
+    const barHeight = textInside ? Math.max(16, strokeWidth) : strokeWidth
+    return { height: `${barHeight}px` }
+  })
+
+  return { barStyle, barInnerStyle }
 }

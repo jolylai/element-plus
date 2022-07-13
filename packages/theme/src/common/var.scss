@@ -8,9 +8,9 @@
 $font-size: () !default;
 $font-size: map.merge(
   (
+    sm: 12px,
     base: 14px,
     lg: 16px,
-    sm: 12px,
   ),
   $font-size
 );
@@ -34,7 +34,7 @@ $colors: map.deep-merge(
     'white': #ffffff,
     'black': #000000,
     'primary': (
-      'base': #ffc53d,
+      'base': #5698c3,
     ),
     'success': (
       'base': #67c23a,
@@ -204,7 +204,6 @@ $button-font-size: map.merge(
   ),
   $button-font-size
 );
-
 
 // Avatar
 $avatar-size: () !default;
