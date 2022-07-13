@@ -21,7 +21,7 @@
     text-align: left;
   }
 
-  @include e(circle) {
+  @include m(circle) {
     display: inline-block;
 
     .#{$namespace}-progress__text {

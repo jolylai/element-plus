@@ -1,5 +1,5 @@
 <template>
-  <div :class="[ns.b(), ns.e(type), ns.is(status)]">
+  <div :class="[ns.b(), ns.m(type), ns.is(status)]">
     <!-- line -->
     <div v-if="type === 'line'" :class="[ns.b('bar')]" :style="barStyle">
       <div :class="[ns.be('bar', 'outer')]">
@@ -31,7 +31,7 @@
         <path
           :class="ns.be('circle', 'path')"
           :d="trackPath"
-          stroke="#20a0ff"
+          :stroke="stroke"
           fill="none"
           stroke-linecap="round"
           :stroke-width="relativeStrokeWidth"
@@ -108,6 +108,11 @@ const statusIcon = computed(() => {
 
 const { barStyle, barInnerStyle } = useBar(props)
 
-const { trackPath, relativeStrokeWidth, trailPathStyle, circlePathStyle } =
-  useSvgPath(props)
+const {
+  stroke,
+  trackPath,
+  relativeStrokeWidth,
+  trailPathStyle,
+  circlePathStyle,
+} = useSvgPath(props)
 </script>

@@ -6,6 +6,45 @@ export type ProgressFuncType = (percentage: number) => string
 export type ProgressStatus = 'normal' | 'success' | 'exception' | 'active'
 export type ProgressType = 'line' | 'circle' | 'dashboard'
 
+const STATUS_COLOR_MAP = {
+  success: '#13ce66',
+  exception: '#ff4949',
+  warning: '#e6a23c',
+  default: '#20a0ff',
+}
+
+const getColors = (colors: any[]) => {
+  const span = 100 / colors.length
+
+  const seriesColors = colors.map((seriesColor, index) => {
+    if (isString(seriesColor)) {
+      return {
+        color: seriesColor,
+        percentage: (index + 1) * span,
+      }
+    }
+
+    return seriesColor
+  })
+
+  return seriesColors.sort((a, b) => a.percentage - b.percentage)
+}
+
+const getCurrentColor = (color: ProgressProps['color'], percentage: number) => {
+  if (isString(color)) {
+    return color
+  } else if (isFunction(color)) {
+    return color(percentage)
+  } else {
+    const colors = getColors(color)
+    for (const color of colors) {
+      if (percentage < color.percentage) return color.color
+    }
+
+    return colors[colors.length - 1]?.color
+  }
+}
+
 export const useSvgPath = (props: ProgressProps) => {
   const relativeStrokeWidth = computed(() =>
     ((props.strokeWidth / props.width) * 100).toFixed(1)
@@ -57,48 +96,30 @@ export const useSvgPath = (props: ProgressProps) => {
       'stroke-dasharray 0.6s ease 0s, stroke 0.6s ease, opacity ease 0.6s',
   }))
 
-  return { trackPath, relativeStrokeWidth, trailPathStyle, circlePathStyle }
+  const stroke = computed(() => {
+    const { color, percentage, status } = props
+    if (color) {
+      return getCurrentColor(color, percentage)
+    } else {
+      return STATUS_COLOR_MAP[status] || STATUS_COLOR_MAP.default
+    }
+  })
+
+  return {
+    stroke,
+    trackPath,
+    relativeStrokeWidth,
+    trailPathStyle,
+    circlePathStyle,
+  }
 }
 
 export const useBar = (props: ProgressProps) => {
-  const getColors = (colors: any[]) => {
-    const span = 100 / colors.length
-
-    const seriesColors = colors.map((seriesColor, index) => {
-      if (isString(seriesColor)) {
-        return {
-          color: seriesColor,
-          percentage: (index + 1) * span,
-        }
-      }
-
-      return seriesColor
-    })
-
-    return seriesColors.sort((a, b) => a.percentage - b.percentage)
-  }
-
-  const getCurrentColor = (percentage: number) => {
-    const { color } = props
-    if (isString(color)) {
-      return color
-    } else if (isFunction(color)) {
-      return color(percentage)
-    } else {
-      const colors = getColors(color)
-      for (const color of colors) {
-        if (percentage < color.percentage) return color.color
-      }
-
-      return colors[colors.length - 1]?.color
-    }
-  }
-
   const barInnerStyle = computed<CSSProperties>(() => {
-    const { percentage } = props
+    const { percentage, color } = props
     return {
       width: `${percentage}%`,
-      backgroundColor: getCurrentColor(percentage),
+      backgroundColor: getCurrentColor(color, percentage),
     }
   })
 
