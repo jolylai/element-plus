@@ -16,6 +16,7 @@ const createMessage = (message: string) => {
       offset: 8,
       zIndex: 99,
       onClose: () => {},
+      onDestroy: () => {},
     },
     {
       default: () => message,

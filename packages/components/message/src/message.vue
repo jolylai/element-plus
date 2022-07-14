@@ -27,5 +27,9 @@ defineOptions({
   name: 'PoMessage',
 })
 
-const { classes, styles } = useMessage(props)
+const { classes, styles, bottom } = useMessage(props)
+
+defineExpose({
+  bottom,
+})
 </script>
