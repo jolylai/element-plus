@@ -1,16 +1,31 @@
 <template>
-  <div>
+  <div :id="id" :class="classes" :style="styles">
     <slot>{{ message }}</slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
-  id: { type: String },
-  offset: { type: Number, default: 20 },
-  zIndex: { type: Number, default: 0 },
-  duration: { type: Number, default: 3000 },
-  message: { type: [String] },
-  onClose: { type: Function, default: () => {} },
+import { useMessage } from './message'
+
+export type MessageProps = {
+  id?: string
+  offset?: number
+  zIndex?: number
+  duration?: number
+  message?: string
+  onClose?: () => void
+  onDestroy?: () => void
+}
+
+const props = withDefaults(defineProps<MessageProps>(), {
+  offset: 20,
+  zIndex: 0,
+  duration: 3000,
 })
+
+defineOptions({
+  name: 'PoMessage',
+})
+
+const { classes, styles } = useMessage(props)
 </script>

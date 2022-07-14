@@ -8,6 +8,7 @@
 <script lang="ts" setup>
 import { h } from 'vue'
 import { PoMessage } from 'pomelo-plus'
+import '@pomelo-plus/theme/src/message.scss'
 
 const open = () => {
   PoMessage('this is a message.')
