@@ -1,11 +1,8 @@
-import Anchor from './src/index.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Anchor from './src/anchor.vue'
 import AnchorLink from './src/link.vue'
 
-Anchor.install = app => {
-  app.component('PoAnchor', Anchor)
-  app.component('PoAnchorLink', AnchorLink)
-}
+export const PoAnchor = withInstall(Anchor)
+export const PoAnchorLink = withInstall(AnchorLink)
 
-export { Anchor, AnchorLink }
-
-export default Anchor
+export default PoAnchor

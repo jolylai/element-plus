@@ -4,6 +4,8 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    PoAnchor: typeof import('@pomelo-plus/components/anchor')['default']
+    PoAnchorLink: typeof import('@pomelo-plus/components/anchor-link')['default']
     PoAvatar: typeof import('@pomelo-plus/components/avatar')['default']
     PoButton: typeof import('@pomelo-plus/components/button')['default']
     PoButtonGroup: typeof import('@pomelo-plus/components/button-group')['default']
@@ -15,4 +17,4 @@ declare module 'vue' {
   }
 }
 
-export { }
+export {}

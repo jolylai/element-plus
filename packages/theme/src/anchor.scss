@@ -1,5 +1,5 @@
-@import './mixins/mixins.scss';
-@import './common/var.scss';
+@use './mixins/mixins.scss' as *;
+@use './common/var.scss' as *;
 
 @include b(anchor) {
   list-style: none;

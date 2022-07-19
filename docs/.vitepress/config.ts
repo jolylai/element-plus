@@ -70,5 +70,9 @@ function getComponentsSidebar() {
         { text: 'Message 全局提示', link: '/components/message/' },
       ],
     },
+    // {
+    //   text: '其他',
+    //   items: [{ text: 'Anchor 锚点', link: '/components/anchor/' }],
+    // },
   ]
 }
