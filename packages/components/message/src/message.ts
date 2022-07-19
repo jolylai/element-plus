@@ -3,7 +3,7 @@ import { computed } from '@vue/reactivity'
 import { MessageProps } from './message.vue'
 import MessageConstructor from './message.vue'
 import { Ref } from 'vue'
-import { useSize } from 'usevhooks'
+// import { useSize } from 'usevhooks'
 import { getLastOffset } from './instance'
 
 export interface MessageHandler {
@@ -33,17 +33,14 @@ export const useMessage = (
     }
   })
 
-  const size = useSize(messageRef)
-  console.log('size: ', size)
-
   const lastOffset = computed(() => getLastOffset(props.id))
 
   const offset = computed(() => props.offset + lastOffset.value)
 
   const bottom = computed(() => {
     const { id, offset } = props
-    const size = useSize(messageRef)
-    console.log('size: ', size)
+    // const size = useSize(messageRef)
+    // console.log('size: ', size)
   })
 
   return { classes, styles, bottom }

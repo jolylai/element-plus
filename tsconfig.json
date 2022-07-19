@@ -10,15 +10,10 @@
     "noLib": false,
     "target": "es6",
     "sourceMap": true,
-    "lib": [
-      "ESNext", "DOM"
-    ],
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
     "allowSyntheticDefaultImports": true,
-    "types": ["unplugin-vue-define-options"]
+    "types": ["node", "jsdom", "unplugin-vue-define-options"]
   },
   "include": ["packages"],
-  "exclude": [
-    "node_modules"
-  ]
- }
- 
+  "exclude": ["node_modules"]
+}

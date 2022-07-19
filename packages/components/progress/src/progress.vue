@@ -86,7 +86,7 @@ export interface ProgressProps {
 
 const props = withDefaults(defineProps<ProgressProps>(), {
   percentage: 0,
-  format: (percentage: number) => `${percentage} %`,
+  format: (percentage: number) => `${percentage}%`,
   type: 'line',
   status: 'normal',
   width: 126,
