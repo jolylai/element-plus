@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@element-plus/icons-vue": "^2.0.6"
+    "@element-plus/icons-vue": "^2.0.6",
+    "usevhooks": "^0.0.5"
   }
 }

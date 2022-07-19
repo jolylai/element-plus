@@ -1,10 +1,11 @@
 <template>
-  <div :id="id" :class="classes" :style="styles">
-    <slot>{{ message }}</slot>
+  <div :id="id" :class="classes" :style="styles" ref="messageRef">
+    <slot> </slot>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { useMessage } from './message'
 
 export type MessageProps = {
@@ -12,7 +13,6 @@ export type MessageProps = {
   offset?: number
   zIndex?: number
   duration?: number
-  message?: string
   onClose?: () => void
   onDestroy?: () => void
 }
@@ -27,7 +27,9 @@ defineOptions({
   name: 'PoMessage',
 })
 
-const { classes, styles, bottom } = useMessage(props)
+const messageRef = ref()
+
+const { classes, styles, bottom } = useMessage(props, messageRef)
 
 defineExpose({
   bottom,
