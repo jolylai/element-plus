@@ -8,26 +8,18 @@
 
 按钮样式的变化： 默认显示 -> 鼠标移入 -> 鼠标点击 -> 按钮聚焦
 
-```scss
+```css
 button {
   &:hover,
   &:focus {
-    color: $--color-primary;
-    border-color: $--color-primary-light-7;
-    background-color: $--color-primary-light-9;
+    color: var(--color-primary);
+    border-color: var(--color-primary-light-7);
+    background-color: var(--color-primary-light-9);
   }
 
   &:active {
-    color: mix(
-      $--color-black,
-      $--color-primary,
-      $--button-active-shade-percent
-    );
-    border-color: mix(
-      $--color-black,
-      $--color-primary,
-      $--button-active-shade-percent
-    );
+    color: var(--color-primary);
+    border-color: var(--color-primary);
     outline: none;
   }
 }

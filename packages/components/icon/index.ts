@@ -1,7 +1,6 @@
-import Icon from './src/index.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Icon from './src/icon.vue'
 
-Icon.install = app => {
-  app.component(Icon.name, Icon)
-}
+export const PoIcon = withInstall(Icon)
 
-export default Icon
+export default PoIcon

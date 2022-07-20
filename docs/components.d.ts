@@ -4,12 +4,14 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    PoAlert: typeof import('@pomelo-plus/components/alert')['default']
     PoAnchor: typeof import('@pomelo-plus/components/anchor')['default']
     PoAnchorLink: typeof import('@pomelo-plus/components/anchor-link')['default']
     PoAvatar: typeof import('@pomelo-plus/components/avatar')['default']
     PoButton: typeof import('@pomelo-plus/components/button')['default']
     PoButtonGroup: typeof import('@pomelo-plus/components/button-group')['default']
     PoCheckbox: typeof import('@pomelo-plus/components/checkbox')['default']
+    PoIcon: typeof import('@pomelo-plus/components/icon')['default']
     PoProgress: typeof import('@pomelo-plus/components/progress')['default']
     PoSpace: typeof import('@pomelo-plus/components/space')['default']
     PoTooltip: typeof import('pomelo-plus')['default']

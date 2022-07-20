@@ -11,16 +11,17 @@
 }
 
 @include b(button) {
-  padding:getCssVar('padding', 'xxs') getCssVar('padding', 'sm');
+  padding: getCssVar('padding', 'xxs') getCssVar('padding', 'sm');
   background-color: getCssVar('color-white');
   border-style: solid;
   border-width: 1px;
   border-color: getCssVar('button', 'border-color');
   border-radius: getCssVar('border-radius', 'small');
 
-  transition: all .2s;
+  transition: all 0.2s;
 
-  &:hover,&:focus {
+  &:hover,
+  &:focus {
     border-color: getCssVar('button', 'hover', 'border-color');
     color: getCssVar('button', 'hover', 'border-color');
   }
@@ -37,15 +38,16 @@
       background-color: getCssVar('color', $type);
       border-color: getCssVar('color', $type);
       color: getCssVar('color', 'white');
-      
-      &:hover,&:focus {
+
+      &:hover,
+      &:focus {
         background-color: getCssVar('color', $type);
         border-color: getCssVar('button', 'hover', 'border-color');
         color: getCssVar('color', 'white');
       }
-    
+
       &:active {
-        border-color: getCssVar('button', 'active', 'border-color');
+        border-color: getCssVar('color', $type);
         outline: none;
       }
     }
@@ -56,9 +58,9 @@
     @include m($size) {
       @include button-size(
         map.get($button-padding-vertical, $size),
-        map.get($button-padding-horizontal, $size), 
+        map.get($button-padding-horizontal, $size),
         map.get($button-font-size, $size)
-        )
-      }
+      );
+    }
   }
 }

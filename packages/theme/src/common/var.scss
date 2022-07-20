@@ -27,73 +27,86 @@ $text-color: map.merge(
   $text-color
 );
 
-// Color
-$colors: () !default;
-$colors: map.deep-merge(
+// Colors
+$color-success: () !default;
+$color-success: map.deep-merge(
   (
-    'white': #ffffff,
-    'black': #000000,
-    'primary': (
-      'base': #1890ff,
-    ),
-    'success': (
-      'base': #67c23a,
-    ),
-    'warning': (
-      'base': #e6a23c,
-    ),
-    'danger': (
-      'base': #f56c6c,
-    ),
-    'error': (
-      'base': #f56c6c,
-    ),
-    'info': (
-      'base': #909399,
-    ),
+    'base': #67c23a,
+    'hover': #73d13d,
+    'active': #389e0d,
+    'outline': rgba(82, 196, 26, 0.2),
+    'bg': #f6ffed,
+    'border': #b7eb8f,
   ),
-  $colors
+  $color-success
 );
 
-$color-white: map.get($colors, 'white') !default;
-$color-black: map.get($colors, 'black') !default;
-$color-primary: map.get($colors, 'primary', 'base') !default;
-$color-success: map.get($colors, 'success', 'base') !default;
-$color-warning: map.get($colors, 'warning', 'base') !default;
-$color-danger: map.get($colors, 'danger', 'base') !default;
-$color-error: map.get($colors, 'error', 'base') !default;
-$color-info: map.get($colors, 'info', 'base') !default;
+$color-info: () !default;
+$color-info: map.deep-merge(
+  (
+    'base': #1890ff,
+    'bg': #e6f7ff,
+    'border': #91d5ff,
+  ),
+  $color-info
+);
 
-$types: primary, success, warning, danger, error, info;
+$color-warning: () !default;
+$color-warning: map.deep-merge(
+  (
+    'base': #faad14,
+    'hover': #ffc53d,
+    'active': #d48806,
+    'outline': rgba(250, 173, 20, 0.2),
+    'bg': #fffbe6,
+    'border': #ffe58f,
+  ),
+  $color-warning
+);
 
-// https://sass-lang.com/documentation/values/maps#immutability
-// mix colors with white/black to generate light/dark level
-@mixin set-color-mix-level(
-  $type,
-  $number,
-  $mode: 'light',
-  $mix-color: $color-white
-) {
-  $colors: map.deep-merge(
-    (
-      $type: (
-        '#{$mode}-#{$number}':
-          mix(
-            $mix-color,
-            map.get($colors, $type, 'base'),
-            math.percentage(math.div($number, 10))
-          ),
-      ),
-    ),
-    $colors
-  ) !global;
-}
+$color-error: () !default;
+$color-error: map.deep-merge(
+  (
+    'base': #ff4d4f,
+    'hover': #ff7875,
+    'active': #d9363e,
+    'outline': rgba(255, 77, 79, 0.2),
+    'bg': #fff2f0,
+    'border': #ffccc7,
+  ),
+  $color-error
+);
 
-@each $type in $types {
-  @for $i from 1 through 9 {
-    @include set-color-mix-level($type, $i, 'light', $color-white);
-  }
-}
+// $types: primary, success, warning, danger, error, info;
+
+// // https://sass-lang.com/documentation/values/maps#immutability
+// // mix colors with white/black to generate light/dark level
+// @mixin set-color-mix-level(
+//   $type,
+//   $number,
+//   $mode: 'light',
+//   $mix-color: $color-white
+// ) {
+//   $colors: map.deep-merge(
+//     (
+//       $type: (
+//         '#{$mode}-#{$number}':
+//           mix(
+//             $mix-color,
+//             map.get($colors, $type, 'base'),
+//             math.percentage(math.div($number, 10))
+//           ),
+//       ),
+//     ),
+//     $colors
+//   ) !global;
+// }
+
+// @each $type in $types {
+//   @for $i from 1 through 9 {
+//     @include set-color-mix-level($type, $i, 'light', $color-white);
+//   }
+// }
 
 // Padding
 $padding: () !default;
@@ -161,7 +174,6 @@ $button: map.merge(
     'disabled-text-color': getCssVar('disabled-text-color'),
     'disabled-bg-color': getCssVar('fill-color', 'blank'),
     'disabled-border-color': getCssVar('border-color-light'),
-    'divide-border-color': rgba($color-white, 0.5),
     'hover-text-color': getCssVar('color-primary'),
     'hover-bg-color': getCssVar('color-primary', 'light-7'),
     'hover-border-color': getCssVar('color-primary'),
@@ -178,7 +190,7 @@ $button: map.merge(
 $button-padding-vertical: () !default;
 $button-padding-vertical: map.merge(
   (
-    'large': 13px,
+    'large': 8px,
     'default': 9px,
     'small': 0px,
   ),
@@ -214,4 +226,13 @@ $avatar-size: map.merge(
     'small': 24px,
   ),
   $avatar-size
+);
+
+// Alert
+$alert: () !default;
+$alert: map.merge(
+  (
+    'success-bg': getCssVar('font-weight-primary'),
+  ),
+  $alert
 );

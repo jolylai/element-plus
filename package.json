@@ -29,6 +29,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@element-plus/icons-vue": "^0.2.7",
     "@rollup/plugin-babel": "^5.3.0",
     "@types/jsdom": "^16.2.14",
     "@types/lodash": "^4.14.181",
@@ -64,7 +65,6 @@
     "zx": "^4.3.0"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "^0.2.6",
     "@pomelo-plus/components": "workspace:^0.0.1",
     "@pomelo-plus/hooks": "workspace:^0.0.1",
     "@pomelo-plus/theme": "workspace:^0.0.1",

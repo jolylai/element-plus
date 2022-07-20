@@ -1,0 +1,29 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(alert) {
+  display: flex;
+  // align-items: center;
+
+  padding: getCssVar('padding', 'xs');
+  border: 1px solid;
+
+  @include e(icon) {
+    padding-right: getCssVar('margin', 'xs');
+  }
+
+  @include e(content) {
+    flex-grow: 1;
+  }
+
+  @include e(title) {
+    font-weight: bold;
+    font-size: getCssVar('font-size', 'lg');
+  }
+
+  @each $type in (success, info, warning, error) {
+    @include m($type) {
+      background-color: getCssVar('color', $type, 'bg');
+      border-color: getCssVar('color', $type, 'border');
+    }
+  }
+}
