@@ -7,6 +7,7 @@
 
 :root {
   // @include set-css-var-value('color-white', $color-white);
+  @include set-component-css-var('color-primary', $color-primary);
   @include set-component-css-var('color-success', $color-success);
   @include set-component-css-var('color-info', $color-info);
   @include set-component-css-var('color-warning', $color-warning);

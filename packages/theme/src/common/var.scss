@@ -28,10 +28,21 @@ $text-color: map.merge(
 );
 
 // Colors
+$color-primary: () !default;
+$color-primary: map.deep-merge(
+  (
+    '': #1890ff,
+    'hover': #40a9ff,
+    'active': #096dd9,
+    'outline': rgba(24, 144, 255, 0.2),
+  ),
+  $color-primary
+);
+
 $color-success: () !default;
 $color-success: map.deep-merge(
   (
-    'base': #67c23a,
+    '': #67c23a,
     'hover': #73d13d,
     'active': #389e0d,
     'outline': rgba(82, 196, 26, 0.2),
@@ -44,7 +55,7 @@ $color-success: map.deep-merge(
 $color-info: () !default;
 $color-info: map.deep-merge(
   (
-    'base': #1890ff,
+    '': #1890ff,
     'bg': #e6f7ff,
     'border': #91d5ff,
   ),
@@ -54,7 +65,7 @@ $color-info: map.deep-merge(
 $color-warning: () !default;
 $color-warning: map.deep-merge(
   (
-    'base': #faad14,
+    '': #faad14,
     'hover': #ffc53d,
     'active': #d48806,
     'outline': rgba(250, 173, 20, 0.2),
@@ -67,7 +78,7 @@ $color-warning: map.deep-merge(
 $color-error: () !default;
 $color-error: map.deep-merge(
   (
-    'base': #ff4d4f,
+    '': #ff4d4f,
     'hover': #ff7875,
     'active': #d9363e,
     'outline': rgba(255, 77, 79, 0.2),

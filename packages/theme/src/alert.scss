@@ -26,7 +26,7 @@
       border-color: getCssVar('color', $type, 'border');
 
       svg {
-        color: getCssVar('color', $type, 'base');
+        color: getCssVar('color', $type);
       }
     }
   }
