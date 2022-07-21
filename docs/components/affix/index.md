@@ -8,27 +8,6 @@
 
 页面可视范围过小时，慎用此功能以免遮挡页面内容。
 
-## 实现
-
-### 滚动监听
-
-1. 获取滚动容器
-2. 获取元素相对窗口的位置
-
-边界条件
-
-固钉条件
-
-```js
-const fixed = props.offset > rootRect.top && targetRect.bottom > 0
-```
-
-偏移
-
-```js
-const difference = targetRect.bottom - props.offset - state.height
-```
-
 ## 基础使用
 
 固钉默认固定在页面顶部。

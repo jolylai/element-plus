@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    PoAffix: typeof import('@pomelo-plus/components/affix')['default']
     PoAlert: typeof import('@pomelo-plus/components/alert')['default']
     PoAnchor: typeof import('@pomelo-plus/components/anchor')['default']
     PoAnchorLink: typeof import('@pomelo-plus/components/anchor-link')['default']

@@ -55,6 +55,10 @@ function getComponentsSidebar() {
       ],
     },
     {
+      text: '导航',
+      items: [{ text: 'Affix 固钉', link: '/components/affix/' }],
+    },
+    {
       text: '数据展示',
       items: [
         { text: 'Avatar 头像', link: '/components/avatar/' },

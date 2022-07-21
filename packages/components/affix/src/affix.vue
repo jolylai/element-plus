@@ -1,22 +1,25 @@
 <template>
-  <span class="po-affix" ref="root" :style="rootStyle">
-    <span :style="affixStyle">
+  <span :class="[ns.b()]" ref="root" :style="rootStyle">
+    <span :class="[{ [ns.m('fixed')]: state.fixed }]" :style="affixStyle">
       <slot />
     </span>
   </span>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'PoAffix'
-}
-</script>
-
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
+import {
+  computed,
+  CSSProperties,
+  onMounted,
+  onUnmounted,
+  reactive,
+  ref,
+  watch,
+} from 'vue'
 import { getScrollContainer, off, on } from '@pomelo-plus/utils/dom'
+import { useNamespace } from '@pomelo-plus/hooks'
 
-interface AffixProps {
+export interface AffixProps {
   position?: 'top' | 'bottom'
   offset?: number
   zIndex?: number
@@ -27,9 +30,13 @@ const props = withDefaults(defineProps<AffixProps>(), {
   offset: 0,
   position: 'top',
   zIndex: 100,
-  target: ''
 })
 
+defineOptions({
+  name: 'PoAffix',
+})
+
+const ns = useNamespace('affix')
 const emit = defineEmits<{
   (e: 'scroll', { scrollTop: number, fixed: boolean }): void
   (e: 'change', fixed: boolean): void
@@ -41,7 +48,7 @@ const state = reactive({
   height: 0,
   clientHeight: 0,
   scrollTop: 0,
-  transform: 0
+  transform: 0,
 })
 
 const root = ref<HTMLElement>()
@@ -51,11 +58,11 @@ const scrollContainer = ref()
 const rootStyle = computed(() => {
   return {
     height: state.fixed ? `${state.height}px` : '',
-    width: state.fixed ? `${state.width}px` : ''
+    width: state.fixed ? `${state.width}px` : '',
   }
 })
 
-const affixStyle = computed(() => {
+const affixStyle = computed<CSSProperties>(() => {
   const { fixed } = state
 
   if (!fixed) return
@@ -69,7 +76,7 @@ const affixStyle = computed(() => {
     top: props.position === 'top' ? offset : '',
     bottom: props.position === 'bottom' ? offset : '',
     transform: transform,
-    zIndex: props.zIndex
+    zIndex: props.zIndex,
   }
 })
 
@@ -114,7 +121,7 @@ const onScroll = () => {
 
 watch(
   () => state.fixed,
-  fixed => {
+  (fixed) => {
     emit('change', fixed)
   }
 )

@@ -1,9 +1,6 @@
-import type { App } from 'vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Affix from './src/affix.vue'
 
-import Affix from './src/index.vue'
+export const PoAffix = withInstall(Affix)
 
-Affix.install = (app: App): void => {
-  app.component(Affix.name, Affix)
-}
-
-export default Affix
+export default PoAffix
