@@ -2,9 +2,9 @@
 
 @include b(alert) {
   display: flex;
-  // align-items: center;
+  align-items: center;
 
-  padding: getCssVar('padding', 'xs');
+  padding: getCssVar('padding', 'xs') getCssVar('padding', 'md');
   border: 1px solid;
 
   @include e(icon) {
@@ -24,6 +24,18 @@
     @include m($type) {
       background-color: getCssVar('color', $type, 'bg');
       border-color: getCssVar('color', $type, 'border');
+
+      svg {
+        color: getCssVar('color', $type, 'base');
+      }
+    }
+  }
+
+  @include when(width-description) {
+    align-items: flex-start;
+    @include e(icon) {
+      width: 20px;
+      height: 20px;
     }
   }
 }

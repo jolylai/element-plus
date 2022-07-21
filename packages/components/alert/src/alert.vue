@@ -1,6 +1,9 @@
 <template>
-  <div v-if="!isClose" :class="[ns.b(), ns.m(type)]">
-    <po-icon v-if="showIcon" :class="[ns.e('icon')]" :size="24">
+  <div
+    v-if="!isClose"
+    :class="[ns.b(), ns.m(type), ns.is('width-description', !!title)]"
+  >
+    <po-icon v-if="showIcon" :class="[ns.e('icon')]">
       <component :is="iconComponent" />
     </po-icon>
 
@@ -15,7 +18,7 @@
       </div>
     </div>
 
-    <po-icon @click="onClose">
+    <po-icon v-if="closable" @click="onClose">
       <Close />
     </po-icon>
   </div>
@@ -39,8 +42,8 @@ export type AlertProps = {
 
 const props = withDefaults(defineProps<AlertProps>(), {
   type: 'info',
-  closable: true,
-  showIcon: true,
+  closable: false,
+  showIcon: false,
 })
 
 const ns = useNamespace('alert')
