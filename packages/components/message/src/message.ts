@@ -1,4 +1,3 @@
-import { useNamespace } from '@pomelo-plus/hooks'
 import { computed } from '@vue/reactivity'
 import { MessageProps } from './message.vue'
 import MessageConstructor from './message.vue'
@@ -18,11 +17,6 @@ export const useMessage = (
   props: MessageProps,
   messageRef: Ref<HTMLDivElement>
 ) => {
-  const classes = computed(() => {
-    const ns = useNamespace('message')
-    return [ns.b()]
-  })
-
   const styles = computed(() => {
     const { id, offset } = props
 
@@ -43,5 +37,5 @@ export const useMessage = (
     // console.log('size: ', size)
   })
 
-  return { classes, styles, bottom }
+  return { styles, bottom }
 }
