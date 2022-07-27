@@ -19,7 +19,7 @@ describe('Message.vue', () => {
       },
     })
 
-    const vm = wrapper.vm as MessageInstance
+    const vm = wrapper.vm
 
     console.log('vm: ', vm)
     expect(wrapper.text()).toEqual(AXIOM)

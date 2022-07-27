@@ -1,5 +1,5 @@
 import { h, render } from 'vue'
-import { instances, MessageContext } from './instance'
+import { closeInstance, instances, MessageContext } from './instance'
 import { MessageHandler } from './message'
 import MessageConstructor from './message.vue'
 
@@ -11,30 +11,34 @@ const createMessage = (message: string) => {
   const id = `message_${seed++}`
   const container = document.createElement('div')
 
+  // 创建虚拟节点
   const vnode = h(
     MessageConstructor,
     {
       id,
-      offset: 8,
+      offset: 20,
       zIndex: 99,
       duration: 3000,
-      onClose: () => {},
-      onDestroy: () => {},
+      onClose: () => {
+        closeInstance(instance)
+      },
+      onDestroy: () => {
+        render(null, container)
+      },
     },
     {
       default: () => message,
     }
   )
 
-  console.log('vnode: ', vnode)
   render(vnode, container)
 
   const handler: MessageHandler = {
     // instead of calling the onClose function directly, setting this value so that we can have the full lifecycle
     // for out component, so that all closing steps will not be skipped.
-    // close: () => {
-    //   vm.exposeProxy!.visible = false
-    // },
+    close: () => {
+      vm.exposeProxy!.visible = false
+    },
   }
 
   document.body.appendChild(container.firstElementChild!)
@@ -53,7 +57,6 @@ const createMessage = (message: string) => {
 }
 
 const Message = (props: MessageProps) => {
-  console.log('message')
   const instance = createMessage(props)
   instances.push(instance)
 }

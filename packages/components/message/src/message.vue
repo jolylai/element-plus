@@ -1,18 +1,26 @@
 <template>
-  <div :id="id" :class="[ns.b()]" :style="styles" ref="messageRef">
-    <i :class="[ns.e('icon')]">
-      <component :is="iconComponent" />
-    </i>
-    <span>
-      <slot></slot>
-    </span>
-  </div>
+  <transition @before-leave="onClose" @after-leave="$emit('destroy')">
+    <div
+      v-show="visible"
+      :id="id"
+      :class="[ns.b()]"
+      :style="customStyle"
+      ref="messageRef"
+    >
+      <i :class="[ns.e('icon')]">
+        <component :is="iconComponent" />
+      </i>
+      <span :class="[ns.e('content')]">
+        <slot></slot>
+      </span>
+    </div>
+  </transition>
 </template>
 
 <script lang="ts" setup>
 import { useNamespace } from '@pomelo-plus/hooks'
 import { TypeComponentsMap } from '@pomelo-plus/utils'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useMessage } from './message'
 
 export type MessageType = 'success' | 'warning' | 'info' | 'error'
@@ -23,7 +31,6 @@ export type MessageProps = {
   zIndex?: number
   duration?: number
   onClose?: () => void
-  onDestroy?: () => void
   type?: MessageType
 }
 
@@ -42,7 +49,7 @@ const ns = useNamespace('message')
 
 const messageRef = ref()
 
-const { styles, bottom } = useMessage(props, messageRef)
+const { customStyle, bottom } = useMessage(props, messageRef)
 
 defineExpose({
   bottom,
@@ -50,5 +57,13 @@ defineExpose({
 
 const iconComponent = computed(() => {
   return TypeComponentsMap[props.type]
+})
+
+const visible = ref(true)
+
+onMounted(() => {
+  setTimeout(() => {
+    visible.value = false
+  }, props.duration)
 })
 </script>

@@ -1,30 +1,40 @@
 import { Mutable } from '@pomelo-plus/utils'
-import { VNode } from 'vue'
-import { MessageHandler, MessageInstance } from './message'
+import { ComponentInternalInstance, shallowReactive, VNode } from 'vue'
+import { MessageHandler } from './message'
 import { MessageProps } from './message.vue'
 
 export type MessageContext = {
   id: string
   vnode: VNode
   handler: MessageHandler
-  vm: MessageInstance
+  vm: ComponentInternalInstance
   props: Mutable<MessageProps>
 }
 
-export const instances: MessageContext[] = []
+export const instances: MessageContext[] = shallowReactive([])
 
 export const getInstance = (id: string) => {
   const idx = instances.findIndex((instance) => instance.id === id)
+
   const current = instances[idx]
-  let pre: MessageContext | undefined
+  let prev: MessageContext | undefined
   if (idx > 0) {
-    pre = instances[idx - 1]
+    prev = instances[idx - 1]
   }
-  return { current, pre }
+  return { current, prev }
 }
 
-export const getLastOffset = (id: string) => {
-  const { pre } = getInstance(id)
-  if (!pre) return 0
-  return pre.vm.bottom
+export const closeInstance = (instance: MessageContext) => {
+  const idx = instances.indexOf(instance)
+  if (idx === -1) return
+
+  instances.splice(idx, 1)
+  instance.handler.close()
+}
+
+export const getLastOffset = (id: string): number => {
+  const { prev } = getInstance(id)
+
+  if (!prev) return 0
+  return prev.vm.exposeProxy!.bottom
 }
