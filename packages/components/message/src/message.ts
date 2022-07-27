@@ -2,11 +2,11 @@ import { computed } from '@vue/reactivity'
 import { MessageProps } from './message.vue'
 import MessageConstructor from './message.vue'
 import { Ref } from 'vue'
-// import { useSize } from 'usevhooks'
-import { getLastOffset } from './instance'
+import { getLastOffset, instances } from './instance'
+import useSize from '@pomelo-plus/hooks/use-size'
 
 export interface MessageHandler {
-  onClose: () => void
+  close: () => void
 }
 
 export type MessageInstance = InstanceType<typeof MessageConstructor>
@@ -17,25 +17,23 @@ export const useMessage = (
   props: MessageProps,
   messageRef: Ref<HTMLDivElement>
 ) => {
-  const styles = computed(() => {
-    const { id, offset } = props
+  // 前一个 message 的 bottom
+  const lastOffset = computed(() => getLastOffset(props.id))
+  const offset = computed(() => props.offset + lastOffset.value)
+  const size = useSize(messageRef)
 
-    const top = offset
+  const bottom = computed(() => {
+    return offset.value + size.height.value
+  })
+
+  const customStyle = computed(() => {
+    const { zIndex } = props
+
     return {
-      top: `${top}px`,
-      zIndex: props.zIndex,
+      top: `${offset.value}px`,
+      zIndex: zIndex,
     }
   })
 
-  const lastOffset = computed(() => getLastOffset(props.id))
-
-  const offset = computed(() => props.offset + lastOffset.value)
-
-  const bottom = computed(() => {
-    const { id, offset } = props
-    // const size = useSize(messageRef)
-    // console.log('size: ', size)
-  })
-
-  return { styles, bottom }
+  return { customStyle, bottom }
 }
