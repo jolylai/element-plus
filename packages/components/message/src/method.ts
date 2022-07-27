@@ -1,13 +1,18 @@
 import { h, render } from 'vue'
 import { closeInstance, instances, MessageContext } from './instance'
-import { MessageHandler } from './message'
+import {
+  Message,
+  MessageArgsProps,
+  MessageHandler,
+  messageTypes,
+} from './message'
 import MessageConstructor from './message.vue'
 
 export type MessageProps = string
 
 let seed = 1
 
-const createMessage = (message: string) => {
+const createMessage = (args: MessageArgsProps) => {
   const id = `message_${seed++}`
   const container = document.createElement('div')
 
@@ -56,9 +61,12 @@ const createMessage = (message: string) => {
   return instance
 }
 
-const Message = (props: MessageProps) => {
-  const instance = createMessage(props)
-  instances.push(instance)
-}
+const message: any = {}
 
-export default Message
+messageTypes.forEach((type) => {
+  message[type] = (args: MessageArgsProps) => {
+    return createMessage(args)
+  }
+})
+
+export default message
