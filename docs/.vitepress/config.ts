@@ -62,6 +62,7 @@ function getComponentsSidebar() {
       text: '数据展示',
       items: [
         { text: 'Avatar 头像', link: '/components/avatar/' },
+        { text: 'Badge 徽章', link: '/components/badge/' },
         { text: 'Table', link: '/components/table/' },
         { text: 'Popper', link: '/components/popper/' },
         { text: 'Tooltip', link: '/components/tooltip/' },

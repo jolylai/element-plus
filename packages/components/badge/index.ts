@@ -1,7 +1,6 @@
-import Badge from './badge.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Badge from './src/badge.vue'
 
-Badge.install = app => {
-  app.component(Badge.name, Badge)
-}
+export const PoBadge = withInstall(Badge)
 
-export default Badge
+export default PoBadge

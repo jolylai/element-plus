@@ -83,3 +83,9 @@ $border-color: map.merge(
   #{$varName}: var(#{$gVarName});
 }
 ```
+
+## 状态
+
+标记有 default、error、info、success、warning 类型。
+
+'primary' | 'success' | 'warning' | 'danger' | 'info'

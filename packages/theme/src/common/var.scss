@@ -28,6 +28,8 @@ $text-color: map.merge(
 );
 
 // Colors
+$color-white: #fff;
+
 $color-primary: () !default;
 $color-primary: map.deep-merge(
   (

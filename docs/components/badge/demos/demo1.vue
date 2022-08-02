@@ -1,19 +1,12 @@
 <template>
   <po-space>
-    <po-badge count="5">
+    <po-badge :value="5">
       <a href="#" class="head-example" />
     </po-badge>
 
-    <po-badge count="0" show-zero>
+    <po-badge :value="0" show-zero>
       <a href="#" class="head-example" />
     </po-badge>
-
-    <!-- <po-badge>
-      <template #count>
-        <clock-circle-outlined style="color: #f5222d" />
-      </template>
-      <a href="#" class="head-example"></a>
-    </po-badge> -->
   </po-space>
 </template>
 
