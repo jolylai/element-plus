@@ -1,33 +1,38 @@
-@import 'mixins/mixins';
-@import 'common/var.scss';
+@use 'mixins/mixins' as *;
+@use 'common/var.scss' as *;
 
 @include b(badge) {
-  position: relative;
   display: inline-block;
+  position: relative;
 
-  @include e(count) {
+  @include e(content) {
     position: absolute;
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
+    z-index: 1;
 
-    font-size: 12px;
+    font-size: getCssVar('font-size', 'sm');
     height: 20px;
     min-width: 20px;
+    line-height: 20px;
     text-align: center;
-    color: $--color-white;
-    background-color: $--color-danger;
-    border-radius: 999px;
-  }
-}
+    padding: 0 getCssVar('padding', 'xxs');
+    color: getCssVar('text-color', 'inverse');
 
-@include b(badge-without-wrap) {
-  sup {
-    display: inline-block;
-    background-color: $--color-danger;
-    color: $--color-white;
-    padding: 0 8px;
-    border-radius: 999px;
-    height: 20px;
+    border-radius: 10px;
+
+    @each $type in (primary, success, warning, info, error) {
+      @include m($type) {
+        background-color: getCssVar('color', $type);
+      }
+    }
+  }
+
+  @include when(not-wrapper) {
+    @include e(content) {
+      position: static;
+      display: inline-block;
+    }
   }
 }

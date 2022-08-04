@@ -9,6 +9,7 @@ declare module 'vue' {
     PoAnchor: typeof import('@pomelo-plus/components/anchor')['default']
     PoAnchorLink: typeof import('@pomelo-plus/components/anchor-link')['default']
     PoAvatar: typeof import('@pomelo-plus/components/avatar')['default']
+    PoBadge: typeof import('@pomelo-plus/components/badge')['default']
     PoButton: typeof import('@pomelo-plus/components/button')['default']
     PoButtonGroup: typeof import('@pomelo-plus/components/button-group')['default']
     PoCheckbox: typeof import('@pomelo-plus/components/checkbox')['default']
