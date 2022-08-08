@@ -1,38 +1,42 @@
-@import './mixins/mixins.scss';
-@import './common/var.scss';
+@use './mixins/mixins.scss' as *;
+@use './common/var.scss' as *;
 
 @include b(divider) {
   position: relative;
-  color: #a2a9b6;
-  border: solid #d0d0d5;
-  border-width: 1px 0 0;
-  margin: $--margin-md 0;
 
-  &-vertical {
-    display: inline-block;
-    border-width: 0 1px 0 0;
-    height: 0.9em;
-    margin: 0 $--margin-xs;
-    vertical-align: middle;
+  @include m(horizontal) {
+    margin: getCssVar('margin', 'md') 0;
+    border-top: 1px getCssVar('border-style') getCssVar('border-color');
   }
 
-  &-dashed {
-    border-style: dashed;
+  @include m(vertical) {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    border-left: 1px getCssVar('border-style') getCssVar('border-color', '');
+    margin: 0 getCssVar('margin', 'xs');
   }
 
   @include e(text) {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%) translateY(-50%);
-    padding: 0 $--padding-sm;
-    background-color: #fff;
-  }
+    z-index: 1;
+    top: 50%;
+    line-height: 1;
+    background-color: getCssVar('color', 'white');
+    padding: 0 getCssVar('padding', 'md');
+    transform: translate(0, -50%);
 
-  @include e(left) {
-    left: 20%;
-  }
+    @include when(left) {
+      left: 20px;
+    }
 
-  @include e(right) {
-    left: 80%;
+    @include when(center) {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @include when(right) {
+      right: 20px;
+    }
   }
 }

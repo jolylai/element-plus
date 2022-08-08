@@ -29,9 +29,13 @@ function getGuideSidebar() {
     // { text: '快速开始', link: '/guide/getting-started' },
     {
       text: '通用组件',
+      items: [{ text: '快速开始', link: '/guide/getting-started' }],
+    },
+    {
+      text: '主题',
       items: [
-        { text: '快速开始', link: '/guide/getting-started' },
-        { text: '主题', link: '/guide/theme' },
+        { text: '色彩', link: '/guide/theme/colors' },
+        { text: '布局', link: '/guide/theme/layout' },
       ],
     },
   ]
@@ -45,7 +49,10 @@ function getComponentsSidebar() {
     },
     {
       text: '布局',
-      items: [{ text: 'Space 间距', link: '/components/space/' }],
+      items: [
+        { text: 'Space 间距', link: '/components/space/' },
+        { text: 'Divider 分割线', link: '/components/divider/' },
+      ],
     },
     {
       text: '数据录入',

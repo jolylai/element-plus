@@ -1,7 +1,6 @@
-import Divider from './src/index.vue'
+import { withInstall } from '@pomelo-plus/utils'
+import Divider from './src/divider.vue'
 
-Divider.install = app => {
-  app.component('PoDivider', Divider)
-}
+export const PoDivider = withInstall(Divider)
 
-export default Divider
+export default PoDivider

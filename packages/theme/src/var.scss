@@ -6,7 +6,7 @@
 @use 'mixins/mixins' as *;
 
 :root {
-  // @include set-css-var-value('color-white', $color-white);
+  @include set-component-css-var('color', $color);
   @include set-component-css-var('color-primary', $color-primary);
   @include set-component-css-var('color-success', $color-success);
   @include set-component-css-var('color-info', $color-info);
@@ -15,6 +15,7 @@
 
   @include set-component-css-var('padding', $padding);
   @include set-component-css-var('margin', $margin);
+  @include set-component-css-var('border', $border);
   @include set-component-css-var('border-color', $border-color);
   @include set-component-css-var('border-radius', $border-radius);
   @include set-component-css-var('text-color', $text-color);

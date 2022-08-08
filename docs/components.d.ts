@@ -13,6 +13,7 @@ declare module 'vue' {
     PoButton: typeof import('@pomelo-plus/components/button')['default']
     PoButtonGroup: typeof import('@pomelo-plus/components/button-group')['default']
     PoCheckbox: typeof import('@pomelo-plus/components/checkbox')['default']
+    PoDivider: typeof import('@pomelo-plus/components/divider')['default']
     PoIcon: typeof import('@pomelo-plus/components/icon')['default']
     PoProgress: typeof import('@pomelo-plus/components/progress')['default']
     PoSpace: typeof import('@pomelo-plus/components/space')['default']

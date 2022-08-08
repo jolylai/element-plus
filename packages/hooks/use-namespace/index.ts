@@ -93,5 +93,6 @@ export const useNamespace = (block: string) => {
     cssVarBlock,
     cssVarName,
     cssVarBlockName,
+    cssVar,
   }
 }

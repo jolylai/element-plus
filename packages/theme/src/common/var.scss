@@ -28,6 +28,15 @@ $text-color: map.merge(
 );
 
 // Colors
+$color: () !default;
+$color: map.merge(
+  (
+    'white': '#ffffff',
+    'black': '#000000',
+  ),
+  $color
+);
+
 $color-white: #fff;
 
 $color-primary: () !default;
@@ -148,6 +157,16 @@ $margin: map.merge(
 );
 
 // Border
+$border: () !default;
+$border: map.merge(
+  (
+    'width': 1px,
+    'style': solid,
+    'color': #d9d9d9,
+  ),
+  $border
+);
+
 $border-color: () !default;
 $border-color: map.merge(
   (

@@ -5,11 +5,9 @@
   "author": "jolylai <jolylai163@163.com>",
   "scripts": {
     "dev": "pnpm -C play dev",
-    "start": "vite ",
-    "website:build": "vite build",
-    "build": "rollup -c",
-    "serve": "vite preview",
+    "start": "docs:start",
     "test": "vitest",
+    "build": "rollup -c",
     "build:theme": "npx sass --watch theme:dist/theme",
     "docs:start": "pnpm run -C docs start",
     "docs:build": "pnpm run -C docs build",
